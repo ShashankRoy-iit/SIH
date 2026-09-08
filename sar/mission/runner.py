@@ -60,6 +60,7 @@ from sar.decision.coverage import (BeliefMap, BoustrophedonPlanner, CoverageGrid
                                    Lane, SurveyPlan)
 from sar.perception.geotag import NavQuality, PixelGeoTagger
 from sar.perception.pipeline import PerceptionPipeline, PerceptionProduct
+from sar.rescue.coordinator import RescueCoordinator, RescueOperation, RescueTaskState
 from sar.vehicle.dynamics import PlantState
 
 log = logging.getLogger("sar.mission")
@@ -189,6 +190,8 @@ class MissionReport:
     belief: Dict[str, Any] = field(default_factory=dict)
     comms: Dict[str, Any] = field(default_factory=dict)
     perception: Dict[str, Any] = field(default_factory=dict)
+    rescue: Dict[str, Any] = field(default_factory=dict)
+    human_identifications: List[Dict[str, Any]] = field(default_factory=list)
     survivors_reported: List[Dict[str, Any]] = field(default_factory=list)
     hazards_reported: List[Dict[str, Any]] = field(default_factory=list)
     #: Ground truth from the world model, for scoring.  Never transmitted - this
@@ -258,6 +261,7 @@ class MissionRunner:
                  record_frames: bool = False,
                  artifacts_dir: Optional[Path] = None,
                  vehicle_info_fn: Optional[Callable[[], Dict[str, Any]]] = None,
+                 auto_rescue: bool = True,
                  ) -> None:
         from sar.sim.renderer import CameraRenderer
 
@@ -278,6 +282,15 @@ class MissionRunner:
         self.record_frames = bool(record_frames)
         self.artifacts = Path(artifacts_dir) if artifacts_dir else None
         self.vehicle_info_fn = vehicle_info_fn
+        self.auto_rescue = auto_rescue
+
+        self.rescue_coord = RescueCoordinator(
+            origin=self.origin,
+            world=self.world,
+            hazard_map=self.pipeline.hazard_map,
+            mav_conn=self.conn,
+            auto_drop_enabled=self.auto_rescue,
+        )
 
         self.rgb_render = CameraRenderer(world, rgb_spec, seed=11)
         self.lwir_render = CameraRenderer(world, lwir_spec, seed=12)
@@ -1141,6 +1154,37 @@ class MissionRunner:
                 try:
                     product = self.perceive(t_mission, state, nav)
                     self.publish(product, t_mission, nav)
+
+                    # Autonomous Rescue & Identification processing
+                    for s in product.survivors:
+                        if s.confidence >= 0.45:
+                            water_d = self.pipeline._water_at(s.north_m, s.east_m)
+                            op = self.rescue_coord.process_track(
+                                track=next((tr for tr in product.tracks if tr.tid == s.track_id), None) or s,
+                                t_mission=t_mission,
+                                water_depth_m=water_d,
+                                ambient_temp_c=float(self.pipeline.environment.get("ambient_c", 22.0)),
+                                wind_speed_ms=float(self.pipeline.environment.get("wind_speed_ms", 3.0)),
+                            )
+                            # If auto-rescue enabled and op is ready for drop
+                            if self.auto_rescue and op.drop_result is None:
+                                # Check if aircraft is within reasonable release zone (e.g. 70m)
+                                d_target = float(math.hypot(state.pos[0] - s.north_m, state.pos[1] - s.east_m))
+                                if d_target < 75.0:
+                                    drop_res = self.rescue_coord.execute_payload_drop(
+                                        target_id=s.track_id,
+                                        aircraft_pos_ned=state.pos,
+                                        aircraft_vel_ned=state.vel,
+                                        t_mission=t_mission,
+                                    )
+                                    if drop_res:
+                                        self.report.timeline.append({
+                                            "t": round(t_mission, 1),
+                                            "event": "payload_dropped",
+                                            "target_id": s.track_id,
+                                            "payload_type": drop_res.spec.payload_type.value,
+                                            "miss_distance_m": round(drop_res.miss_distance_m, 1),
+                                        })
                 except Exception as exc:                 # pragma: no cover
                     rep.faults.append(f"perception failed at {t_mission:.1f}s: "
                                       f"{exc!r}")
@@ -1241,6 +1285,8 @@ class MissionRunner:
         rep.belief = self.belief.summary()
         rep.comms = self.uplink.summary()
         rep.comms["ground"] = self.uplink.report.to_dict()
+        rep.rescue = self.rescue_coord.summary()
+        rep.human_identifications = [op.profile.to_dict() for op in self.rescue_coord.operations.values()]
         rep.perception = {
             "frames_rendered": self._frames_rendered,
             "cycles": len(self._perception_ms),

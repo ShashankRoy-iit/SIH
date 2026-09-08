@@ -1,0 +1,652 @@
+{
+  "scenario": "flood",
+  "started_at": 1788856832.2377145,
+  "finished_at": 1788856852.4079943,
+  "armed": true,
+  "landed": false,
+  "crashed": false,
+  "flight_time_s": 20.17,
+  "distance_m": 46.3,
+  "energy_wh": 0.0,
+  "battery_pct": 99.0,
+  "plan": {
+    "n_lanes": 18,
+    "lane_spacing_m": 18.81,
+    "side_overlap": 0.3,
+    "survey_altitude_agl_m": 35.0,
+    "total_length_m": 5760.0,
+    "total_duration_s": 1093.7,
+    "area_m2": 102400.0,
+    "origin_north_m": 0.0,
+    "origin_east_m": 0.0,
+    "search_box": {
+      "north_m": [
+        0.0,
+        320.0
+      ],
+      "east_m": [
+        0.0,
+        320.0
+      ],
+      "area_m2": 102400.0,
+      "victims_inside": 5
+    },
+    "lanes": [
+      {
+        "index": 0,
+        "start": [
+          320.0,
+          169.28403945061837
+        ],
+        "end": [
+          0.0,
+          169.28403945061837
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 1,
+        "start": [
+          0.0,
+          150.474701733883
+        ],
+        "end": [
+          320.0,
+          150.474701733883
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 2,
+        "start": [
+          0.0,
+          188.09337716735374
+        ],
+        "end": [
+          320.0,
+          188.09337716735374
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 3,
+        "start": [
+          320.0,
+          131.66536401714762
+        ],
+        "end": [
+          0.0,
+          131.66536401714762
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 4,
+        "start": [
+          320.0,
+          206.9027148840891
+        ],
+        "end": [
+          0.0,
+          206.9027148840891
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 5,
+        "start": [
+          0.0,
+          112.85602630041225
+        ],
+        "end": [
+          320.0,
+          112.85602630041225
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 6,
+        "start": [
+          0.0,
+          225.7120526008245
+        ],
+        "end": [
+          320.0,
+          225.7120526008245
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 7,
+        "start": [
+          320.0,
+          94.04668858367687
+        ],
+        "end": [
+          0.0,
+          94.04668858367687
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 8,
+        "start": [
+          320.0,
+          244.52139031755988
+        ],
+        "end": [
+          0.0,
+          244.52139031755988
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 9,
+        "start": [
+          0.0,
+          75.2373508669415
+        ],
+        "end": [
+          320.0,
+          75.2373508669415
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 10,
+        "start": [
+          0.0,
+          263.33072803429525
+        ],
+        "end": [
+          320.0,
+          263.33072803429525
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 11,
+        "start": [
+          320.0,
+          56.42801315020613
+        ],
+        "end": [
+          0.0,
+          56.42801315020613
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 12,
+        "start": [
+          320.0,
+          282.1400657510306
+        ],
+        "end": [
+          0.0,
+          282.1400657510306
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 13,
+        "start": [
+          0.0,
+          37.61867543347075
+        ],
+        "end": [
+          320.0,
+          37.61867543347075
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 14,
+        "start": [
+          0.0,
+          300.949403467766
+        ],
+        "end": [
+          320.0,
+          300.949403467766
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 15,
+        "start": [
+          320.0,
+          18.809337716735374
+        ],
+        "end": [
+          0.0,
+          18.809337716735374
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 16,
+        "start": [
+          320.0,
+          319.7587411845014
+        ],
+        "end": [
+          0.0,
+          319.7587411845014
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      },
+      {
+        "index": 17,
+        "start": [
+          0.0,
+          0.0
+        ],
+        "end": [
+          320.0,
+          0.0
+        ],
+        "alt_agl_m": 35.0,
+        "length_m": 320.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 40.0,
+        "weight": 0.041
+      }
+    ]
+  },
+  "coverage": {
+    "cells": 6400,
+    "resolution_m": 4.0,
+    "area_m2": 102400.0,
+    "fraction_looked_at": 0.0,
+    "fraction_covered_p50": 0.0,
+    "fraction_covered_p90": 0.0,
+    "effective_coverage": 0.0,
+    "mean_p_detected": 0.0,
+    "mean_best_gsd_m": null,
+    "uncovered_area_m2": 102400.0,
+    "of_search_box": {
+      "fraction_looked_at": 0.0,
+      "fraction_covered_p50": 0.0,
+      "effective_coverage": 0.0,
+      "area_m2": 102400.0
+    },
+    "search_box": {
+      "north_m": [
+        0.0,
+        320.0
+      ],
+      "east_m": [
+        0.0,
+        320.0
+      ],
+      "area_m2": 102400.0,
+      "victims_inside": 5
+    }
+  },
+  "belief": {
+    "cells": 2916,
+    "resolution_m": 6.0,
+    "expected_remaining": 5.0,
+    "initial_expected": 5.0,
+    "progress": 0.0,
+    "detections_absorbed": 0,
+    "updates": 0,
+    "peak": {
+      "north_m": 3.0,
+      "east_m": 3.0,
+      "belief": 0.00171
+    },
+    "n_priors": 0,
+    "priors": []
+  },
+  "comms": {
+    "queue": {
+      "items": 0,
+      "bytes": 0,
+      "max_bytes": 196608,
+      "by_tier": {},
+      "bytes_by_tier": {},
+      "oldest_age_s": 0.0,
+      "next": null,
+      "stats": {
+        "enqueued": 6,
+        "sent": 0,
+        "dropped_expired": 0,
+        "dropped_evicted": 0,
+        "coalesced": 0,
+        "suppressed_duplicate": 0,
+        "failed": 0,
+        "bytes_sent": 0,
+        "bytes_dropped": 0,
+        "peak_bytes": 174,
+        "delivery_ratio": 0.0
+      }
+    },
+    "link": {
+      "transport": "lora_900",
+      "bitrate_bps": 2900.0,
+      "in_range": true,
+      "range_m": null,
+      "sent_packets": 6,
+      "sent_bytes": 1035,
+      "failed_packets": 0,
+      "packet_success_pct": 100.0,
+      "air_time_s": 3.25,
+      "outage_s": 0.0
+    },
+    "credit_bytes": 725.0,
+    "ground": {
+      "received": 6,
+      "n_survivors": 0,
+      "n_hazards": 0,
+      "survivors": [],
+      "hazards": [],
+      "coverage": {},
+      "nav": {},
+      "vehicle": {
+        "mode": "GUIDED",
+        "armed": true,
+        "alt_rel_m": 47.1,
+        "gs_ms": 10.18,
+        "n_m": 34.7,
+        "e_m": 22.6,
+        "batt_pct": 99.0,
+        "lane": 0,
+        "queue_bytes": 0,
+        "_key": "vehicle",
+        "_kind": "vehicle_telemetry",
+        "_rev": 6,
+        "_tier": "situational",
+        "_rx_t": 1788856851.8053122
+      }
+    }
+  },
+  "perception": {
+    "frames_rendered": 0,
+    "cycles": 0,
+    "mean_cycle_ms": null,
+    "p95_cycle_ms": null,
+    "summary": {
+      "tracks": {
+        "n_tracks": 0,
+        "n_confirmed": 0,
+        "n_candidates": 0,
+        "n_needing_confirmation": 0,
+        "stats": {
+          "created": 0,
+          "confirmed": 0,
+          "merged": 0,
+          "lost": 0,
+          "observations": 0
+        }
+      },
+      "hazards": {
+        "n_hazards": 0,
+        "by_label": {},
+        "by_severity": {},
+        "cells_above_dangerous": 0,
+        "grid_shape": [
+          81,
+          81
+        ],
+        "cell_m": 4.0,
+        "affected_tracks": []
+      },
+      "boresight": {
+        "du_px": 0.0,
+        "dv_px": 0.0,
+        "applied": false,
+        "n_samples": 0,
+        "residual_sigma_px": null
+      },
+      "fusion": {
+        "pairs": 0,
+        "lwir_only": 0,
+        "rgb_only": 0
+      },
+      "person_tracks": [],
+      "confirmation_queue": 0
+    },
+    "distinct_survivor_sites": 0,
+    "tracks_merged_into_sites": 0,
+    "rejected_out_of_area": 0,
+    "rejected_out_of_box": 0,
+    "sites": []
+  },
+  "rescue": {
+    "total_operations": 0,
+    "by_state": {},
+    "completed_drops": 0,
+    "mean_drop_error_m": 0.0,
+    "successful_drops": 0,
+    "active_operations": []
+  },
+  "human_identifications": [],
+  "survivors_reported": [],
+  "hazards_reported": [],
+  "truth": {
+    "n_victims": 5,
+    "victims": [
+      {
+        "vid": "V00",
+        "north_m": 223.12784995819837,
+        "east_m": 187.46370924095885,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G0"
+      },
+      {
+        "vid": "V01",
+        "north_m": 145.01915095798086,
+        "east_m": 189.38275824714015,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G0"
+      },
+      {
+        "vid": "V02",
+        "north_m": 220.96885872422087,
+        "east_m": 43.739463476393425,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G0"
+      },
+      {
+        "vid": "V03",
+        "north_m": 177.94984945328946,
+        "east_m": 136.6902806602219,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      },
+      {
+        "vid": "V04",
+        "north_m": 49.15908840637555,
+        "east_m": 162.33740538136325,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      }
+    ]
+  },
+  "scoring": {
+    "n_truth": 5,
+    "n_reported": 0,
+    "n_matched": 0,
+    "false_positives": 0,
+    "recall": 0.0,
+    "precision": null,
+    "mean_position_error_m": null,
+    "max_position_error_m": null,
+    "sigma_contains_truth_pct": null,
+    "matched": [],
+    "missed": [
+      {
+        "vid": "V00",
+        "north_m": 223.12784995819837,
+        "east_m": 187.46370924095885,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G0"
+      },
+      {
+        "vid": "V01",
+        "north_m": 145.01915095798086,
+        "east_m": 189.38275824714015,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G0"
+      },
+      {
+        "vid": "V02",
+        "north_m": 220.96885872422087,
+        "east_m": 43.739463476393425,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G0"
+      },
+      {
+        "vid": "V03",
+        "north_m": 177.94984945328946,
+        "east_m": 136.6902806602219,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      },
+      {
+        "vid": "V04",
+        "north_m": 49.15908840637555,
+        "east_m": 162.33740538136325,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "t": 12.8,
+      "event": "survey_altitude_reached",
+      "alt_agl_m": 43.3
+    }
+  ],
+  "faults": [],
+  "duration_s": 20.17
+}
