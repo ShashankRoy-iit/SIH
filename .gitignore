@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Simulation and experiment output.  Kept out of git by default: a Monte Carlo
+# sweep writes hundreds of MB of traces.  Curated results that appear in docs/
+# are committed explicitly with `git add -f artifacts/<file>`.
+artifacts/**
+!artifacts/.gitkeep
+!artifacts/figures/.gitkeep
+!artifacts/*.json
+
+# Flight-stack build output and SITL run dirs
+build/
+dist/
+sitl_run/
+*.tlog
+*.bin
+*.ulg
+apm.parm
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+.sitl_run/

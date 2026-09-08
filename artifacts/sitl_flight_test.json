@@ -1,0 +1,145 @@
+{
+  "args": {
+    "backend": "sitl",
+    "target": null,
+    "speedup": 1.0,
+    "instance": 0,
+    "keep_sitl": false,
+    "scratch": "/home/user/SIH/.sitl_run",
+    "verbose": false,
+    "altitude": 35.0,
+    "speed": 6.0,
+    "legs": 3,
+    "leg_length": 90.0,
+    "hfov_deg": 42.0,
+    "overlap_factor": 0.7,
+    "heading_deg": 0.0,
+    "control_hz": 8.0,
+    "waypoint_radius_m": 3.0,
+    "leg_timeout_factor": 3.0,
+    "takeoff_timeout_s": 60.0,
+    "land_timeout_s": 180.0,
+    "guided_timeout_s": 600.0,
+    "fence_radius_m": 600.0,
+    "arm_attempts": 4,
+    "deny": "inject",
+    "deny_seconds": 12.0,
+    "recover_seconds": 25.0,
+    "extnav_hz": 30.0,
+    "extnav_dropout": 0.0,
+    "drop_payload": true,
+    "gripper_channel": 9,
+    "json": "/home/user/SIH/artifacts/sitl_flight_test.json"
+  },
+  "backend": "sitl",
+  "sitl": {
+    "binary": "/home/user/.thirdparty/ardupilot/build/sitl/bin/arducopter",
+    "pid": 9838,
+    "running": true,
+    "serial0_port": 5760,
+    "telemetry_port": 14550,
+    "home": [
+      25.185,
+      75.8357,
+      250.0,
+      0.0
+    ],
+    "model": "+",
+    "speedup": 1.0,
+    "instance": 0,
+    "params": "/home/user/SIH/configs/ardupilot_sitl.parm",
+    "scratch": "/home/user/SIH/.sitl_run",
+    "ready": false
+  },
+  "readiness": {
+    "heartbeat": true,
+    "gps": true,
+    "ekf": true,
+    "home": true,
+    "altitude": true,
+    "ok": true
+  },
+  "feeder_at_start": {
+    "name": "extnav",
+    "running": true,
+    "sent": 11,
+    "dropped": 0,
+    "invalid": 0,
+    "measured_hz": 11.0,
+    "age_s": 0.013,
+    "healthy": true,
+    "source_healthy": true,
+    "target_hz": 30.0,
+    "dropout": 0.0
+  },
+  "home": [
+    25.185,
+    75.8357,
+    250.0,
+    0.0
+  ],
+  "speedup": 1.0,
+  "altitude_m": 35.0,
+  "checks": {
+    "total": 11,
+    "passed": 8,
+    "failed": 3,
+    "rows": [
+      {
+        "check": "MAVLink heartbeat received",
+        "ok": true,
+        "detail": "DISARMED mode=STABILIZE sys=3 ekf_ok=False pos=False vel=False hgt=False"
+      },
+      {
+        "check": "telemetry streams flowing",
+        "ok": true,
+        "detail": "126 messages in 3 s"
+      },
+      {
+        "check": "link loss under 1%",
+        "ok": false,
+        "detail": "2.33%"
+      },
+      {
+        "check": "GNSS lock",
+        "ok": true,
+        "detail": "10 sats fix=6 hdop=1.21"
+      },
+      {
+        "check": "EKF aligned (attitude/position/velocity/height)",
+        "ok": true,
+        "detail": "DISARMED mode=STABILIZE sys=3 ekf_ok=True pos=True vel=True hgt=True"
+      },
+      {
+        "check": "home set",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "altitude estimate available",
+        "ok": true,
+        "detail": "alt_rel=0.0"
+      },
+      {
+        "check": "external nav publishing at rate",
+        "ok": false,
+        "detail": "11 Hz of 30 Hz target"
+      },
+      {
+        "check": "VisOdom backend healthy before arming",
+        "ok": true,
+        "detail": "{'name': 'extnav', 'running': True, 'sent': 11, 'dropped': 0, 'invalid': 0, 'measured_hz': 11.0, 'age_s': 0.013, 'healthy': True, 'source_healthy': True, 'target_hz': 30.0, 'dropout': 0.0}"
+      },
+      {
+        "check": "GUIDED mode accepted",
+        "ok": true,
+        "detail": "GUIDED"
+      },
+      {
+        "check": "vehicle armed",
+        "ok": false,
+        "detail": "pre-arm check failed: Arm: Need Position Estimate; Arm: Need Position Estimate"
+      }
+    ]
+  }
+}

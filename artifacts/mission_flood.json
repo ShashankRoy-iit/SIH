@@ -1,0 +1,2586 @@
+{
+  "scenario": "flood",
+  "started_at": 1788848614.2431524,
+  "finished_at": 1788849136.3765597,
+  "armed": true,
+  "landed": true,
+  "crashed": false,
+  "flight_time_s": 522.13,
+  "distance_m": 4271.6,
+  "energy_wh": 44.3,
+  "battery_pct": 76.9,
+  "plan": {
+    "n_lanes": 8,
+    "lane_spacing_m": 29.56,
+    "side_overlap": 0.3,
+    "survey_altitude_agl_m": 55.0,
+    "total_length_m": 1760.0,
+    "total_duration_s": 298.5,
+    "area_m2": 48400.0,
+    "origin_north_m": 259.0,
+    "origin_east_m": 481.0,
+    "lanes": [
+      {
+        "index": 0,
+        "start": [
+          259.0,
+          599.230122790908
+        ],
+        "end": [
+          479.0,
+          599.230122790908
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.017
+      },
+      {
+        "index": 1,
+        "start": [
+          479.0,
+          687.902714884089
+        ],
+        "end": [
+          259.0,
+          687.902714884089
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.016
+      },
+      {
+        "index": 2,
+        "start": [
+          259.0,
+          658.3451841863621
+        ],
+        "end": [
+          479.0,
+          658.3451841863621
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.015
+      },
+      {
+        "index": 3,
+        "start": [
+          479.0,
+          569.672592093181
+        ],
+        "end": [
+          259.0,
+          569.672592093181
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.015
+      },
+      {
+        "index": 4,
+        "start": [
+          479.0,
+          628.787653488635
+        ],
+        "end": [
+          259.0,
+          628.787653488635
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.015
+      },
+      {
+        "index": 5,
+        "start": [
+          479.0,
+          510.55753069772703
+        ],
+        "end": [
+          259.0,
+          510.55753069772703
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 180.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.007
+      },
+      {
+        "index": 6,
+        "start": [
+          259.0,
+          481.0
+        ],
+        "end": [
+          479.0,
+          481.0
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.006
+      },
+      {
+        "index": 7,
+        "start": [
+          259.0,
+          540.1150613954541
+        ],
+        "end": [
+          479.0,
+          540.1150613954541
+        ],
+        "alt_agl_m": 55.0,
+        "length_m": 220.0,
+        "heading_deg": 0.0,
+        "speed_ms": 8.0,
+        "duration_s": 27.5,
+        "weight": 0.006
+      }
+    ],
+    "search_box": {
+      "north_m": [
+        259.0,
+        479.0
+      ],
+      "east_m": [
+        481.0,
+        701.0
+      ],
+      "area_m2": 48400.0,
+      "victims_inside": 4
+    }
+  },
+  "coverage": {
+    "cells": 50625,
+    "resolution_m": 4.0,
+    "area_m2": 810000.0,
+    "fraction_looked_at": 0.1176,
+    "fraction_covered_p50": 0.1176,
+    "fraction_covered_p90": 0.1176,
+    "effective_coverage": 0.1171,
+    "mean_p_detected": 0.1171,
+    "mean_best_gsd_m": 0.1073,
+    "uncovered_area_m2": 714784.0,
+    "of_search_box": {
+      "fraction_looked_at": 1.0,
+      "fraction_covered_p50": 1.0,
+      "effective_coverage": 0.9998,
+      "area_m2": 50176.0
+    },
+    "search_box": {
+      "north_m": [
+        259.0,
+        479.0
+      ],
+      "east_m": [
+        481.0,
+        701.0
+      ],
+      "area_m2": 48400.0,
+      "victims_inside": 4
+    }
+  },
+  "belief": {
+    "cells": 22500,
+    "resolution_m": 6.0,
+    "expected_remaining": 10.567,
+    "initial_expected": 12.0,
+    "progress": 0.1194,
+    "detections_absorbed": 4777,
+    "updates": 241,
+    "peak": {
+      "north_m": 669.0,
+      "east_m": 159.0,
+      "belief": 0.00329
+    },
+    "n_priors": 4,
+    "priors": [
+      "water_edge",
+      "rooftops",
+      "roads",
+      "damage"
+    ]
+  },
+  "comms": {
+    "queue": {
+      "items": 195,
+      "bytes": 195019,
+      "max_bytes": 196608,
+      "by_tier": {
+        "life_safety": 1,
+        "tactical": 193,
+        "situational": 1
+      },
+      "bytes_by_tier": {
+        "life_safety": 584,
+        "tactical": 266080,
+        "situational": 345
+      },
+      "oldest_age_s": 435.2,
+      "next": "hazard_alert",
+      "stats": {
+        "enqueued": 1859,
+        "sent": 0,
+        "dropped_expired": 0,
+        "dropped_evicted": 1009,
+        "coalesced": 379,
+        "suppressed_duplicate": 299,
+        "failed": 15,
+        "bytes_sent": 0,
+        "bytes_dropped": 1315926,
+        "peak_bytes": 196608,
+        "delivery_ratio": 0.0
+      }
+    },
+    "link": {
+      "transport": "lora_900",
+      "bitrate_bps": 2900.0,
+      "in_range": true,
+      "range_m": 900.0,
+      "sent_packets": 655,
+      "sent_bytes": 120339,
+      "failed_packets": 15,
+      "packet_success_pct": 97.76,
+      "air_time_s": 383.84,
+      "outage_s": 0.0
+    },
+    "credit_bytes": 725.0,
+    "ground": {
+      "received": 655,
+      "n_survivors": 23,
+      "n_hazards": 0,
+      "survivors": [
+        {
+          "la": 25.18846,
+          "lo": 75.84105,
+          "sg": 25.0,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.75,
+          "no": 3,
+          "tm": 442.9,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p1",
+          "_kind": "survivor_update",
+          "_rev": 82,
+          "_tier": "life_safety",
+          "_rx_t": 1788849079.4846668,
+          "_first_rx_t": 1788848705.7668924,
+          "_n_updates": 73
+        },
+        {
+          "la": 25.18672,
+          "lo": 75.84373,
+          "sg": 25.0,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.94,
+          "no": 36,
+          "tm": 287.9,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p2",
+          "_kind": "survivor_update",
+          "_rev": 16,
+          "_tier": "life_safety",
+          "_rx_t": 1788849067.0324976,
+          "_first_rx_t": 1788848710.4553294,
+          "_n_updates": 14
+        },
+        {
+          "la": 25.18723,
+          "lo": 75.84236,
+          "sg": 25.0,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.74,
+          "no": 2,
+          "tm": 372.3,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p3",
+          "_kind": "survivor_update",
+          "_rev": 20,
+          "_tier": "life_safety",
+          "_rx_t": 1788849079.4846804,
+          "_first_rx_t": 1788848721.103181,
+          "_n_updates": 18
+        },
+        {
+          "la": 25.18884,
+          "lo": 75.84203,
+          "sg": 25.0,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.64,
+          "no": 9,
+          "tm": 191.2,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p4",
+          "_kind": "survivor_update",
+          "_rev": 89,
+          "_tier": "life_safety",
+          "_rx_t": 1788848882.7561293,
+          "_first_rx_t": 1788848742.050743,
+          "_n_updates": 85,
+          "id": "p4",
+          "north_m": 425.4,
+          "east_m": 638.1,
+          "lat": 25.18884,
+          "lon": 75.84203
+        },
+        {
+          "la": 25.18955,
+          "lo": 75.84215,
+          "sg": 25.0,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 0,
+          "nb": "M",
+          "cf": 1.0,
+          "no": 3,
+          "tm": 263.8,
+          "vi": null,
+          "lz": [
+            524.0
+          ],
+          "hz": [
+            null
+          ],
+          "_key": "p5",
+          "_kind": "survivor_update",
+          "_rev": 24,
+          "_tier": "life_safety",
+          "_rx_t": 1788848949.020667,
+          "_first_rx_t": 1788848742.0507507,
+          "_n_updates": 22,
+          "id": "p5",
+          "north_m": 504.0,
+          "east_m": 650.1,
+          "lat": 25.18955,
+          "lon": 75.84215
+        },
+        {
+          "la": 25.18924,
+          "lo": 75.84252,
+          "sg": 5.7,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 0,
+          "nb": "M",
+          "cf": 0.71,
+          "no": 6,
+          "tm": 129.9,
+          "vi": null,
+          "lz": [
+            468.0
+          ],
+          "hz": [
+            null
+          ],
+          "_key": "p6",
+          "_kind": "survivor_update",
+          "_rev": 5,
+          "_tier": "life_safety",
+          "_rx_t": 1788848774.3119,
+          "_first_rx_t": 1788848745.7309008,
+          "_n_updates": 4,
+          "id": "p6",
+          "north_m": 469.7,
+          "east_m": 687.4,
+          "lat": 25.18924,
+          "lon": 75.84252
+        },
+        {
+          "la": 25.18928,
+          "lo": 75.84269,
+          "sg": 5.8,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 0,
+          "nb": "M",
+          "cf": 1.0,
+          "no": 1,
+          "tm": 128.7,
+          "vi": null,
+          "lz": [
+            472.0
+          ],
+          "hz": [
+            null
+          ],
+          "_key": "p7",
+          "_kind": "survivor_update",
+          "_rev": 13,
+          "_tier": "life_safety",
+          "_rx_t": 1788848773.905585,
+          "_first_rx_t": 1788848746.2353168,
+          "_n_updates": 12,
+          "id": "p7",
+          "north_m": 474.1,
+          "east_m": 704.6,
+          "lat": 25.18928,
+          "lon": 75.84269
+        },
+        {
+          "la": 25.18907,
+          "lo": 75.84232,
+          "sg": 1.7,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.64,
+          "no": 9,
+          "tm": 191.2,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p8",
+          "_kind": "survivor_update",
+          "_rev": 4,
+          "_tier": "life_safety",
+          "_rx_t": 1788848810.3737965,
+          "_first_rx_t": 1788848805.4573803,
+          "_n_updates": 4,
+          "id": "p8",
+          "north_m": 450.9,
+          "east_m": 667.3,
+          "lat": 25.18907,
+          "lon": 75.84232
+        },
+        {
+          "la": 25.19147,
+          "lo": 75.84126,
+          "sg": 25.0,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.86,
+          "no": 35,
+          "tm": 265.1,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p9",
+          "_kind": "survivor_update",
+          "_rev": 13,
+          "_tier": "life_safety",
+          "_rx_t": 1788848908.9421992,
+          "_first_rx_t": 1788848809.3558662,
+          "_n_updates": 12,
+          "id": "p9",
+          "north_m": 716.7,
+          "east_m": 560.4,
+          "lat": 25.19147,
+          "lon": 75.84126
+        },
+        {
+          "la": 25.18787,
+          "lo": 75.84048,
+          "sg": 25.0,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 1.0,
+          "no": 2,
+          "tm": 370.3,
+          "vi": null,
+          "lz": [
+            324.0
+          ],
+          "hz": [
+            null
+          ],
+          "_key": "p10",
+          "_kind": "survivor_update",
+          "_rev": 17,
+          "_tier": "life_safety",
+          "_rx_t": 1788849062.3959925,
+          "_first_rx_t": 1788848835.5392704,
+          "_n_updates": 17
+        },
+        {
+          "la": 25.18946,
+          "lo": 75.84195,
+          "sg": 12.2,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.86,
+          "no": 34,
+          "tm": 265.1,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p11",
+          "_kind": "survivor_update",
+          "_rev": 7,
+          "_tier": "life_safety",
+          "_rx_t": 1788848883.2626975,
+          "_first_rx_t": 1788848879.1769845,
+          "_n_updates": 4,
+          "id": "p11",
+          "north_m": 494.1,
+          "east_m": 630.0,
+          "lat": 25.18946,
+          "lon": 75.84195
+        },
+        {
+          "la": 25.18938,
+          "lo": 75.84198,
+          "sg": 6.6,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.86,
+          "no": 34,
+          "tm": 265.1,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p12",
+          "_kind": "survivor_update",
+          "_rev": 4,
+          "_tier": "life_safety",
+          "_rx_t": 1788848881.1916952,
+          "_first_rx_t": 1788848879.1769965,
+          "_n_updates": 2,
+          "id": "p12",
+          "north_m": 485.2,
+          "east_m": 633.0,
+          "lat": 25.18938,
+          "lon": 75.84198
+        },
+        {
+          "la": 25.1893,
+          "lo": 75.84201,
+          "sg": 1.4,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.85,
+          "no": 32,
+          "tm": 265.1,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p13",
+          "_kind": "survivor_discover",
+          "_rev": 1,
+          "_tier": "life_safety",
+          "_rx_t": 1788848882.2502558,
+          "_first_rx_t": 1788848882.2502558,
+          "_n_updates": 1,
+          "id": "p13",
+          "north_m": 476.3,
+          "east_m": 636.0,
+          "lat": 25.1893,
+          "lon": 75.84201
+        },
+        {
+          "la": 25.18955,
+          "lo": 75.84215,
+          "sg": 5.8,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 0,
+          "nb": "M",
+          "cf": 1.0,
+          "no": 3,
+          "tm": 263.8,
+          "vi": null,
+          "lz": [
+            524.0
+          ],
+          "hz": [
+            null
+          ],
+          "_key": "p14",
+          "_kind": "survivor_update",
+          "_rev": 19,
+          "_tier": "life_safety",
+          "_rx_t": 1788848907.9052064,
+          "_first_rx_t": 1788848884.2744763,
+          "_n_updates": 18,
+          "id": "p14",
+          "north_m": 504.0,
+          "east_m": 650.1,
+          "lat": 25.18955,
+          "lon": 75.84215
+        },
+        {
+          "la": 25.18839,
+          "lo": 75.84207,
+          "sg": 1.4,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.46,
+          "no": 14,
+          "tm": 276.3,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p15",
+          "_kind": "survivor_update",
+          "_rev": 4,
+          "_tier": "life_safety",
+          "_rx_t": 1788848892.9406686,
+          "_first_rx_t": 1788848889.3680592,
+          "_n_updates": 3,
+          "id": "p15",
+          "north_m": 375.5,
+          "east_m": 642.1,
+          "lat": 25.18839,
+          "lon": 75.84207
+        },
+        {
+          "la": 25.18901,
+          "lo": 75.84087,
+          "sg": 1.5,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.91,
+          "no": 75,
+          "tm": 453.0,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p16",
+          "_kind": "survivor_update",
+          "_rev": 28,
+          "_tier": "life_safety",
+          "_rx_t": 1788849072.0806108,
+          "_first_rx_t": 1788848945.153135,
+          "_n_updates": 28
+        },
+        {
+          "la": 25.18771,
+          "lo": 75.84089,
+          "sg": 24.5,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.74,
+          "no": 2,
+          "tm": 372.3,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p17",
+          "_kind": "survivor_update",
+          "_rev": 25,
+          "_tier": "life_safety",
+          "_rx_t": 1788849007.5503843,
+          "_first_rx_t": 1788848959.4631963,
+          "_n_updates": 25
+        },
+        {
+          "la": 25.18774,
+          "lo": 75.84079,
+          "sg": 16.1,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.74,
+          "no": 2,
+          "tm": 372.3,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p18",
+          "_kind": "survivor_update",
+          "_rev": 8,
+          "_tier": "life_safety",
+          "_rx_t": 1788849002.9119158,
+          "_first_rx_t": 1788848986.3053484,
+          "_n_updates": 8
+        },
+        {
+          "la": 25.18787,
+          "lo": 75.84048,
+          "sg": 5.4,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 1.0,
+          "no": 2,
+          "tm": 370.3,
+          "vi": null,
+          "lz": [
+            324.0
+          ],
+          "hz": [
+            null
+          ],
+          "_key": "p19",
+          "_kind": "survivor_update",
+          "_rev": 7,
+          "_tier": "life_safety",
+          "_rx_t": 1788849012.439894,
+          "_first_rx_t": 1788848996.97164,
+          "_n_updates": 7
+        },
+        {
+          "la": 25.18843,
+          "lo": 75.84102,
+          "sg": 14.1,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.75,
+          "no": 3,
+          "tm": 442.9,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p20",
+          "_kind": "survivor_update",
+          "_rev": 4,
+          "_tier": "life_safety",
+          "_rx_t": 1788849072.0806432,
+          "_first_rx_t": 1788849006.5209227,
+          "_n_updates": 4
+        },
+        {
+          "la": 25.1884,
+          "lo": 75.84098,
+          "sg": 7.2,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.75,
+          "no": 3,
+          "tm": 442.9,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p21",
+          "_kind": "survivor_update",
+          "_rev": 2,
+          "_tier": "life_safety",
+          "_rx_t": 1788849067.0325224,
+          "_first_rx_t": 1788849062.4233918,
+          "_n_updates": 2
+        },
+        {
+          "la": 25.18881,
+          "lo": 75.84094,
+          "sg": 1.4,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.61,
+          "no": 2,
+          "tm": 448.4,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p22",
+          "_kind": "survivor_discover",
+          "_rev": 1,
+          "_tier": "life_safety",
+          "_rx_t": 1788849067.129056,
+          "_first_rx_t": 1788849067.129056,
+          "_n_updates": 1
+        },
+        {
+          "la": 25.18911,
+          "lo": 75.84168,
+          "sg": 12.3,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "M",
+          "cf": 0.91,
+          "no": 75,
+          "tm": 453.0,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            null
+          ],
+          "_key": "p23",
+          "_kind": "survivor_discover",
+          "_rev": 1,
+          "_tier": "life_safety",
+          "_rx_t": 1788849079.4846258,
+          "_first_rx_t": 1788849079.4846258,
+          "_n_updates": 1
+        }
+      ],
+      "hazards": [],
+      "coverage": {},
+      "nav": {
+        "source": "gnss",
+        "pos_sigma_m": 0.97,
+        "since_fix_s": 0.0,
+        "n_satellites": 33,
+        "hdop": 0.67,
+        "denied": false,
+        "drift_rate_ms": 0.05,
+        "_key": "nav",
+        "_kind": "nav_status",
+        "_rev": 89,
+        "_tier": "situational",
+        "_rx_t": 1788849079.484693
+      },
+      "vehicle": {
+        "mode": "GUIDED",
+        "armed": true,
+        "alt_rel_m": 54.9,
+        "gs_ms": 7.81,
+        "n_m": 506.4,
+        "e_m": 540.8,
+        "batt_pct": 81.0,
+        "lane": 7,
+        "queue_bytes": 195019,
+        "_key": "vehicle",
+        "_kind": "vehicle_telemetry",
+        "_rev": 304,
+        "_tier": "situational",
+        "_rx_t": 1788849079.514444
+      }
+    }
+  },
+  "perception": {
+    "frames_rendered": 482,
+    "cycles": 241,
+    "mean_cycle_ms": 859.6,
+    "p95_cycle_ms": 2304.4,
+    "summary": {
+      "tracks": {
+        "n_tracks": 72,
+        "n_confirmed": 0,
+        "n_candidates": 4,
+        "n_needing_confirmation": 0,
+        "stats": {
+          "created": 903,
+          "confirmed": 27,
+          "merged": 750,
+          "lost": 69,
+          "observations": 1470
+        }
+      },
+      "hazards": {
+        "n_hazards": 175,
+        "by_label": {
+          "exposed_powerline": 47,
+          "debris_field": 51,
+          "collapsed_structure": 21,
+          "smoke": 8,
+          "flood_water": 39,
+          "fire": 9
+        },
+        "by_severity": {
+          "DANGEROUS": 84,
+          "CAUTION": 82,
+          "CRITICAL": 9
+        },
+        "cells_above_dangerous": 281,
+        "grid_shape": [
+          226,
+          226
+        ],
+        "cell_m": 4.0,
+        "affected_tracks": [
+          3,
+          21,
+          43,
+          44,
+          65,
+          78,
+          95,
+          178,
+          181,
+          182,
+          183,
+          202,
+          248,
+          249,
+          253,
+          557,
+          608,
+          637,
+          686,
+          715,
+          716,
+          723,
+          811,
+          821,
+          833,
+          834,
+          837,
+          839
+        ]
+      },
+      "boresight": {
+        "du_px": 0.137,
+        "dv_px": 4.544,
+        "applied": false,
+        "n_samples": 6,
+        "residual_sigma_px": 7.823
+      },
+      "fusion": {
+        "pairs": 6,
+        "lwir_only": 301,
+        "rgb_only": 1163
+      },
+      "person_tracks": [
+        {
+          "tid": 248,
+          "ev": 0.391,
+          "n": 18,
+          "status": "lost"
+        },
+        {
+          "tid": 839,
+          "ev": 0.739,
+          "n": 2,
+          "status": "coasting"
+        },
+        {
+          "tid": 834,
+          "ev": 0.754,
+          "n": 3,
+          "status": "coasting"
+        },
+        {
+          "tid": 183,
+          "ev": 0.86,
+          "n": 35,
+          "status": "lost"
+        },
+        {
+          "tid": 608,
+          "ev": 0.936,
+          "n": 36,
+          "status": "lost"
+        },
+        {
+          "tid": 837,
+          "ev": 1.0,
+          "n": 2,
+          "status": "coasting"
+        },
+        {
+          "tid": 716,
+          "ev": 1.0,
+          "n": 3,
+          "status": "lost"
+        },
+        {
+          "tid": 3,
+          "ev": 0.905,
+          "n": 75,
+          "status": "coasting"
+        }
+      ],
+      "confirmation_queue": 0
+    },
+    "distinct_survivor_sites": 23,
+    "tracks_merged_into_sites": 58,
+    "rejected_out_of_area": 44,
+    "sites": [
+      {
+        "site_id": 1,
+        "north_m": 383.7,
+        "east_m": 539.6,
+        "sigma_m": 25.0,
+        "tracks": [
+          3,
+          21,
+          43,
+          44,
+          65,
+          78,
+          95,
+          608,
+          833,
+          834
+        ],
+        "n_reports": 337
+      },
+      {
+        "site_id": 2,
+        "north_m": 182.7,
+        "east_m": 820.7,
+        "sigma_m": 25.0,
+        "tracks": [
+          3,
+          65,
+          608,
+          637
+        ],
+        "n_reports": 63
+      },
+      {
+        "site_id": 3,
+        "north_m": 246.6,
+        "east_m": 671.7,
+        "sigma_m": 25.0,
+        "tracks": [
+          3,
+          608,
+          811,
+          821,
+          839
+        ],
+        "n_reports": 38
+      },
+      {
+        "site_id": 4,
+        "north_m": 422.8,
+        "east_m": 635.1,
+        "sigma_m": 25.0,
+        "tracks": [
+          178,
+          183,
+          202,
+          248
+        ],
+        "n_reports": 240
+      },
+      {
+        "site_id": 5,
+        "north_m": 504.4,
+        "east_m": 650.0,
+        "sigma_m": 25.0,
+        "tracks": [
+          181,
+          182,
+          248,
+          249,
+          253,
+          716
+        ],
+        "n_reports": 112
+      },
+      {
+        "site_id": 6,
+        "north_m": 470.1,
+        "east_m": 687.8,
+        "sigma_m": 5.68,
+        "tracks": [
+          248
+        ],
+        "n_reports": 11
+      },
+      {
+        "site_id": 7,
+        "north_m": 473.6,
+        "east_m": 705.0,
+        "sigma_m": 5.76,
+        "tracks": [
+          253
+        ],
+        "n_reports": 32
+      },
+      {
+        "site_id": 8,
+        "north_m": 451.3,
+        "east_m": 667.4,
+        "sigma_m": 1.7,
+        "tracks": [
+          248
+        ],
+        "n_reports": 7
+      },
+      {
+        "site_id": 9,
+        "north_m": 725.5,
+        "east_m": 558.3,
+        "sigma_m": 25.0,
+        "tracks": [
+          183
+        ],
+        "n_reports": 32
+      },
+      {
+        "site_id": 10,
+        "north_m": 317.5,
+        "east_m": 481.5,
+        "sigma_m": 25.0,
+        "tracks": [
+          557,
+          834,
+          837,
+          839
+        ],
+        "n_reports": 31
+      },
+      {
+        "site_id": 11,
+        "north_m": 494.1,
+        "east_m": 630.0,
+        "sigma_m": 12.2,
+        "tracks": [
+          183,
+          686,
+          716
+        ],
+        "n_reports": 9
+      },
+      {
+        "site_id": 12,
+        "north_m": 485.6,
+        "east_m": 632.7,
+        "sigma_m": 6.59,
+        "tracks": [
+          183,
+          715,
+          723
+        ],
+        "n_reports": 4
+      },
+      {
+        "site_id": 13,
+        "north_m": 476.2,
+        "east_m": 635.6,
+        "sigma_m": 1.45,
+        "tracks": [
+          183
+        ],
+        "n_reports": 1
+      },
+      {
+        "site_id": 14,
+        "north_m": 504.4,
+        "east_m": 650.0,
+        "sigma_m": 5.81,
+        "tracks": [
+          686,
+          716
+        ],
+        "n_reports": 31
+      },
+      {
+        "site_id": 15,
+        "north_m": 375.6,
+        "east_m": 642.4,
+        "sigma_m": 1.43,
+        "tracks": [
+          248
+        ],
+        "n_reports": 6
+      },
+      {
+        "site_id": 16,
+        "north_m": 444.4,
+        "east_m": 521.6,
+        "sigma_m": 1.48,
+        "tracks": [
+          3,
+          833
+        ],
+        "n_reports": 28
+      },
+      {
+        "site_id": 17,
+        "north_m": 299.9,
+        "east_m": 522.8,
+        "sigma_m": 24.47,
+        "tracks": [
+          834,
+          839
+        ],
+        "n_reports": 26
+      },
+      {
+        "site_id": 18,
+        "north_m": 303.6,
+        "east_m": 512.6,
+        "sigma_m": 16.1,
+        "tracks": [
+          837,
+          839
+        ],
+        "n_reports": 12
+      },
+      {
+        "site_id": 19,
+        "north_m": 317.5,
+        "east_m": 481.5,
+        "sigma_m": 5.38,
+        "tracks": [
+          837
+        ],
+        "n_reports": 7
+      },
+      {
+        "site_id": 20,
+        "north_m": 379.8,
+        "east_m": 535.9,
+        "sigma_m": 14.11,
+        "tracks": [
+          834
+        ],
+        "n_reports": 4
+      },
+      {
+        "site_id": 21,
+        "north_m": 376.2,
+        "east_m": 532.5,
+        "sigma_m": 7.19,
+        "tracks": [
+          834
+        ],
+        "n_reports": 2
+      },
+      {
+        "site_id": 22,
+        "north_m": 421.8,
+        "east_m": 528.6,
+        "sigma_m": 1.41,
+        "tracks": [
+          833
+        ],
+        "n_reports": 1
+      },
+      {
+        "site_id": 23,
+        "north_m": 454.9,
+        "east_m": 602.9,
+        "sigma_m": 12.34,
+        "tracks": [
+          3
+        ],
+        "n_reports": 1
+      }
+    ]
+  },
+  "survivors_reported": [
+    {
+      "la": 25.18846,
+      "lo": 75.84105,
+      "sg": 25.0,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.75,
+      "no": 3,
+      "tm": 442.9,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p1",
+      "_kind": "survivor_update",
+      "_rev": 82,
+      "_tier": "life_safety",
+      "_rx_t": 1788849079.4846668,
+      "_first_rx_t": 1788848705.7668924,
+      "_n_updates": 73
+    },
+    {
+      "la": 25.18672,
+      "lo": 75.84373,
+      "sg": 25.0,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.94,
+      "no": 36,
+      "tm": 287.9,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p2",
+      "_kind": "survivor_update",
+      "_rev": 16,
+      "_tier": "life_safety",
+      "_rx_t": 1788849067.0324976,
+      "_first_rx_t": 1788848710.4553294,
+      "_n_updates": 14
+    },
+    {
+      "la": 25.18723,
+      "lo": 75.84236,
+      "sg": 25.0,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.74,
+      "no": 2,
+      "tm": 372.3,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p3",
+      "_kind": "survivor_update",
+      "_rev": 20,
+      "_tier": "life_safety",
+      "_rx_t": 1788849079.4846804,
+      "_first_rx_t": 1788848721.103181,
+      "_n_updates": 18
+    },
+    {
+      "la": 25.18884,
+      "lo": 75.84203,
+      "sg": 25.0,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.64,
+      "no": 9,
+      "tm": 191.2,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p4",
+      "_kind": "survivor_update",
+      "_rev": 89,
+      "_tier": "life_safety",
+      "_rx_t": 1788848882.7561293,
+      "_first_rx_t": 1788848742.050743,
+      "_n_updates": 85,
+      "id": "p4",
+      "north_m": 425.4,
+      "east_m": 638.1,
+      "lat": 25.18884,
+      "lon": 75.84203
+    },
+    {
+      "la": 25.18955,
+      "lo": 75.84215,
+      "sg": 25.0,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 0,
+      "nb": "M",
+      "cf": 1.0,
+      "no": 3,
+      "tm": 263.8,
+      "vi": null,
+      "lz": [
+        524.0
+      ],
+      "hz": [
+        null
+      ],
+      "_key": "p5",
+      "_kind": "survivor_update",
+      "_rev": 24,
+      "_tier": "life_safety",
+      "_rx_t": 1788848949.020667,
+      "_first_rx_t": 1788848742.0507507,
+      "_n_updates": 22,
+      "id": "p5",
+      "north_m": 504.0,
+      "east_m": 650.1,
+      "lat": 25.18955,
+      "lon": 75.84215
+    },
+    {
+      "la": 25.18924,
+      "lo": 75.84252,
+      "sg": 5.7,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 0,
+      "nb": "M",
+      "cf": 0.71,
+      "no": 6,
+      "tm": 129.9,
+      "vi": null,
+      "lz": [
+        468.0
+      ],
+      "hz": [
+        null
+      ],
+      "_key": "p6",
+      "_kind": "survivor_update",
+      "_rev": 5,
+      "_tier": "life_safety",
+      "_rx_t": 1788848774.3119,
+      "_first_rx_t": 1788848745.7309008,
+      "_n_updates": 4,
+      "id": "p6",
+      "north_m": 469.7,
+      "east_m": 687.4,
+      "lat": 25.18924,
+      "lon": 75.84252
+    },
+    {
+      "la": 25.18928,
+      "lo": 75.84269,
+      "sg": 5.8,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 0,
+      "nb": "M",
+      "cf": 1.0,
+      "no": 1,
+      "tm": 128.7,
+      "vi": null,
+      "lz": [
+        472.0
+      ],
+      "hz": [
+        null
+      ],
+      "_key": "p7",
+      "_kind": "survivor_update",
+      "_rev": 13,
+      "_tier": "life_safety",
+      "_rx_t": 1788848773.905585,
+      "_first_rx_t": 1788848746.2353168,
+      "_n_updates": 12,
+      "id": "p7",
+      "north_m": 474.1,
+      "east_m": 704.6,
+      "lat": 25.18928,
+      "lon": 75.84269
+    },
+    {
+      "la": 25.18907,
+      "lo": 75.84232,
+      "sg": 1.7,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.64,
+      "no": 9,
+      "tm": 191.2,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p8",
+      "_kind": "survivor_update",
+      "_rev": 4,
+      "_tier": "life_safety",
+      "_rx_t": 1788848810.3737965,
+      "_first_rx_t": 1788848805.4573803,
+      "_n_updates": 4,
+      "id": "p8",
+      "north_m": 450.9,
+      "east_m": 667.3,
+      "lat": 25.18907,
+      "lon": 75.84232
+    },
+    {
+      "la": 25.19147,
+      "lo": 75.84126,
+      "sg": 25.0,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.86,
+      "no": 35,
+      "tm": 265.1,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p9",
+      "_kind": "survivor_update",
+      "_rev": 13,
+      "_tier": "life_safety",
+      "_rx_t": 1788848908.9421992,
+      "_first_rx_t": 1788848809.3558662,
+      "_n_updates": 12,
+      "id": "p9",
+      "north_m": 716.7,
+      "east_m": 560.4,
+      "lat": 25.19147,
+      "lon": 75.84126
+    },
+    {
+      "la": 25.18787,
+      "lo": 75.84048,
+      "sg": 25.0,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 1.0,
+      "no": 2,
+      "tm": 370.3,
+      "vi": null,
+      "lz": [
+        324.0
+      ],
+      "hz": [
+        null
+      ],
+      "_key": "p10",
+      "_kind": "survivor_update",
+      "_rev": 17,
+      "_tier": "life_safety",
+      "_rx_t": 1788849062.3959925,
+      "_first_rx_t": 1788848835.5392704,
+      "_n_updates": 17
+    },
+    {
+      "la": 25.18946,
+      "lo": 75.84195,
+      "sg": 12.2,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.86,
+      "no": 34,
+      "tm": 265.1,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p11",
+      "_kind": "survivor_update",
+      "_rev": 7,
+      "_tier": "life_safety",
+      "_rx_t": 1788848883.2626975,
+      "_first_rx_t": 1788848879.1769845,
+      "_n_updates": 4,
+      "id": "p11",
+      "north_m": 494.1,
+      "east_m": 630.0,
+      "lat": 25.18946,
+      "lon": 75.84195
+    },
+    {
+      "la": 25.18938,
+      "lo": 75.84198,
+      "sg": 6.6,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.86,
+      "no": 34,
+      "tm": 265.1,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p12",
+      "_kind": "survivor_update",
+      "_rev": 4,
+      "_tier": "life_safety",
+      "_rx_t": 1788848881.1916952,
+      "_first_rx_t": 1788848879.1769965,
+      "_n_updates": 2,
+      "id": "p12",
+      "north_m": 485.2,
+      "east_m": 633.0,
+      "lat": 25.18938,
+      "lon": 75.84198
+    },
+    {
+      "la": 25.1893,
+      "lo": 75.84201,
+      "sg": 1.4,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.85,
+      "no": 32,
+      "tm": 265.1,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p13",
+      "_kind": "survivor_discover",
+      "_rev": 1,
+      "_tier": "life_safety",
+      "_rx_t": 1788848882.2502558,
+      "_first_rx_t": 1788848882.2502558,
+      "_n_updates": 1,
+      "id": "p13",
+      "north_m": 476.3,
+      "east_m": 636.0,
+      "lat": 25.1893,
+      "lon": 75.84201
+    },
+    {
+      "la": 25.18955,
+      "lo": 75.84215,
+      "sg": 5.8,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 0,
+      "nb": "M",
+      "cf": 1.0,
+      "no": 3,
+      "tm": 263.8,
+      "vi": null,
+      "lz": [
+        524.0
+      ],
+      "hz": [
+        null
+      ],
+      "_key": "p14",
+      "_kind": "survivor_update",
+      "_rev": 19,
+      "_tier": "life_safety",
+      "_rx_t": 1788848907.9052064,
+      "_first_rx_t": 1788848884.2744763,
+      "_n_updates": 18,
+      "id": "p14",
+      "north_m": 504.0,
+      "east_m": 650.1,
+      "lat": 25.18955,
+      "lon": 75.84215
+    },
+    {
+      "la": 25.18839,
+      "lo": 75.84207,
+      "sg": 1.4,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.46,
+      "no": 14,
+      "tm": 276.3,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p15",
+      "_kind": "survivor_update",
+      "_rev": 4,
+      "_tier": "life_safety",
+      "_rx_t": 1788848892.9406686,
+      "_first_rx_t": 1788848889.3680592,
+      "_n_updates": 3,
+      "id": "p15",
+      "north_m": 375.5,
+      "east_m": 642.1,
+      "lat": 25.18839,
+      "lon": 75.84207
+    },
+    {
+      "la": 25.18901,
+      "lo": 75.84087,
+      "sg": 1.5,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.91,
+      "no": 75,
+      "tm": 453.0,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p16",
+      "_kind": "survivor_update",
+      "_rev": 28,
+      "_tier": "life_safety",
+      "_rx_t": 1788849072.0806108,
+      "_first_rx_t": 1788848945.153135,
+      "_n_updates": 28
+    },
+    {
+      "la": 25.18771,
+      "lo": 75.84089,
+      "sg": 24.5,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.74,
+      "no": 2,
+      "tm": 372.3,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p17",
+      "_kind": "survivor_update",
+      "_rev": 25,
+      "_tier": "life_safety",
+      "_rx_t": 1788849007.5503843,
+      "_first_rx_t": 1788848959.4631963,
+      "_n_updates": 25
+    },
+    {
+      "la": 25.18774,
+      "lo": 75.84079,
+      "sg": 16.1,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.74,
+      "no": 2,
+      "tm": 372.3,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p18",
+      "_kind": "survivor_update",
+      "_rev": 8,
+      "_tier": "life_safety",
+      "_rx_t": 1788849002.9119158,
+      "_first_rx_t": 1788848986.3053484,
+      "_n_updates": 8
+    },
+    {
+      "la": 25.18787,
+      "lo": 75.84048,
+      "sg": 5.4,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 1.0,
+      "no": 2,
+      "tm": 370.3,
+      "vi": null,
+      "lz": [
+        324.0
+      ],
+      "hz": [
+        null
+      ],
+      "_key": "p19",
+      "_kind": "survivor_update",
+      "_rev": 7,
+      "_tier": "life_safety",
+      "_rx_t": 1788849012.439894,
+      "_first_rx_t": 1788848996.97164,
+      "_n_updates": 7
+    },
+    {
+      "la": 25.18843,
+      "lo": 75.84102,
+      "sg": 14.1,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.75,
+      "no": 3,
+      "tm": 442.9,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p20",
+      "_kind": "survivor_update",
+      "_rev": 4,
+      "_tier": "life_safety",
+      "_rx_t": 1788849072.0806432,
+      "_first_rx_t": 1788849006.5209227,
+      "_n_updates": 4
+    },
+    {
+      "la": 25.1884,
+      "lo": 75.84098,
+      "sg": 7.2,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.75,
+      "no": 3,
+      "tm": 442.9,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p21",
+      "_kind": "survivor_update",
+      "_rev": 2,
+      "_tier": "life_safety",
+      "_rx_t": 1788849067.0325224,
+      "_first_rx_t": 1788849062.4233918,
+      "_n_updates": 2
+    },
+    {
+      "la": 25.18881,
+      "lo": 75.84094,
+      "sg": 1.4,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.61,
+      "no": 2,
+      "tm": 448.4,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p22",
+      "_kind": "survivor_discover",
+      "_rev": 1,
+      "_tier": "life_safety",
+      "_rx_t": 1788849067.129056,
+      "_first_rx_t": 1788849067.129056,
+      "_n_updates": 1
+    },
+    {
+      "la": 25.18911,
+      "lo": 75.84168,
+      "sg": 12.3,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "M",
+      "cf": 0.91,
+      "no": 75,
+      "tm": 453.0,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        null
+      ],
+      "_key": "p23",
+      "_kind": "survivor_discover",
+      "_rev": 1,
+      "_tier": "life_safety",
+      "_rx_t": 1788849079.4846258,
+      "_first_rx_t": 1788849079.4846258,
+      "_n_updates": 1
+    }
+  ],
+  "hazards_reported": [],
+  "truth": {
+    "n_victims": 12,
+    "victims": [
+      {
+        "vid": "V00",
+        "north_m": 85.5873998949106,
+        "east_m": 306.6489106553623,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G0"
+      },
+      {
+        "vid": "V01",
+        "north_m": 304.577945739795,
+        "east_m": 413.8595198155014,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G0"
+      },
+      {
+        "vid": "V02",
+        "north_m": 604.58639118529,
+        "east_m": 514.9809171896643,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G0"
+      },
+      {
+        "vid": "V03",
+        "north_m": 585.4538696719402,
+        "east_m": 544.5245303827496,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G1"
+      },
+      {
+        "vid": "V04",
+        "north_m": 457.35241069694086,
+        "east_m": 413.4775340929446,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      },
+      {
+        "vid": "V05",
+        "north_m": 343.93748903931566,
+        "east_m": 338.58918828887994,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      },
+      {
+        "vid": "V06",
+        "north_m": 352.8404896980933,
+        "east_m": 510.1139184656987,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G2"
+      },
+      {
+        "vid": "V07",
+        "north_m": 467.97832427317553,
+        "east_m": 518.7662861388707,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G2"
+      },
+      {
+        "vid": "V08",
+        "north_m": 128.79629113771205,
+        "east_m": 546.5552645532925,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G2"
+      },
+      {
+        "vid": "V09",
+        "north_m": 309.39248059848893,
+        "east_m": 483.7860277979694,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G3"
+      },
+      {
+        "vid": "V10",
+        "north_m": 397.163568737914,
+        "east_m": 304.5191301549294,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G3"
+      },
+      {
+        "vid": "V11",
+        "north_m": 365.29194243126375,
+        "east_m": 562.6272594571948,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G3"
+      }
+    ]
+  },
+  "scoring": {
+    "n_truth": 12,
+    "n_reported": 23,
+    "n_matched": 4,
+    "false_positives": 19,
+    "recall": 0.3333,
+    "precision": 0.1739,
+    "mean_position_error_m": 29.1,
+    "max_position_error_m": 54.2,
+    "sigma_contains_truth_pct": 50.0,
+    "matched": [
+      {
+        "vid": "V11",
+        "distance_m": 29.5,
+        "reported_sigma_m": 25.0,
+        "category": "road",
+        "priority": "M"
+      },
+      {
+        "vid": "V09",
+        "distance_m": 8.8,
+        "reported_sigma_m": 25.0,
+        "category": "rooftop",
+        "priority": "D"
+      },
+      {
+        "vid": "V07",
+        "distance_m": 23.9,
+        "reported_sigma_m": 1.5,
+        "category": "road",
+        "priority": "M"
+      },
+      {
+        "vid": "V06",
+        "distance_m": 54.2,
+        "reported_sigma_m": 24.5,
+        "category": "rooftop",
+        "priority": "M"
+      }
+    ],
+    "missed": [
+      {
+        "vid": "V00",
+        "north_m": 85.5873998949106,
+        "east_m": 306.6489106553623,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G0"
+      },
+      {
+        "vid": "V01",
+        "north_m": 304.577945739795,
+        "east_m": 413.8595198155014,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G0"
+      },
+      {
+        "vid": "V02",
+        "north_m": 604.58639118529,
+        "east_m": 514.9809171896643,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G0"
+      },
+      {
+        "vid": "V03",
+        "north_m": 585.4538696719402,
+        "east_m": 544.5245303827496,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G1"
+      },
+      {
+        "vid": "V04",
+        "north_m": 457.35241069694086,
+        "east_m": 413.4775340929446,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      },
+      {
+        "vid": "V05",
+        "north_m": 343.93748903931566,
+        "east_m": 338.58918828887994,
+        "alive": true,
+        "category": "rooftop",
+        "in_water": false,
+        "on_rooftop": true,
+        "needs": "evacuation",
+        "group": "G1"
+      },
+      {
+        "vid": "V08",
+        "north_m": 128.79629113771205,
+        "east_m": 546.5552645532925,
+        "alive": true,
+        "category": "road",
+        "in_water": false,
+        "on_rooftop": false,
+        "needs": "medical",
+        "group": "G2"
+      },
+      {
+        "vid": "V10",
+        "north_m": 397.163568737914,
+        "east_m": 304.5191301549294,
+        "alive": true,
+        "category": "water_edge",
+        "in_water": true,
+        "on_rooftop": false,
+        "needs": "flotation",
+        "group": "G3"
+      }
+    ]
+  },
+  "timeline": [
+    {
+      "t": 16.1,
+      "event": "survey_altitude_reached",
+      "alt_agl_m": 54.1
+    },
+    {
+      "t": 86.7,
+      "event": "hazard_reported",
+      "key": "hazard:hazard",
+      "hazard_class": null
+    },
+    {
+      "t": 91.1,
+      "event": "survivor_reported",
+      "track_id": 3,
+      "lat": 25.18784,
+      "lon": 75.841645,
+      "sigma_m": 1.3,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.94
+    },
+    {
+      "t": 95.4,
+      "event": "survivor_reported",
+      "track_id": 65,
+      "lat": 25.187994,
+      "lon": 75.84157,
+      "sigma_m": 1.22,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.95
+    },
+    {
+      "t": 105.9,
+      "event": "survivor_reported",
+      "track_id": 3,
+      "lat": 25.18785,
+      "lon": 75.84165,
+      "sigma_m": 2.49,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.93
+    },
+    {
+      "t": 116.1,
+      "event": "lane_complete",
+      "lane": 0,
+      "lateral_err_m": 0.3,
+      "transit_m": 217.2
+    },
+    {
+      "t": 126.4,
+      "event": "survivor_reported",
+      "track_id": 178,
+      "lat": 25.189409,
+      "lon": 75.842667,
+      "sigma_m": 1.3,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.91
+    },
+    {
+      "t": 126.4,
+      "event": "survivor_reported",
+      "track_id": 181,
+      "lat": 25.189362,
+      "lon": 75.842502,
+      "sigma_m": 1.06,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.91
+    },
+    {
+      "t": 128.7,
+      "event": "survivor_reported",
+      "track_id": 248,
+      "lat": 25.189222,
+      "lon": 75.842519,
+      "sigma_m": 1.31,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 1.01
+    },
+    {
+      "t": 128.7,
+      "event": "survivor_reported",
+      "track_id": 253,
+      "lat": 25.189275,
+      "lon": 75.842694,
+      "sigma_m": 1.43,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 1.01
+    },
+    {
+      "t": 159.7,
+      "event": "lane_complete",
+      "lane": 1,
+      "lateral_err_m": 0.27,
+      "transit_m": 217.4
+    },
+    {
+      "t": 190.6,
+      "event": "survivor_reported",
+      "track_id": 248,
+      "lat": 25.189079,
+      "lon": 75.84234,
+      "sigma_m": 1.36,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.96
+    },
+    {
+      "t": 194.0,
+      "event": "survivor_reported",
+      "track_id": 183,
+      "lat": 25.189289,
+      "lon": 75.84236,
+      "sigma_m": 1.41,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.94
+    },
+    {
+      "t": 195.3,
+      "event": "lane_complete",
+      "lane": 2,
+      "lateral_err_m": 0.46,
+      "transit_m": 218.0
+    },
+    {
+      "t": 220.4,
+      "event": "survivor_reported",
+      "track_id": 557,
+      "lat": 25.188283,
+      "lon": 75.84129,
+      "sigma_m": 1.38,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.95
+    },
+    {
+      "t": 236.4,
+      "event": "lane_complete",
+      "lane": 3,
+      "lateral_err_m": 0.29,
+      "transit_m": 215.8
+    },
+    {
+      "t": 263.8,
+      "event": "survivor_reported",
+      "track_id": 686,
+      "lat": 25.189661,
+      "lon": 75.84206,
+      "sigma_m": 1.4,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.91
+    },
+    {
+      "t": 263.8,
+      "event": "survivor_reported",
+      "track_id": 715,
+      "lat": 25.18947,
+      "lon": 75.842064,
+      "sigma_m": 1.23,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.91
+    },
+    {
+      "t": 265.1,
+      "event": "survivor_reported",
+      "track_id": 183,
+      "lat": 25.189299,
+      "lon": 75.842005,
+      "sigma_m": 1.45,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 1.03
+    },
+    {
+      "t": 268.2,
+      "event": "survivor_reported",
+      "track_id": 686,
+      "lat": 25.189661,
+      "lon": 75.84206,
+      "sigma_m": 1.56,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.99
+    },
+    {
+      "t": 272.7,
+      "event": "survivor_reported",
+      "track_id": 248,
+      "lat": 25.188654,
+      "lon": 75.842052,
+      "sigma_m": 1.42,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.99
+    },
+    {
+      "t": 293.9,
+      "event": "lane_complete",
+      "lane": 4,
+      "lateral_err_m": 0.34,
+      "transit_m": 214.8
+    },
+    {
+      "t": 326.3,
+      "event": "survivor_reported",
+      "track_id": 833,
+      "lat": 25.189063,
+      "lon": 75.840849,
+      "sigma_m": 1.42,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 1.02
+    },
+    {
+      "t": 343.9,
+      "event": "survivor_reported",
+      "track_id": 834,
+      "lat": 25.188178,
+      "lon": 75.840744,
+      "sigma_m": 1.2,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.9
+    },
+    {
+      "t": 356.8,
+      "event": "lane_complete",
+      "lane": 5,
+      "lateral_err_m": 0.29,
+      "transit_m": 216.7
+    },
+    {
+      "t": 370.3,
+      "event": "survivor_reported",
+      "track_id": 837,
+      "lat": 25.187866,
+      "lon": 75.840476,
+      "sigma_m": 1.27,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.98
+    },
+    {
+      "t": 380.1,
+      "event": "survivor_reported",
+      "track_id": 837,
+      "lat": 25.187866,
+      "lon": 75.840476,
+      "sigma_m": 2.12,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.94
+    },
+    {
+      "t": 389.4,
+      "event": "survivor_reported",
+      "track_id": 834,
+      "lat": 25.188192,
+      "lon": 75.84077,
+      "sigma_m": 12.09,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 1.0
+    },
+    {
+      "t": 397.1,
+      "event": "lane_complete",
+      "lane": 6,
+      "lateral_err_m": 0.31,
+      "transit_m": 219.9
+    },
+    {
+      "t": 442.9,
+      "event": "survivor_reported",
+      "track_id": 834,
+      "lat": 25.188357,
+      "lon": 75.840943,
+      "sigma_m": 1.35,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.98
+    },
+    {
+      "t": 448.4,
+      "event": "survivor_reported",
+      "track_id": 833,
+      "lat": 25.188808,
+      "lon": 75.840944,
+      "sigma_m": 1.41,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.92
+    },
+    {
+      "t": 458.0,
+      "event": "survivor_reported",
+      "track_id": 3,
+      "lat": 25.189107,
+      "lon": 75.841681,
+      "sigma_m": 12.34,
+      "priority": "minor",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.97
+    }
+  ],
+  "faults": [],
+  "duration_s": 522.13
+}

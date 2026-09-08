@@ -1,0 +1,1324 @@
+{
+  "mode": "aimed_full_pipeline",
+  "frames": 120,
+  "wall_ms_per_frame": 174.0,
+  "internal_ms": {
+    "detect_ms": 54.94,
+    "fuse_ms": 0.08,
+    "geotag_ms": 2.2,
+    "track_ms": 11.84,
+    "hazard_ms": 1.66,
+    "assess_ms": 7.16,
+    "total_ms": 77.88
+  },
+  "matched": 12,
+  "person_tracks": 12,
+  "localisation_err_m": {
+    "mean": 0.174,
+    "median": 0.093,
+    "max": 0.962
+  },
+  "reported_sigma_m": {
+    "mean": 1.244,
+    "max": 2.253
+  },
+  "err_within_1sigma": 1.0,
+  "err_within_r95": 1.0,
+  "cross_modal": 12,
+  "boresight": {
+    "du_px": 0.07,
+    "dv_px": 0.565,
+    "applied": true,
+    "n_samples": 43,
+    "residual_sigma_px": 2.159
+  },
+  "fusion": {
+    "pairs": 43,
+    "lwir_only": 18,
+    "rgb_only": 419
+  },
+  "survivors": [
+    {
+      "track_id": 18,
+      "lat": 25.185772980312816,
+      "lon": 75.8387417904521,
+      "north_m": 85.6,
+      "east_m": 306.6,
+      "sigma_m": 2.25,
+      "r95_m": 5.5,
+      "label": "person",
+      "confidence": 1.0,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 5,
+      "cross_modal": true,
+      "immobility": 1.0,
+      "speed_ms": 0.01,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 25.4,
+        "surface_temp_c": 37.2,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 1.0,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 92.0,
+          "east_m": 288.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.604,
+          "distance_to_target_m": 19.7,
+          "slope_deg": 3.61,
+          "water_depth_m": 0.1,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.10 m"
+          ]
+        },
+        {
+          "north_m": 80.0,
+          "east_m": 276.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.477,
+          "distance_to_target_m": 31.1,
+          "slope_deg": 3.8,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 108.0,
+          "east_m": 284.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.472,
+          "distance_to_target_m": 31.8,
+          "slope_deg": 3.74,
+          "water_depth_m": 0.04,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.04 m"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 7,
+          "label": "flood_water",
+          "severity": "CAUTION",
+          "distance_m": 13.1,
+          "exclusion_m": 9.6
+        },
+        {
+          "hid": 4,
+          "label": "flood_water",
+          "severity": "CRITICAL",
+          "distance_m": 14.0,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 6,
+          "label": "debris_field",
+          "severity": "CAUTION",
+          "distance_m": 14.1,
+          "exclusion_m": 9.7
+        }
+      ],
+      "first_seen_t": 0.4,
+      "last_seen_t": 0.9
+    },
+    {
+      "track_id": 54,
+      "lat": 25.190459824951436,
+      "lon": 75.84080861678119,
+      "north_m": 604.8,
+      "east_m": 514.9,
+      "sigma_m": 1.88,
+      "r95_m": 4.6,
+      "label": "person",
+      "confidence": 1.0,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 5,
+      "cross_modal": true,
+      "immobility": 0.997,
+      "speed_ms": 0.08,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 32.8,
+        "surface_temp_c": 35.9,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 1.0,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 608.0,
+          "east_m": 552.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.413,
+          "distance_to_target_m": 37.2,
+          "slope_deg": 4.48,
+          "water_depth_m": 0.07,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.07 m"
+          ]
+        },
+        {
+          "north_m": 624.0,
+          "east_m": 552.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.377,
+          "distance_to_target_m": 41.7,
+          "slope_deg": 4.48,
+          "water_depth_m": 0.06,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.06 m"
+          ]
+        },
+        {
+          "north_m": 640.0,
+          "east_m": 552.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.313,
+          "distance_to_target_m": 51.1,
+          "slope_deg": 4.48,
+          "water_depth_m": 0.06,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.06 m"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 12,
+          "label": "flood_water",
+          "severity": "CRITICAL",
+          "distance_m": 8.1,
+          "exclusion_m": 22.6
+        },
+        {
+          "hid": 11,
+          "label": "flood_water",
+          "severity": "CRITICAL",
+          "distance_m": 9.9,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 15,
+          "label": "flood_water",
+          "severity": "CRITICAL",
+          "distance_m": 12.2,
+          "exclusion_m": 19.8
+        }
+      ],
+      "first_seen_t": 2.9,
+      "last_seen_t": 3.4
+    },
+    {
+      "track_id": 114,
+      "lat": 25.190285482017217,
+      "lon": 75.84110170615331,
+      "north_m": 585.5,
+      "east_m": 544.5,
+      "sigma_m": 1.69,
+      "r95_m": 4.1,
+      "label": "person",
+      "confidence": 1.0,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 5,
+      "cross_modal": true,
+      "immobility": 0.999,
+      "speed_ms": 0.03,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 26.8,
+        "surface_temp_c": 37.8,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 1.0,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 608.0,
+          "east_m": 552.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.541,
+          "distance_to_target_m": 23.7,
+          "slope_deg": 4.48,
+          "water_depth_m": 0.07,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.07 m"
+          ]
+        },
+        {
+          "north_m": 584.0,
+          "east_m": 568.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.54,
+          "distance_to_target_m": 23.6,
+          "slope_deg": 4.65,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 600.0,
+          "east_m": 568.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.497,
+          "distance_to_target_m": 27.6,
+          "slope_deg": 4.65,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 20,
+          "label": "flood_water",
+          "severity": "DANGEROUS",
+          "distance_m": 6.6,
+          "exclusion_m": 13.8
+        },
+        {
+          "hid": 22,
+          "label": "exposed_powerline",
+          "severity": "CRITICAL",
+          "distance_m": 6.9,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 19,
+          "label": "debris_field",
+          "severity": "CAUTION",
+          "distance_m": 7.3,
+          "exclusion_m": 9.6
+        }
+      ],
+      "first_seen_t": 4.1,
+      "last_seen_t": 4.6
+    },
+    {
+      "track_id": 217,
+      "lat": 25.18858563526056,
+      "lon": 75.83872068444371,
+      "north_m": 397.2,
+      "east_m": 304.5,
+      "sigma_m": 0.61,
+      "r95_m": 1.5,
+      "label": "person",
+      "confidence": 1.0,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 5,
+      "cross_modal": true,
+      "immobility": 0.999,
+      "speed_ms": 0.03,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 26.6,
+        "surface_temp_c": 26.6,
+        "wet_fraction": 0.49,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 1.0,
+        "rationale": [
+          "surface 26.6C is 4.4K below a dry clothed survivor -> wet_fraction 0.49",
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 400.0,
+          "east_m": 288.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.632,
+          "distance_to_target_m": 16.7,
+          "slope_deg": 4.02,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 416.0,
+          "east_m": 292.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.562,
+          "distance_to_target_m": 22.6,
+          "slope_deg": 4.0,
+          "water_depth_m": 0.09,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.09 m"
+          ]
+        },
+        {
+          "north_m": 388.0,
+          "east_m": 276.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.482,
+          "distance_to_target_m": 29.9,
+          "slope_deg": 4.23,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 52,
+          "label": "exposed_powerline",
+          "severity": "CRITICAL",
+          "distance_m": 9.6,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 50,
+          "label": "flood_water",
+          "severity": "CRITICAL",
+          "distance_m": 9.8,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 54,
+          "label": "flood_water",
+          "severity": "DANGEROUS",
+          "distance_m": 10.8,
+          "exclusion_m": 13.8
+        }
+      ],
+      "first_seen_t": 12.9,
+      "last_seen_t": 13.4
+    },
+    {
+      "track_id": 130,
+      "lat": 25.18913054409289,
+      "lon": 75.8398017574944,
+      "north_m": 457.6,
+      "east_m": 413.5,
+      "sigma_m": 1.51,
+      "r95_m": 3.7,
+      "label": "person",
+      "confidence": 0.866,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 8,
+      "cross_modal": true,
+      "immobility": 0.987,
+      "speed_ms": 0.31,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 25.0,
+        "surface_temp_c": 35.0,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 0.866,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [],
+      "hazards_nearby": [
+        {
+          "hid": 23,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 0.4,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 29,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 105.7,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 28,
+          "label": "flood_water",
+          "severity": "CAUTION",
+          "distance_m": 114.1,
+          "exclusion_m": 9.6
+        }
+      ],
+      "first_seen_t": 5.4,
+      "last_seen_t": 5.9
+    },
+    {
+      "track_id": 147,
+      "lat": 25.189225460676433,
+      "lon": 75.84084633620793,
+      "north_m": 468.1,
+      "east_m": 518.7,
+      "sigma_m": 1.0,
+      "r95_m": 2.4,
+      "label": "person",
+      "confidence": 0.829,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 7,
+      "cross_modal": true,
+      "immobility": 0.986,
+      "speed_ms": 0.34,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 25.0,
+        "surface_temp_c": 32.0,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 0.829,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 468.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.412,
+          "distance_to_target_m": 37.3,
+          "slope_deg": 4.52,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 484.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.386,
+          "distance_to_target_m": 40.5,
+          "slope_deg": 4.5,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 452.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.385,
+          "distance_to_target_m": 40.6,
+          "slope_deg": 4.55,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 29,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 0.1,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 28,
+          "label": "flood_water",
+          "severity": "CAUTION",
+          "distance_m": 28.3,
+          "exclusion_m": 9.6
+        },
+        {
+          "hid": 72,
+          "label": "exposed_powerline",
+          "severity": "DANGEROUS",
+          "distance_m": 86.9,
+          "exclusion_m": 13.8
+        }
+      ],
+      "first_seen_t": 9.1,
+      "last_seen_t": 9.6
+    },
+    {
+      "track_id": 137,
+      "lat": 25.188193826325147,
+      "lon": 75.84075987157013,
+      "north_m": 353.8,
+      "east_m": 510.0,
+      "sigma_m": 1.35,
+      "r95_m": 3.3,
+      "label": "person",
+      "confidence": 0.824,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 10,
+      "cross_modal": true,
+      "immobility": 0.967,
+      "speed_ms": 3.12,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 25.0,
+        "surface_temp_c": 35.0,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 0.824,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 360.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.344,
+          "distance_to_target_m": 46.4,
+          "slope_deg": 4.47,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 376.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.313,
+          "distance_to_target_m": 51.1,
+          "slope_deg": 4.46,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 328.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.303,
+          "distance_to_target_m": 52.7,
+          "slope_deg": 4.48,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 25,
+          "label": "exposed_powerline",
+          "severity": "CRITICAL",
+          "distance_m": 0.9,
+          "exclusion_m": 19.7
+        },
+        {
+          "hid": 27,
+          "label": "debris_field",
+          "severity": "CAUTION",
+          "distance_m": 1.0,
+          "exclusion_m": 9.5
+        },
+        {
+          "hid": 26,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 1.3,
+          "exclusion_m": 19.8
+        }
+      ],
+      "first_seen_t": 8.0,
+      "last_seen_t": 8.1
+    },
+    {
+      "track_id": 134,
+      "lat": 25.188105816536968,
+      "lon": 75.83905865301875,
+      "north_m": 344.0,
+      "east_m": 338.5,
+      "sigma_m": 0.59,
+      "r95_m": 1.4,
+      "label": "person",
+      "confidence": 0.818,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 7,
+      "cross_modal": true,
+      "immobility": 0.988,
+      "speed_ms": 0.29,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 32.0,
+        "surface_temp_c": 37.6,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 0.818,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 344.0,
+          "east_m": 288.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.321,
+          "distance_to_target_m": 50.5,
+          "slope_deg": 4.03,
+          "water_depth_m": 0.09,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.09 m"
+          ]
+        },
+        {
+          "north_m": 360.0,
+          "east_m": 288.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.306,
+          "distance_to_target_m": 53.0,
+          "slope_deg": 4.02,
+          "water_depth_m": 0.05,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "shallow water 0.05 m"
+          ]
+        },
+        {
+          "north_m": 328.0,
+          "east_m": 284.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.282,
+          "distance_to_target_m": 56.9,
+          "slope_deg": 4.13,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 24,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 0.1,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 49,
+          "label": "flood_water",
+          "severity": "CAUTION",
+          "distance_m": 50.6,
+          "exclusion_m": 9.6
+        },
+        {
+          "hid": 48,
+          "label": "debris_field",
+          "severity": "CAUTION",
+          "distance_m": 54.9,
+          "exclusion_m": 9.6
+        }
+      ],
+      "first_seen_t": 6.6,
+      "last_seen_t": 7.1
+    },
+    {
+      "track_id": 28,
+      "lat": 25.187750106172736,
+      "lon": 75.83980531918975,
+      "north_m": 304.6,
+      "east_m": 413.8,
+      "sigma_m": 2.08,
+      "r95_m": 5.1,
+      "label": "person",
+      "confidence": 0.766,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 8,
+      "cross_modal": true,
+      "immobility": 0.994,
+      "speed_ms": 0.15,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 32.0,
+        "surface_temp_c": 37.5,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 0.766,
+        "rationale": [
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [],
+      "hazards_nearby": [
+        {
+          "hid": 8,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 0.2,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 46,
+          "label": "exposed_powerline",
+          "severity": "CRITICAL",
+          "distance_m": 69.7,
+          "exclusion_m": 19.7
+        },
+        {
+          "hid": 45,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 70.2,
+          "exclusion_m": 19.8
+        }
+      ],
+      "first_seen_t": 1.6,
+      "last_seen_t": 2.1
+    },
+    {
+      "track_id": 202,
+      "lat": 25.187792878810143,
+      "lon": 75.8404996294025,
+      "north_m": 309.4,
+      "east_m": 483.8,
+      "sigma_m": 0.56,
+      "r95_m": 1.4,
+      "label": "person",
+      "confidence": 0.604,
+      "priority": "immediate",
+      "time_critical_s": 4860,
+      "n_obs": 11,
+      "cross_modal": true,
+      "immobility": 0.933,
+      "speed_ms": 1.63,
+      "needs": "flotation",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "water",
+        "apparent_temp_c": 25.0,
+        "surface_temp_c": 27.3,
+        "wet_fraction": 0.41,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": 81.0,
+        "minutes_to_unconsciousness": 198.0,
+        "hypothermia_risk": 0.8,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": null,
+        "frostbite_min": null,
+        "priority": "immediate",
+        "time_critical_s": 4860,
+        "confidence": 0.604,
+        "rationale": [
+          "surface 27.3C is 3.7K below a dry clothed survivor -> wet_fraction 0.41",
+          "water 14.0C -> incapacitation ~81 min, unconsciousness ~198 min (full immersion)",
+          "immobile in water: peripheral perfusion already shutting down, or unable to move",
+          "posture 'clinging in water': actively holding on - grip failure is the failure mode",
+          "tier=immediate critical_window=4860.0"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 308.0,
+          "east_m": 552.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.222,
+          "distance_to_target_m": 68.2,
+          "slope_deg": 4.52,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 292.0,
+          "east_m": 552.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.212,
+          "distance_to_target_m": 70.4,
+          "slope_deg": 4.6,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 324.0,
+          "east_m": 556.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.199,
+          "distance_to_target_m": 73.7,
+          "slope_deg": 4.49,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 46,
+          "label": "exposed_powerline",
+          "severity": "CRITICAL",
+          "distance_m": 0.8,
+          "exclusion_m": 19.7
+        },
+        {
+          "hid": 45,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 0.8,
+          "exclusion_m": 19.8
+        },
+        {
+          "hid": 26,
+          "label": "fire",
+          "severity": "CRITICAL",
+          "distance_m": 50.4,
+          "exclusion_m": 19.8
+        }
+      ],
+      "first_seen_t": 11.6,
+      "last_seen_t": 12.1
+    },
+    {
+      "track_id": 166,
+      "lat": 25.186162796427798,
+      "lon": 75.84112189594207,
+      "north_m": 128.8,
+      "east_m": 546.5,
+      "sigma_m": 0.85,
+      "r95_m": 2.1,
+      "label": "person",
+      "confidence": 1.0,
+      "priority": "delayed",
+      "time_critical_s": null,
+      "n_obs": 5,
+      "cross_modal": true,
+      "immobility": 0.998,
+      "speed_ms": 0.04,
+      "needs": "medical",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "air",
+        "apparent_temp_c": 34.2,
+        "surface_temp_c": 34.2,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": null,
+        "minutes_to_unconsciousness": null,
+        "hypothermia_risk": 0.3,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": 24.0,
+        "frostbite_min": null,
+        "priority": "delayed",
+        "time_critical_s": null,
+        "confidence": 1.0,
+        "rationale": [
+          "immobile in cold air: no metabolic contribution from movement",
+          "posture 'lying': cannot self-right, ground contact conduction, possible injury",
+          "tier=delayed critical_window=-"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 128.0,
+          "east_m": 564.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.605,
+          "distance_to_target_m": 17.5,
+          "slope_deg": 4.84,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 144.0,
+          "east_m": 564.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.54,
+          "distance_to_target_m": 23.2,
+          "slope_deg": 4.88,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 112.0,
+          "east_m": 568.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.498,
+          "distance_to_target_m": 27.3,
+          "slope_deg": 4.84,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 40,
+          "label": "smoke",
+          "severity": "CAUTION",
+          "distance_m": 3.3,
+          "exclusion_m": 9.6
+        },
+        {
+          "hid": 38,
+          "label": "exposed_powerline",
+          "severity": "DANGEROUS",
+          "distance_m": 6.2,
+          "exclusion_m": 13.8
+        },
+        {
+          "hid": 39,
+          "label": "debris_field",
+          "severity": "CAUTION",
+          "distance_m": 8.6,
+          "exclusion_m": 9.6
+        }
+      ],
+      "first_seen_t": 10.4,
+      "last_seen_t": 10.9
+    },
+    {
+      "track_id": 261,
+      "lat": 25.188298745799273,
+      "lon": 75.84128108645129,
+      "north_m": 365.4,
+      "east_m": 562.6,
+      "sigma_m": 0.56,
+      "r95_m": 1.4,
+      "label": "person",
+      "confidence": 1.0,
+      "priority": "delayed",
+      "time_critical_s": null,
+      "n_obs": 5,
+      "cross_modal": true,
+      "immobility": 0.991,
+      "speed_ms": 0.23,
+      "needs": "medical",
+      "group_size": 1,
+      "needs_confirmation_pass": false,
+      "best_gsd_m": 0.0837,
+      "viability": {
+        "medium": "air",
+        "apparent_temp_c": 33.4,
+        "surface_temp_c": 33.4,
+        "wet_fraction": 0.0,
+        "immobile": true,
+        "temp_trend_k_per_min": 0.0,
+        "minutes_to_incapacitation": null,
+        "minutes_to_unconsciousness": null,
+        "hypothermia_risk": 0.3,
+        "heat_stress_risk": 0.0,
+        "crush_risk": 0.0,
+        "wind_chill_c": 24.0,
+        "frostbite_min": null,
+        "priority": "delayed",
+        "time_critical_s": null,
+        "confidence": 1.0,
+        "rationale": [
+          "immobile in cold air: no metabolic contribution from movement",
+          "posture 'lying': cannot self-right, ground contact conduction, possible injury",
+          "tier=delayed critical_window=-"
+        ]
+      },
+      "landing_zones": [
+        {
+          "north_m": 380.0,
+          "east_m": 564.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.646,
+          "distance_to_target_m": 14.8,
+          "slope_deg": 4.55,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.0,
+          "reasons": [
+            "clear of mapped hazards"
+          ]
+        },
+        {
+          "north_m": 364.0,
+          "east_m": 564.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.641,
+          "distance_to_target_m": 1.9,
+          "slope_deg": 4.55,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.93,
+          "reasons": [
+            "severity 0.9 in cell"
+          ]
+        },
+        {
+          "north_m": 348.0,
+          "east_m": 568.0,
+          "lat": null,
+          "lon": null,
+          "score": 0.564,
+          "distance_to_target_m": 18.1,
+          "slope_deg": 4.59,
+          "water_depth_m": 0.0,
+          "hazard_penalty": 0.26,
+          "reasons": [
+            "severity 0.3 in cell"
+          ]
+        }
+      ],
+      "hazards_nearby": [
+        {
+          "hid": 64,
+          "label": "smoke",
+          "severity": "CAUTION",
+          "distance_m": 4.4,
+          "exclusion_m": 9.6
+        },
+        {
+          "hid": 65,
+          "label": "debris_field",
+          "severity": "CAUTION",
+          "distance_m": 6.4,
+          "exclusion_m": 9.6
+        },
+        {
+          "hid": 67,
+          "label": "damaged_structure",
+          "severity": "CAUTION",
+          "distance_m": 8.2,
+          "exclusion_m": 9.6
+        }
+      ],
+      "first_seen_t": 14.1,
+      "last_seen_t": 14.6
+    }
+  ]
+}
