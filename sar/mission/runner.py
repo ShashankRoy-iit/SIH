@@ -306,6 +306,7 @@ class MissionRunner:
         #: :meth:`_resolve_site`.
         self.max_site_drift_m = 40.0
         self._rejected_out_of_area = 0
+        self._rejected_out_of_box = 0
         self._reported_hazards: set = set()
         self._lane_idx = 0
         self._lane_s = 0.0
@@ -746,6 +747,28 @@ class MissionRunner:
                         "not a marginal detection", int(s.track_id), n, e,
                         extent[0], extent[1])
             return None
+
+        # A geo-tag outside the search box is a projection error, not a find.
+        # The aircraft only images inside the box, so a survivor positioned
+        # outside it was seen somewhere it was never looked at.  The margin is
+        # generous - one geo-tag sigma plus the half-swath - because a detection
+        # near a lane edge legitimately projects slightly beyond the boundary,
+        # and the failure being guarded against here is the tens-of-metres kind.
+        box = (self.plan.search_box or {}) if self.plan else {}
+        if box:
+            swath = (self.plan.lane_spacing_m
+                     / max(1e-6, 1.0 - self.plan.side_overlap))
+            pad = sigma + 0.5 * swath
+            nb, eb = box["north_m"], box["east_m"]
+            if not (nb[0] - pad <= n <= nb[1] + pad
+                    and eb[0] - pad <= e <= eb[1] + pad):
+                self._rejected_out_of_box += 1
+                if self._rejected_out_of_box <= 3:
+                    log.warning("discarded survivor track=%d: geo-tag n=%.0f e=%.0f "
+                                "lies outside the search box n %.0f-%.0f e %.0f-%.0f "
+                                "(+%.0f m margin) - the aircraft never imaged there",
+                                int(s.track_id), n, e, nb[0], nb[1], eb[0], eb[1], pad)
+                return None
 
         radius = max(self.min_merge_radius_m, self.merge_sigma_k * sigma)
         for site in self._sites:
@@ -1235,6 +1258,7 @@ class MissionRunner:
         rep.perception["tracks_merged_into_sites"] = sum(
             len(x["tracks"]) for x in self._sites)
         rep.perception["rejected_out_of_area"] = self._rejected_out_of_area
+        rep.perception["rejected_out_of_box"] = self._rejected_out_of_box
         rep.perception["sites"] = [
             {"site_id": x["site_id"],
              "north_m": round(x["north_m"], 1), "east_m": round(x["east_m"], 1),
