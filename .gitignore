@@ -31,3 +31,14 @@ apm.parm
 .vscode/
 *.swp
 .sitl_run/
+
+# Model weights: large, licensed, and reproducible from scripts/fetch_models.py
+# or scripts/train_detector.py.  The registry (sar/ai/registry.py) knows what
+# should be here; the files themselves stay out of git.
+models/*
+!models/.gitkeep
+!models/README.md
+
+# Generated training data
+datasets/
+runs/

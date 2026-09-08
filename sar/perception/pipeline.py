@@ -60,6 +60,35 @@ from sar.perception.tracker import Track, Tracker
 __all__ = ["SurvivorAssessment", "PerceptionProduct", "PerceptionPipeline"]
 
 
+#: Detector selection is a deployment decision, not a code decision, so it is
+#: read from the environment: ``SAR_DETECTOR=auto|hybrid|heuristic|neural``.
+#: ``auto`` uses the neural backends when weights and a runtime are present and
+#: the audited heuristic detector otherwise - identical call sites either way.
+DETECTOR_MODE_ENV = "SAR_DETECTOR"
+
+
+def _default_detector():
+    """Build the strongest detector this host can honestly support.
+
+    Wrapped in a guard because perception must not fail to construct: if the
+    AI layer cannot be imported at all (a stripped install, a broken
+    onnxruntime), the reference heuristic ensemble is still a complete,
+    tested detector and the sortie goes ahead.
+    """
+    import os
+    mode = os.environ.get(DETECTOR_MODE_ENV, "auto").strip().lower()
+    if mode == "heuristic":
+        return build_reference_pipeline("both")
+    try:
+        from sar.ai.stack import build_detector_stack
+        return build_detector_stack(mode)
+    except Exception as exc:  # pragma: no cover - defensive by design
+        import logging
+        logging.getLogger("sar.perception.pipeline").warning(
+            "AI detector stack unavailable (%r); using the heuristic ensemble", exc)
+        return build_reference_pipeline("both")
+
+
 @dataclass
 class SurvivorAssessment:
     """One confirmed survivor: where, how sure, how urgent, and why."""
@@ -194,7 +223,7 @@ class PerceptionPipeline:
                  gsd_confirm_threshold: float = 0.16) -> None:
         self.origin = origin
         self.tagger = tagger
-        self.detector = detector or build_reference_pipeline("both")
+        self.detector = detector or _default_detector()
         self.fuser = fuser or CrossModalFuser()
         self.tracker = tracker or Tracker(origin)
         self.hazard_map = hazard_map or HazardMap(

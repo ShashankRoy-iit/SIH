@@ -1,0 +1,50 @@
+# SAHYOG SAR - stable device names on the companion computer.
+#
+# Install to /etc/udev/rules.d/99-sar-devices.rules, then:
+#   sudo udevadm control --reload-rules && sudo udevadm trigger
+#
+# Why this file exists: /dev/video0 and /dev/video1 are assigned in enumeration
+# order, which is not stable across reboots or across a USB hub being warm.  A
+# reboot that swaps the thermal and RGB cameras produces a system that runs
+# perfectly and detects nobody - the worst possible failure, because nothing
+# errors.  Symlinks pin each sensor to an identity instead of an index.
+#
+# Find your own identifiers with:
+#   udevadm info -a -n /dev/video0 | grep -E 'idVendor|idProduct|serial|name'
+#   udevadm info -a -n /dev/ttyACM0 | grep -E 'idVendor|idProduct|serial'
+# and edit the ATTRS below to match.  The values here are the common defaults
+# for the reference build.
+
+# --- Thermal: FLIR Lepton via PureThermal (GroupGets) UVC board -------------- #
+SUBSYSTEM=="video4linux", ATTRS{idVendor}=="1e4e", ATTRS{idProduct}=="0100", \
+  ATTR{index}=="0", SYMLINK+="sar-lwir", MODE="0660", GROUP="video", \
+  TAG+="systemd"
+
+# --- Thermal: FLIR Boson (alternative core) ---------------------------------- #
+SUBSYSTEM=="video4linux", ATTRS{idVendor}=="09cb", ATTRS{idProduct}=="4007", \
+  ATTR{index}=="0", SYMLINK+="sar-lwir", MODE="0660", GROUP="video", \
+  TAG+="systemd"
+
+# --- Boson control channel (CCI over USB CDC) -------------------------------- #
+SUBSYSTEM=="tty", ATTRS{idVendor}=="09cb", ATTRS{idProduct}=="4007", \
+  SYMLINK+="sar-lwir-ctl", MODE="0660", GROUP="dialout"
+
+# --- RGB: generic UVC camera. Replace the serial with YOUR camera's. --------- #
+SUBSYSTEM=="video4linux", ATTRS{idVendor}=="046d", ATTR{index}=="0", \
+  SYMLINK+="sar-rgb", MODE="0660", GROUP="video", TAG+="systemd"
+
+# --- Autopilot over USB (TBS Lucid H743 / any ArduPilot board, STM VCP) ------ #
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1209", ATTRS{idProduct}=="5741", \
+  SYMLINK+="sar-autopilot", MODE="0660", GROUP="dialout", TAG+="systemd"
+SUBSYSTEM=="tty", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", \
+  SYMLINK+="sar-autopilot", MODE="0660", GROUP="dialout", TAG+="systemd"
+
+# --- LoRa data modem (CP210x / FTDI USB-serial). Pin by serial number if you - #
+# --- have more than one USB-serial device on the aircraft. ------------------- #
+SUBSYSTEM=="tty", ATTRS{idVendor}=="10c4", ATTRS{idProduct}=="ea60", \
+  SYMLINK+="sar-lora", MODE="0660", GROUP="dialout"
+
+# NOTE: on a Qualcomm RB3 Gen 2 or a Jetson the autopilot is normally on a
+# hardware UART (/dev/ttyHS1, /dev/ttyTHS0) rather than USB.  Those nodes are
+# already stable, so no rule is needed - just set mavlink.target in
+# /etc/sar/onboard.yaml and make sure the `sar` user is in the dialout group.

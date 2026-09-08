@@ -46,7 +46,7 @@ class BatteryConfig:
     Defaults describe the reference endurance pack for the SAHYOG airframe:
     a 6S 8000 mAh 30C LiPo.  A 6S 5000 mAh freestyle pack flies the same
     airframe for roughly 60 % of the time; see the endurance budget table in
-    ``docs/05_HARDWARE_INTEGRATION.md``.
+    ``docs/HARDWARE_BRINGUP.md``.
     """
 
     cells: int = 6

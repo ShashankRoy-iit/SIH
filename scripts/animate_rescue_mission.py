@@ -21,6 +21,20 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 
+# --- repo-root bootstrap ---------------------------------------------------
+# Running `python scripts/<name>.py` puts scripts/ on sys.path, not the repo
+# root, so `import sar` fails.  This makes the script runnable from a clone with
+# no install step, and refuses to run against a foreign PyPI `sar` package.
+# See scripts/_bootstrap.py and docs/HOWTO_RUN.md.
+import sys as _sys
+from pathlib import Path as _Path
+
+_sys.path.insert(0, str(_Path(__file__).resolve().parents[1]))
+from scripts._bootstrap import bootstrap as _bootstrap  # noqa: E402
+
+_bootstrap()
+# ---------------------------------------------------------------------------
+
 from sar.core.geo import GeoPoint
 from sar.perception.human_id import (
     DistressLevel,
