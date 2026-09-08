@@ -1,0 +1,20 @@
+# Neural detector backends - the on-aircraft inference path.
+#   pip install -r requirements-ai.txt
+# Equivalent to:  pip install -e '.[ai]'
+#
+# onnxruntime is the *flight* runtime: one API across x86 CPU (development),
+# Jetson (TensorRT EP), and Qualcomm QNN/SNPE after AI Hub compilation.
+onnxruntime>=1.16
+opencv-python-headless>=4.8
+
+# --- training / export only, never installed on the aircraft ---------------
+# Install with:  pip install -r requirements-ai.txt -r requirements-train.txt
+# ultralytics>=8.3.0
+# torch>=2.1
+# onnx>=1.15
+# onnxsim>=0.4.33
+#
+# --- Qualcomm target ------------------------------------------------------
+# qai-hub>=0.9.0             # cloud compile/profile against real devices
+# qai-hub-models>=0.9.0      # YOLOv8/YOLO11 recipes with INT8 quantisation
+# (the QNN SDK itself is installed from Qualcomm's package, not pip)

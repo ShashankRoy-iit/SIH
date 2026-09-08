@@ -83,7 +83,7 @@ HUMAN_APPARENT_RADIUS_M = math.sqrt(HUMAN_APPARENT_AREA_M2 / math.pi)   # 0.444 
 #: Above this ratio of surrounding warm extent to core extent, a hot spot is
 #: embedded in a larger warm object (vehicle, generator, condenser, sun-baked
 #: slab) rather than being a body lying on the ground.  Calibrated against the
-#: decoy set in ``scripts/eval_detector.py``; see docs/04_PERCEPTION.md.
+#: decoy set in ``scripts/eval_detector.py``; see docs/06_AI_MODELS_AND_DATASETS.md.
 EXTENT_RATIO_MAX = 6.5
 
 

@@ -1,0 +1,18 @@
+# Core runtime: enough to fly a full simulated sortie headlessly.
+#   pip install -r requirements.txt
+# Equivalent to:  pip install -e '.[sim]'
+numpy>=1.22
+scipy>=1.8
+pymavlink>=2.4.37
+pyyaml>=6.0
+
+# Command-centre dashboard (scripts/run_mission.py --live)
+fastapi>=0.100
+uvicorn>=0.23
+
+# Figure and GIF export (docs/assets, scripts/animate_rescue_mission.py)
+matplotlib>=3.6
+pillow>=9.0
+
+# Tests
+pytest>=7.0
