@@ -51,6 +51,8 @@ from sar.perception.detector import (PERSON_LABELS, Detection, DetectorEnsemble,
 from sar.perception.fusion import CrossModalFuser, FusedObservation
 from sar.perception.geotag import GeoTag, NavQuality, PixelGeoTagger
 from sar.perception.hazard import HazardMap, LandingZone
+from sar.perception.human_id import (HumanIdentifier, HumanPosture,
+                                     HumanProfile, RescueEquipmentNeed)
 from sar.perception.thermal import (PriorityTier, SurvivorViability,
                                     ThermalPhysiologyModel)
 from sar.perception.tracker import Track, Tracker
@@ -85,6 +87,15 @@ class SurvivorAssessment:
     hazards_nearby: List[Dict[str, Any]] = field(default_factory=list)
     needs_confirmation_pass: bool = False
     best_gsd_m: float = 0.0
+    # Rich Human Identification profile
+    profile: Optional[HumanProfile] = None
+    distress_level: str = "moderate_distress"
+    sos_waving: bool = False
+    demographic: str = "adult"
+    clothing_saliency: float = 0.0
+    clothing_color: str = "unknown"
+    core_temp_c: float = 36.8
+    recommended_equipment: str = "first_aid_kit"
 
     # ------------------------------------------------------------------ #
     def to_dict(self) -> Dict[str, Any]:
@@ -107,6 +118,14 @@ class SurvivorAssessment:
             "hazards_nearby": self.hazards_nearby[:4],
             "first_seen_t": round(self.first_seen_t, 1),
             "last_seen_t": round(self.last_seen_t, 1),
+            "human_profile": self.profile.to_dict() if self.profile else None,
+            "distress_level": self.distress_level,
+            "sos_waving": self.sos_waving,
+            "demographic": self.demographic,
+            "clothing_saliency": round(self.clothing_saliency, 2),
+            "clothing_color": self.clothing_color,
+            "core_temp_c": round(self.core_temp_c, 1),
+            "recommended_equipment": self.recommended_equipment,
         }
 
 
@@ -181,6 +200,7 @@ class PerceptionPipeline:
         self.hazard_map = hazard_map or HazardMap(
             origin, world_extent_m[0], world_extent_m[1])
         self.physiology = physiology or ThermalPhysiologyModel()
+        self.human_id = HumanIdentifier(self.physiology)
         self.alert_threshold = alert_threshold
         self.gsd_confirm_threshold = gsd_confirm_threshold
         #: External state the pipeline cannot measure itself.  The flight stack
@@ -366,28 +386,42 @@ class PerceptionPipeline:
                     trend = slope * 60.0                 # K per minute
 
             water = self._water_at(tr.north, tr.east)
-            posture = self._infer_posture(tr, water)
+            ambient = float(self.environment.get("ambient_c", 22.0))
+            wind = float(self.environment.get("wind_speed_ms", 0.0))
+            water_t = (self.environment.get("water_temp_c")
+                       if self.environment.get("water_temp_c") is not None
+                       else (background if water > 0.2 else None))
+
+            # Deep human identification & multi-attribute profile
+            profile = self.human_id.identify(
+                track=tr,
+                water_depth_m=water,
+                ambient_temp_c=ambient,
+                wind_speed_ms=wind,
+                water_temp_c=water_t,
+                nearby_hazard_classes=[h.get("hazard_class", "") for h in hz.get("nearest", [])]
+            )
+
+            posture = profile.posture.value
             viability = self.physiology.assess(
                 apparent_temp_c=apparent, background_c=background,
-                ambient_c=float(self.environment.get("ambient_c", 22.0)),
-                wind_ms=float(self.environment.get("wind_speed_ms", 0.0)),
-                water_temp_c=(self.environment.get("water_temp_c")
-                              if self.environment.get("water_temp_c") is not None
-                              else (background if water > 0.2 else None)),
-                in_water=water > 0.5, partial_water=0.05 < water <= 0.5,
-                under_rubble=(tr.label == "person" and posture == "prone_partial_burial"),
+                ambient_c=ambient,
+                wind_ms=wind,
+                water_temp_c=water_t,
+                in_water=water > 0.5 or profile.posture == HumanPosture.IN_WATER_CLINGING,
+                partial_water=0.05 < water <= 0.5,
+                under_rubble=(tr.label == "person" and posture in ("prone_partial_burial", "trapped_rubble")),
                 immobile=tr.immobility > 0.8 or tr.speed_ms < 0.05,
                 minutes_observed=tr.age_s / 60.0,
                 temp_trend_k_per_min=trend,
-                posture=posture, needs=self._infer_needs(water, posture),
-                group_size=self._group_size(tr),
+                posture=posture, needs=profile.recommended_equipment.value,
+                group_size=profile.group_size,
                 gsd_m=best.gsd_m if best else 0.15,
                 expected_area_px=(math.pi * (0.444 / max(best.gsd_m, 1e-4)) ** 2
                                   if best else 50.0),
                 measured_area_px=area,
                 confidence=float(tr.confidence * min(tr.n_obs / 3.0, 1.0)),
             )
-            hz = self.hazard_map.query(tr.north, tr.east)
             lz: List[LandingZone] = []
             if viability.priority in (PriorityTier.IMMEDIATE, PriorityTier.DELAYED):
                 cached = self._lz_cache.get(tr.tid)
@@ -412,10 +446,19 @@ class PerceptionPipeline:
                 n_obs=tr.n_obs, cross_modal=tr.cross_modal,
                 immobility=tr.immobility, speed_ms=tr.speed_ms,
                 first_seen_t=tr.created_t, last_seen_t=tr.updated_t,
-                needs=viability.needs, group_size=self._group_size(tr),
+                needs=profile.recommended_equipment.value,
+                group_size=profile.group_size,
                 landing_zones=lz, hazards_nearby=hz.get("nearest", []),
                 needs_confirmation_pass=best_gsd > self.gsd_confirm_threshold,
                 best_gsd_m=best_gsd,
+                profile=profile,
+                distress_level=profile.distress_level.value,
+                sos_waving=profile.sos_waving_detected,
+                demographic=profile.demographic.value,
+                clothing_saliency=profile.clothing_saliency,
+                clothing_color=profile.clothing_color_hint,
+                core_temp_c=profile.estimated_core_temp_c,
+                recommended_equipment=profile.recommended_equipment.value,
             ))
         # Most urgent first; a planner with a fuel budget takes from the front.
         order = {PriorityTier.IMMEDIATE: 0, PriorityTier.DELAYED: 1,

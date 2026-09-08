@@ -13,4 +13,16 @@ transports without modification:
 """
 
 __version__ = "0.1.0"
-__all__ = ["core", "vehicle", "sim", "perception", "nav", "decision", "comms", "mavlink", "mission", "gcs"]
+__all__ = [
+    "core",
+    "vehicle",
+    "sim",
+    "perception",
+    "nav",
+    "decision",
+    "comms",
+    "mavlink",
+    "mission",
+    "rescue",
+    "gcs",
+]
