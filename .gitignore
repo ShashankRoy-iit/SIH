@@ -1,44 +1,19 @@
 # Python
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
 *.egg-info/
 .venv/
 venv/
-.pytest_cache/
-.mypy_cache/
-.ruff_cache/
 
-# Simulation and experiment output.  Kept out of git by default: a Monte Carlo
-# sweep writes hundreds of MB of traces.  Curated results that appear in docs/
-# are committed explicitly with `git add -f artifacts/<file>`.
-artifacts/**
-!artifacts/.gitkeep
-!artifacts/figures/.gitkeep
-!artifacts/*.json
+# Simulation artifacts
+.emulator_cache/
+*.world
+*.sdf
 
-# Flight-stack build output and SITL run dirs
-build/
-dist/
-sitl_run/
-*.tlog
-*.bin
-*.ulg
-apm.parm
+# Models (keep .onnx but ignore .pt downloads)
+*.pt
+*.pth
 
-# Editor / OS
-.DS_Store
-.idea/
-.vscode/
-*.swp
-.sitl_run/
-
-# Model weights: large, licensed, and reproducible from scripts/fetch_models.py
-# or scripts/train_detector.py.  The registry (sar/ai/registry.py) knows what
-# should be here; the files themselves stay out of git.
-models/*
-!models/.gitkeep
-!models/README.md
-
-# Generated training data
-datasets/
-runs/
+# Artifacts
+artifacts/*.json

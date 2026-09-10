@@ -1,0 +1,13 @@
+[Unit]
+Description=Drone Rescue AI Onboard Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/user/drone-rescue-system/base/scripts/run_drone_ai.py --live --dashboard
+Restart=on-failure
+RestartSec=10
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

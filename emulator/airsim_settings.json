@@ -1,0 +1,38 @@
+{
+  "SimMode": "Multirotor",
+  "ClockSpeed": 1.0,
+  "ViewMode": "NoDisplay",
+  "Vehicles": {
+    "PX4": {
+      "VehicleType": "PX4Multirotor",
+      "UseSerial": false,
+      "UseTcp": true,
+      "TcpPort": 5760,
+      "Cameras": {
+        "thermal": {
+          "CaptureSettings": [
+            {
+              "ImageType": 2,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 80,
+              "AutoExposureSpeed": 100,
+              "MotionBlurAmount": 0,
+              "TargetGamma": 1.3,
+              "ExposureCompensation": 3
+            }
+          ],
+          "X": 0, "Y": 0, "Z": -0.1,
+          "Pitch": 0, "Roll": 0, "Yaw": -90
+        }
+      },
+      "Sensors": {
+        "Imu": {"SensorType": 2},
+        "Magnetometer": {"SensorType": 5},
+        "Gps": {"SensorType": 3, "UpdateFrequency": 10},
+        "Barometer": {"SensorType": 1, "UpdateFrequency": 10}
+      }
+    }
+  },
+  "SettingsVersion": 1.2
+}

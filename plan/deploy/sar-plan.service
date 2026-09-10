@@ -1,0 +1,10 @@
+[Unit]
+Description=Drone Rescue Plan — Operational (No Simulation)
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/user/drone-rescue-system/plan/scripts/mission_runner.py --live
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

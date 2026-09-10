@@ -1,0 +1,45 @@
+# PX4 / ArduPilot Base Parameters for Rescue Drone
+# Flight Controller: TBS_LUCID_H7_WING
+# Companion Computer: Qualcomm RB3 Gen 2 / VOXL 2
+
+# Flight mode and failsafe
+FLTMODE_CH=4         # Channel for flight mode
+FLTMODE1=0           # Stabilize
+FLTMODE2=2           # AltHold
+FLTMODE3=4           # Auto
+FLTMODE4=6           # RTL
+FLTMODE5=3           # SmartRTL
+FLTMODE6=0           # Manual
+
+# GPS parameters
+GPS_TYPE=2           # Auto-detect
+GPS_AUTO_CONFIG=1
+GPS_PRIMARY=0
+
+# Battery monitoring
+BATT_MONITOR=4
+VOLT_PIN=10
+CURR_PIN=11
+VOLT_MULT=11.0
+AMP_PERVLT=40.0
+
+# Safety and arming
+ARMING_CHECK=1
+COM_ARM_EKF_AB=1
+COM_ARM_WO_GPS=1
+
+# MAVLink telemetry
+SERIAL2_PROTOCOL=1    # MAVLink (GPS)
+SERIAL4_PROTOCOL=1    # MAVLink Telem1
+SERIAL6_PROTOCOL=5    # MAVLink (ELRS Telemetry)
+SERIAL7_PROTOCOL=1    # MAVLink Telem2
+
+# Servo payload latch
+SERVO9_FUNCTION=59
+GRIP_ENABLE=1
+GRIP_GRAB=1100
+GRIP_RELEASE=1900
+
+# AI / Perception (simulated)
+# Note: Real AI runs on companion computer, not on flight controller.
+# These params are placeholders for future PX4 AI integration.

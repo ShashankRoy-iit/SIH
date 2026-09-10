@@ -1,0 +1,118 @@
+{
+  "scenario": "rescue_flood_sim",
+  "duration_s": 15,
+  "model_path": "base/models/yolov8n_person_thermal.onnx",
+  "detections": [
+    {
+      "id": "AI_DETECTED",
+      "box_px": [
+        310,
+        220,
+        350,
+        280
+      ],
+      "conf": 0.92,
+      "label": "person",
+      "geo_lat": 25.5951,
+      "geo_lon": 85.1386,
+      "geo_alt_m": 30.0,
+      "geo_sigma_m": 16.599999999999998,
+      "source": "thermal_ai",
+      "timestamp_s": 0.0
+    },
+    {
+      "id": "AI_DETECTED",
+      "box_px": [
+        308,
+        235,
+        348,
+        295
+      ],
+      "conf": 0.92,
+      "label": "person",
+      "geo_lat": 25.5931,
+      "geo_lon": 85.1386,
+      "geo_alt_m": 30.0,
+      "geo_sigma_m": 16.599999999999998,
+      "source": "thermal_ai",
+      "timestamp_s": 6.0
+    },
+    {
+      "id": "AI_DETECTED",
+      "box_px": [
+        310,
+        220,
+        350,
+        280
+      ],
+      "conf": 0.92,
+      "label": "person",
+      "geo_lat": 25.5951,
+      "geo_lon": 85.1386,
+      "geo_alt_m": 30.0,
+      "geo_sigma_m": 16.599999999999998,
+      "source": "thermal_ai",
+      "timestamp_s": 8.0
+    }
+  ],
+  "flight_path": [
+    {
+      "t": 0.0,
+      "lat": 25.5951,
+      "lon": 85.1386,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 0
+    },
+    {
+      "t": 2.0,
+      "lat": 25.5951,
+      "lon": 85.1366,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 90
+    },
+    {
+      "t": 4.0,
+      "lat": 25.5931,
+      "lon": 85.1366,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 180
+    },
+    {
+      "t": 6.0,
+      "lat": 25.5931,
+      "lon": 85.1386,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 270
+    },
+    {
+      "t": 8.0,
+      "lat": 25.5951,
+      "lon": 85.1386,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 0
+    },
+    {
+      "t": 10.0,
+      "lat": 25.5951,
+      "lon": 85.1366,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 90
+    },
+    {
+      "t": 12.0,
+      "lat": 25.5931,
+      "lon": 85.1366,
+      "alt": 30.0,
+      "speed_ms": 8.0,
+      "yaw_deg": 180
+    }
+  ],
+  "thermal_frames_rendered": 7,
+  "mission_complete": true
+}

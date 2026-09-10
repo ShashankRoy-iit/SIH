@@ -1,0 +1,6 @@
+# Requirements — Base AI + Drone Stack
+numpy>=1.24
+opencv-python>=4.7
+onnxruntime>=1.15
+flask>=2.3
+pymavlink>=2.4
