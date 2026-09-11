@@ -1,0 +1,82 @@
+{
+  "SeeDocsAt": "https://cosys-airsim.com/",
+  "SettingsVersion": 2.0,
+  "SimMode": "Multirotor",
+  "ClockType": "SteppableClock",
+  "Vehicles": {
+    "SAR_Drone": {
+      "VehicleType": "SimpleFlight",
+      "X": 0,
+      "Y": 0,
+      "Z": -45,
+      "Cameras": {
+        "rgb": {
+          "CaptureSettings": [
+            {
+              "ImageType": 0,
+              "Width": 1280,
+              "Height": 720,
+              "FOV_Degrees": 66
+            }
+          ]
+        },
+        "seg": {
+          "CaptureSettings": [
+            {
+              "ImageType": 5,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 66
+            }
+          ]
+        },
+        "depth": {
+          "CaptureSettings": [
+            {
+              "ImageType": 1,
+              "Width": 640,
+              "Height": 480,
+              "FOV_Degrees": 66
+            }
+          ]
+        }
+      },
+      "Sensors": {
+        "lidar": {
+          "SensorType": 6,
+          "Enabled": true,
+          "NumberOfChannels": 16,
+          "Range": 12.0,
+          "PointsPerSecond": 10000
+        },
+        "barometer": {
+          "SensorType": 1,
+          "Enabled": true
+        },
+        "imu": {
+          "SensorType": 2,
+          "Enabled": true
+        },
+        "gps": {
+          "SensorType": 3,
+          "Enabled": true
+        }
+      }
+    }
+  },
+  "Segmentation": {
+    "Water": 10,
+    "House": 20,
+    "Roof": 21,
+    "Survivor": 30,
+    "Debris": 40,
+    "Vehicle": 41,
+    "Powerline": 50,
+    "Ground": 0
+  },
+  "FloodTown": {
+    "seed": 7,
+    "size_m": 220.0,
+    "water_level_m": 1.2
+  }
+}

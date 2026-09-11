@@ -255,6 +255,24 @@ OSD_TYPE,5
 SERIAL5_PROTOCOL,42
 SERIAL5_BAUD,115
 
+# --- LiDAR: down-facing 1D rangefinder (TFmini-S on SERIAL3/UART3) ---------- #
+# Feeds the AGL envelope + water-vs-ground check in sar/sensors/lidar.py and
+# the phone-side altitude fusion in mobile/phone_onboard.py.  Baud 115200.
+SERIAL3_PROTOCOL,9
+SERIAL3_BAUD,115
+RNGFND1_TYPE,20
+RNGFND1_MIN_CM,30
+RNGFND1_MAX_CM,1200
+RNGFND1_ORIENT,25
+RNGFND1_GNDCLEAR,10
+# Rangefinder terrain following in Auto (skim levees/roofs at constant AGL).
+WPNAV_RFND_USE,1
+# No 360-degree lidar on this build: PRX stays off and lateral avoidance is
+# honest altitude separation (FENCE_ALT_MAX + mission design) plus the pilot's
+# analogue FPV feed.  Upgrade path: 2D CAN lidar -> PRX1_TYPE=8, AVOID_ENABLE=7.
+PRX1_TYPE,0
+AVOID_ENABLE,0
+
 # --- simulation-only ------------------------------------------------------- #
 SIM_RC_FAIL,0
 SIM_SPEEDUP,1

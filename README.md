@@ -14,6 +14,7 @@ mapping, risks, and the definition of done. This file is the orientation.
 | Start here | |
 |---|---|
 | **[`teach.md`](teach.md)** | The illustrated explainer — the problem and the whole solution, with animations generated from the live code |
+| **[`tech.md`](tech.md)** | The detailed technical companion — hardware, code, model and sim, explained in easy words with infographics |
 | **[`docs/HOWTO_RUN.md`](docs/HOWTO_RUN.md)** | Every command, what it does and **why** — including the `No module named 'sar'` fix |
 | **[`STATUS.md`](STATUS.md)** | What is done, what is not, and what would close each gap |
 | **[`docs/06_AI_MODELS_AND_DATASETS.md`](docs/06_AI_MODELS_AND_DATASETS.md)** | Which model flies, why that one, how it is trained and quantised onto the DSP |

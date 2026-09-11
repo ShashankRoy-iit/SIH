@@ -1,0 +1,54 @@
+{
+  "scenes": 12,
+  "seed": 7,
+  "altitudes": {
+    "35.0": {
+      "base": {
+        "recall_of_resolvable": 1.0,
+        "precision": 0.05,
+        "fa_per_frame": 10.4,
+        "tp": 33,
+        "fp": 624
+      },
+      "flood": {
+        "recall_of_resolvable": 1.0,
+        "precision": 0.084,
+        "fa_per_frame": 5.9833,
+        "tp": 33,
+        "fp": 359
+      }
+    },
+    "50.0": {
+      "base": {
+        "recall_of_resolvable": 1.0,
+        "precision": 0.06,
+        "fa_per_frame": 9.2167,
+        "tp": 35,
+        "fp": 553
+      },
+      "flood": {
+        "recall_of_resolvable": 1.0,
+        "precision": 0.099,
+        "fa_per_frame": 5.3,
+        "tp": 35,
+        "fp": 318
+      }
+    },
+    "70.0": {
+      "base": {
+        "recall_of_resolvable": 0.939,
+        "precision": 0.087,
+        "fa_per_frame": 5.45,
+        "tp": 31,
+        "fp": 327
+      },
+      "flood": {
+        "recall_of_resolvable": 0.939,
+        "precision": 0.099,
+        "fa_per_frame": 4.7167,
+        "tp": 31,
+        "fp": 283
+      }
+    }
+  }
+}

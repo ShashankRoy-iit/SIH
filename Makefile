@@ -76,6 +76,15 @@ animate:  ## Rescue mission animation (HTML + GIF) into artifacts/
 assets:  ## Regenerate the teaching GIFs/infographics in docs/assets/
 	$(PYTHON) scripts/make_teaching_assets.py
 
+tech-assets:  ## Regenerate the tech.md infographics (docs/assets/tech_*)
+	$(PYTHON) scripts/make_tech_assets.py
+
+flood-eval:  ## Flood-model benchmark (scenes x altitudes -> artifacts/)
+	$(PYTHON) scripts/eval_flood_model.py
+
+flood-sim:  ## Flood sortie in AirSim/Gazebo/headless (auto backend)
+	$(PYTHON) scripts/run_flood_sim.py --backend auto
+
 dashboard:  ## Sortie with the live command centre on :8088
 	$(PYTHON) scripts/run_mission.py --scenario flood --duration 460 --live
 

@@ -1,0 +1,36 @@
+{
+  "backend": "headless-cinematic",
+  "scenario": "flood",
+  "seed": 7,
+  "frames": 480,
+  "sim_time_s": 240.0,
+  "wall_time_s": 158.3,
+  "lanes": 7,
+  "altitude_m": 45.0,
+  "survivors_total": 12,
+  "survivors_overflown": 11,
+  "survivors_found": 11,
+  "recall": 0.917,
+  "recall_of_overflown": 1.0,
+  "precision": 0.156,
+  "precision_confirmed_only": 0.156,
+  "fp_flagged_fraction": 0.974,
+  "vetoes": {
+    "temporal:needs-confirmation": 187,
+    "glint:single-frame-flicker": 229
+  },
+  "geotag_error_m": {
+    "mean": 0.11,
+    "n": 70
+  },
+  "confirmation_ticks": 201,
+  "detector_stats": {
+    "lwir": 1,
+    "rgb": 7,
+    "neural": 0,
+    "rgb_quality": 0.725,
+    "out": 7
+  },
+  "gif": "artifacts/flood_sortie_headless.gif",
+  "frames_dir": "artifacts/flood_frames"
+}
