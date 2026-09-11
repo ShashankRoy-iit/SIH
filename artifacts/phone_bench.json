@@ -1,0 +1,12 @@
+{
+  "mode": "bench",
+  "duration_s": 8.0,
+  "frames": 120,
+  "vio_samples": 236,
+  "rgb_fps": 15.0,
+  "vio_hz": 29.5,
+  "detection_events": 120,
+  "worst_frame_gap_s": 0.106,
+  "link_state": "streaming",
+  "ai": []
+}

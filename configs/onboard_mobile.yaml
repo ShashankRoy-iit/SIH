@@ -1,0 +1,99 @@
+# SAHYOG onboard configuration — MOBILE COMPANION variant.
+#
+# The onboard computer is an Android phone (Snapdragon 8 Gen 2 class):
+#   RGB camera + Hexagon NPU (TFLite-INT8) + VIO + IMU + 4G modem + battery.
+# It talks to the TBS Lucid H743 over USB-OTG serial into Telem1.
+#
+# Copy to the bench laptop as configs/local_mobile.yaml and edit there; on the
+# phone (Termux) it lives at ~/sar/onboard_mobile.yaml. Anything omitted falls
+# back to sar/hardware/onboard.py::DEFAULT_CONFIG.
+
+mode: hitl                  # dry-run | hitl | flight
+
+mavlink:
+  # Phone USB-OTG serial adapter (CP2102/CH340) into Telem1 @ 921600.
+  # On Termux: /dev/ttyUSB0 after `termux-usb`. On a laptop bench bridge: /dev/ttyUSB0.
+  target: /dev/ttyUSB0:921600
+  source_system: 255
+  source_component: 191      # onboard computer, not a GCS
+
+phone:
+  enabled: true
+  rgb_width: 1280
+  rgb_height: 720
+  rgb_fps: 15
+  rgb_hfov_deg: 66.0
+  vio_hz: 30                 # ODOMETRY stream rate to the FC
+  ai_model: yolo11n-nano-int8-tflite
+  ai_fps_target: 10.0
+  nnapi: true                # Hexagon DSP delegate; false = CPU fallback
+  frame_timeout_s: 1.0
+  vio_timeout_s: 0.5
+  throttle_temp_c: 48.0
+  relay_4g: true             # opportunistic alert+thumbnail relay; never assumed
+
+cameras:
+  max_skew_s: 0.08
+  lwir:
+    enabled: true
+    device: /dev/sar-lwir    # USB thermal (Lepton 3.5 + breakout / Boson)
+    width: 160
+    height: 120
+    fps: 9
+    hfov_deg: 57.0
+    resolution_k: 0.01
+    expect_radiometric: true
+  rgb:
+    enabled: true
+    device: phone            # RGB comes from the phone, not V4L2
+    width: 1280
+    height: 720
+    fps: 15
+    hfov_deg: 66.0
+
+lidar:
+  rangefinder: tf-luna       # tf-luna | tfmini-s | none
+  rf_serial: /dev/sar-lidar  # 115200 8N1, 0x59 0x59 frames
+  rf_min_m: 0.30
+  rf_max_m: 8.0
+  scanner: none              # rplidar-a1 | none (optional 2D avoidance)
+  water_widens_sigma: true
+
+detector: auto               # auto | hybrid | heuristic | neural | flood
+perception_hz: 2.0
+
+mission:
+  search_altitude_agl_m: 45.0
+  confirm_altitude_agl_m: 22.0
+  survey_speed_ms: 6.0
+  area_north_m: 300.0
+  area_east_m: 300.0
+
+payload:
+  enabled: true
+  servo_channel: 9
+  release_pwm: 1900
+  hold_pwm: 1100
+
+comms:
+  transport: lora_900        # elrs_telemetry | lora_900 | wifi_bridge | phone_4g
+
+fpv_osd:
+  enabled: true
+  rate_hz: 4.0
+
+safety:
+  reserve_fraction: 0.25
+  hover_power_w: 420.0       # MEASURE on your airframe
+  cruise_speed_ms: 8.0
+  max_range_m: 800.0
+  max_altitude_agl_m: 120.0
+  min_altitude_agl_m: 8.0
+  max_telemetry_silence_s: 3.0
+  max_loop_stall_s: 2.0
+  max_position_sigma_m: 25.0
+  max_denial_s: 90.0
+  max_wind_ms: 12.0
+  phone_required: false      # true = preflight fails without a streaming phone
+
+artifacts_dir: /var/log/sar
