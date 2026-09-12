@@ -421,6 +421,14 @@ class PerceptionPipeline:
                        if self.environment.get("water_temp_c") is not None
                        else (background if water > 0.2 else None))
 
+            # Nearby hazard context: class labels that condition posture priors
+            # (e.g. "collapsed_structure" -> trapped/partial burial) and feed the
+            # survivability triage.
+            try:
+                hz = self.hazard_map.query(tr.north, tr.east)
+            except Exception:                       # pragma: no cover
+                hz = {"nearest": []}
+
             # Deep human identification & multi-attribute profile
             profile = self.human_id.identify(
                 track=tr,
@@ -428,7 +436,8 @@ class PerceptionPipeline:
                 ambient_temp_c=ambient,
                 wind_speed_ms=wind,
                 water_temp_c=water_t,
-                nearby_hazard_classes=[h.get("hazard_class", "") for h in hz.get("nearest", [])]
+                nearby_hazard_classes=[h.get("label") or h.get("hazard_class") or ""
+                                       for h in hz.get("nearest", [])]
             )
 
             posture = profile.posture.value

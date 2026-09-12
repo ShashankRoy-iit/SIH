@@ -58,7 +58,13 @@ python3 scripts/eval_detector.py --mode both
 # The flight code path, on a laptop, with no hardware attached
 python3 scripts/run_onboard.py --dry-run --duration 60
 
-python3 -m pytest tests/ -q       # 113 tests
+# Offline replay of any recorded sortie (survivors, hazards, drops, routes)
+python3 scripts/serve_replay.py --artifact artifacts/rescue_mission_flood.json --port 8090
+
+# The SIH 2026 pitch deck (docs/SIH2026_SAHYOG_Presentation.pptx)
+python3 scripts/make_pitch_ppt.py
+
+python3 -m pytest tests/ -q       # 136 tests
 ```
 
 > **Got `ModuleNotFoundError: No module named 'sar'`?** You ran a script from

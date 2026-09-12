@@ -21,7 +21,7 @@ Legend: ✅ done and tested · 🔶 partial · ⬜ not started · 🚫 deliberat
 | Mission execution | ✅ | End-to-end scored sorties across five scenarios |
 | Comms | ✅ | Store-and-forward, priority tiers, measured 97.8% packet success |
 | Rescue (payload + routing) | ✅ | Ballistic solution with wind, A* over hazards |
-| Command centre | 🔶 | Live dashboard works; replay from artifact not built |
+| Command centre | ✅ | Live dashboard + offline artifact replay (scripts/serve_replay.py) |
 | Hardware layer | 🔶 | Camera, safety supervisor, onboard loop, preflight gate — **never run on an aircraft** |
 | Docs and deployment | ✅ | Run guide, teaching doc, bring-up, checklist, runbook, systemd/udev |
 | Autonomous arm-and-fly | 🚫 | Deliberately gated behind the field-test checklist |
@@ -112,12 +112,17 @@ labelled as such.
 **What would close it:** Phase 7 — WP 7.1 to 7.9. Blocked on parts: an LWIR
 module, a companion computer, and a LoRa modem are still to acquire.
 
-### 2.7 Dashboard replay ⬜
+### 2.7 Dashboard replay ✅
 
-Every sortie writes a complete report artifact, but the dashboard cannot replay
-one. Reviewing a flight after the fact currently means reading JSON. WP 6.3.
+Every sortie writes a complete report artifact, and the dashboard can now replay
+one. `sar/gcs/replay.py` + `scripts/serve_replay.py` serve an offline,
+scrubber-driven replay of any artifact — survivors (with posture/triage/core
+temperature from the physics engine), hazards, payload drops, rescue routes and
+the event timeline — with no connectivity, matching field conditions. The
+artifact now records its geodetic `origin` so survivor lat/lon project back to
+local metres. WP 6.3.
 
-**Effort:** 2–3 days.
+**Done:** this pass.
 
 ### 2.8 Smaller open items ⬜
 
@@ -167,6 +172,14 @@ For traceability, the work that closed the gaps this document previously listed:
 | Search theory reference | [`docs/05_SEARCH_THEORY.md`](docs/05_SEARCH_THEORY.md) |
 | Hardware bring-up, field-test checklist, deployment runbook | `docs/` |
 | Test suite 41 → **113 tests** | `tests/` |
+| Fixed a live `NameError` (`hz` unbound) that crashed every survivor assessment cycle | `sar/perception/pipeline.py` |
+| Hazard labels propagated consistently (was `hazard_class` vs `label` mismatch, so hazard class always read as None) | `sar/perception/pipeline.py`, `sar/comms/link.py`, `sar/mission/runner.py`, `sar/gcs/dashboard.py`, `scripts/run_mission.py` |
+| Fixed `drop_res.spec` AttributeError on the auto-drop timeline entry | `sar/mission/runner.py` |
+| Fixed spurious `Arm: VisOdom: not healthy` under `--speedup` (VIO health is now stamped with the simulator's receive clock, as ArduPilot does) | `sar/sim/sitl.py` |
+| Precision payload drop: ballistic release-lead approach flown before release (drop error 62 m → 5.6–18.4 m) | `sar/mission/runner.py` |
+| Offline mission replay dashboard + `origin` recorded in artifacts | `sar/gcs/replay.py`, `scripts/serve_replay.py`, `sar/mission/runner.py` |
+| SIH 2026 pitch deck + bespoke figures | `scripts/make_pitch_ppt.py`, `scripts/make_pitch_assets.py`, `docs/assets/pitch/`, `docs/SIH2026_SAHYOG_Presentation.pptx` |
+| Regression tests for the assessment path (113 → **136 passed**) | `tests/test_pipeline_assess.py` |
 
 ---
 
@@ -174,11 +187,14 @@ For traceability, the work that closed the gaps this document previously listed:
 
 ```bash
 python3 scripts/doctor.py                       # environment, honestly reported
-python3 -m pytest tests/ -q                     # 113 tests
+python3 -m pytest tests/ -q                     # 136 tests
 python3 scripts/run_mission.py --area 220 --duration 460     # a scored sortie
 python3 scripts/eval_detector.py --mode both                 # the detector numbers
 python3 scripts/run_onboard.py --dry-run --duration 60       # the flight code path
 python3 scripts/fetch_models.py --list                       # the model zoo
+python3 scripts/serve_replay.py --artifact artifacts/rescue_mission_flood.json --port 8090
+                                                # offline replay dashboard
+python3 scripts/make_pitch_ppt.py               # the SIH 2026 pitch deck
 make assets                                     # regenerate every teaching figure
 ```
 

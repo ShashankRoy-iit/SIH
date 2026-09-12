@@ -1337,18 +1337,23 @@ class MiniSITL:
             # Note ``(msg.x, msg.y, msg.z)`` and not ``msg.x and (...)``: at the
             # origin x is legitimately 0.0, which is falsy, and the short-circuit
             # would pass a scalar where a 3-vector is expected.
+            # Health is stamped with the *simulator's* receive clock, matching
+            # ArduPilot (AP_HAL::millis() at receive).  Using the sender's
+            # ``time_usec`` instead makes health depend on the round-trip
+            # telemetry lag, which the speedup multiplier amplifies past the
+            # 300 ms VisOdom timeout and spuriously fails pre-arm.
             self.ekf.ingest_odometry(
-                int(msg.time_usec // 1000), int(msg.frame_id),
+                int(self.t_sim * 1000), int(msg.frame_id),
                 int(msg.child_frame_id), (msg.x, msg.y, msg.z),
                 msg.q, (msg.vx, msg.vy, msg.vz), msg.pose_covariance,
                 int(getattr(msg, "quality", 0)) or 100)
         elif t == "VISION_POSITION_ESTIMATE":
-            self.ekf.ingest_vision_position(int(msg.usec // 1000),
+            self.ekf.ingest_vision_position(int(self.t_sim * 1000),
                                             (msg.x, msg.y, msg.z),
                                             (msg.roll, msg.pitch, msg.yaw),
                                             msg.covariance)
         elif t == "VISION_SPEED_ESTIMATE":
-            self.ekf.ingest_vision_speed(int(msg.usec // 1000),
+            self.ekf.ingest_vision_speed(int(self.t_sim * 1000),
                                          (msg.x, msg.y, msg.z))
         elif t == "MANUAL_CONTROL":
             pass
