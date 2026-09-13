@@ -1,12 +1,12 @@
 {
   "mode": "bench",
-  "duration_s": 8.0,
-  "frames": 120,
-  "vio_samples": 236,
+  "duration_s": 15.0,
+  "frames": 225,
+  "vio_samples": 444,
   "rgb_fps": 15.0,
-  "vio_hz": 29.5,
-  "detection_events": 120,
-  "worst_frame_gap_s": 0.106,
+  "vio_hz": 29.6,
+  "detection_events": 225,
+  "worst_frame_gap_s": 0.069,
   "link_state": "streaming",
   "ai": []
 }

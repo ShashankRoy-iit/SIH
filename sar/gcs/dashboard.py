@@ -762,7 +762,7 @@ function render() {
         
         cx.fillStyle = '#f97316';
         cx.font = '9px monospace';
-        cx.fillText((hz.hazard_class || 'HAZARD').toUpperCase(), hx + rad + 4, hy + 3);
+        cx.fillText((hz.label || hz.hazard_class || 'HAZARD').toUpperCase(), hx + rad + 4, hy + 3);
       });
     }
 

@@ -122,7 +122,8 @@ def build_detector_stack(mode: str = "auto", *,
             if spec is None:
                 notes.append(f"no {modality} weights available in {reg.models_dir}")
                 continue
-            backend = _try_neural(spec, calibrator, budget_ms, notes)
+            backend = _try_neural(spec, calibrator, budget_ms, notes,
+                                  model_path=str(reg.path(spec.name)))
             if backend is not None:
                 backends.append(backend)
                 names.append(backend.name)
@@ -170,12 +171,14 @@ def build_detector_stack(mode: str = "auto", *,
 
 
 def _try_neural(spec: ModelSpec, calibrator: Optional[ConfidenceCalibrator],
-                budget_ms: float, notes: List[str]) -> Optional[Any]:
+                budget_ms: float, notes: List[str],
+                model_path: Optional[str] = None) -> Optional[Any]:
     """Load one neural backend, downgrading to None with a reason on failure."""
     from sar.ai.backends import NeuralDetectorBackend, ThermalNeuralBackend
     cls = ThermalNeuralBackend if spec.modality == "lwir" else NeuralDetectorBackend
     try:
-        return cls(spec, calibrator=calibrator, budget_ms=budget_ms)
+        return cls(spec, calibrator=calibrator, budget_ms=budget_ms,
+                   model_path=model_path)
     except Exception as exc:            # missing runtime, bad file, wrong opset
         notes.append(f"{spec.name} not loaded: {type(exc).__name__}: {exc}")
         log.warning("neural backend %s unavailable: %r", spec.name, exc)

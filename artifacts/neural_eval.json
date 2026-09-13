@@ -1,0 +1,69 @@
+{
+  "stack": {
+    "mode": "neural",
+    "backends": [
+      "neural_lwir:yolov8n-thermal-sim",
+      "neural:yolov8n-rgb-sim"
+    ],
+    "neural_models": [
+      {
+        "name": "yolov8n-thermal-sim",
+        "modality": "lwir",
+        "format": "onnx",
+        "input_size": [
+          256,
+          256
+        ]
+      },
+      {
+        "name": "yolov8n-rgb-sim",
+        "modality": "rgb",
+        "format": "onnx",
+        "input_size": [
+          256,
+          256
+        ]
+      }
+    ],
+    "providers": [
+      "CPUExecutionProvider"
+    ],
+    "calibration": null,
+    "notes": [
+      "no calibration file at /home/user/SIH/models/calibration.json; neural scores are shrunk conservatively rather than calibrated (see sar/ai/calibration.py)"
+    ]
+  },
+  "altitudes_m": [
+    20.0,
+    40.0
+  ],
+  "frames_per_modality": 60,
+  "lwir": {
+    "modality": "lwir",
+    "frames": 60,
+    "tp": 23,
+    "fp": 0,
+    "fn": 10,
+    "recall": 0.697,
+    "precision": 1.0,
+    "f1": 0.8214,
+    "latency_ms": {
+      "mean": 23.5,
+      "p95": 40.6
+    }
+  },
+  "rgb": {
+    "modality": "rgb",
+    "frames": 60,
+    "tp": 22,
+    "fp": 0,
+    "fn": 11,
+    "recall": 0.6667,
+    "precision": 1.0,
+    "f1": 0.8,
+    "latency_ms": {
+      "mean": 23.1,
+      "p95": 30.6
+    }
+  }
+}

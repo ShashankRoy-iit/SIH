@@ -1,0 +1,27 @@
+{
+  "name": "SAHYOG SAR (SIH 26177)",
+  "image": "mcr.microsoft.com/devcontainers/python:1-3.11",
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+  "postCreateCommand": "pip install -e '.[sim,dev]' && pip install onnx onnxruntime && python scripts/doctor.py",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      }
+    }
+  },
+  "forwardPorts": [8090, 8000],
+  "portsAttributes": {
+    "8090": { "label": "Replay dashboard", "onAutoForward": "notify" },
+    "8000": { "label": "Command centre", "onAutoForward": "notify" }
+  },
+  "remoteUser": "vscode"
+}

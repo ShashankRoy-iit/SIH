@@ -1030,7 +1030,8 @@ class TelemetryUplink:
             "vi": (d.get("viability") or {}).get("band")
                   or (d.get("viability") or {}).get("score"),
             "lz": [z.get("north_m") for z in (d.get("landing_zones") or [])[:1]],
-            "hz": [h.get("hazard_class") for h in (d.get("hazards_nearby") or [])[:1]],
+            "hz": [h.get("label") or h.get("hazard_class")
+                   for h in (d.get("hazards_nearby") or [])[:1]],
         }
 
     @staticmethod
@@ -1052,7 +1053,7 @@ class TelemetryUplink:
     def publish_hazard(self, hazard: Any, key: Optional[str] = None,
                        alert: bool = True) -> bool:
         d = hazard.to_dict() if hasattr(hazard, "to_dict") else dict(hazard)
-        k = key or f"hazard:{d.get('hazard_class', 'x')}:" \
+        k = key or f"hazard:{d.get('label') or d.get('hazard_class', 'x')}:" \
                    f"{round(float(d.get('north_m', 0)) / 10)}:" \
                    f"{round(float(d.get('east_m', 0)) / 10)}"
         kind = MessageKind.HAZARD_ALERT if alert else MessageKind.HAZARD_UPDATE

@@ -1,0 +1,30 @@
+{
+  "thermal": {
+    "name": "sar-thermal",
+    "model": "yolov8n-p2",
+    "epochs": 30,
+    "imgsz": 256,
+    "wall_s": 2085.3,
+    "best_pt": "runs/sar-thermal3/weights/best.pt",
+    "metrics": {
+      "mAP50": 0.2338,
+      "mAP50_95": 0.0603,
+      "precision": 0.9175,
+      "recall": 0.2027
+    }
+  },
+  "rgb": {
+    "name": "sar-rgb",
+    "model": "yolov8n-p2",
+    "epochs": 30,
+    "imgsz": 256,
+    "wall_s": 1324.3,
+    "best_pt": "runs/sar-rgb2/weights/best.pt",
+    "metrics": {
+      "mAP50": 0.1614,
+      "mAP50_95": 0.0638,
+      "precision": 0.5976,
+      "recall": 0.1745
+    }
+  }
+}

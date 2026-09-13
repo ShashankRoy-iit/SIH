@@ -1,14 +1,19 @@
 {
   "scenario": "flood",
-  "started_at": 1788856832.2377145,
-  "finished_at": 1788856852.4079943,
+  "origin": {
+    "lat": 25.185,
+    "lon": 75.8357,
+    "alt": 250.0
+  },
+  "started_at": 1789231345.6746247,
+  "finished_at": 1789231526.5625548,
   "armed": true,
   "landed": false,
   "crashed": false,
-  "flight_time_s": 20.17,
-  "distance_m": 46.3,
+  "flight_time_s": 180.89,
+  "distance_m": 366.5,
   "energy_wh": 0.0,
-  "battery_pct": 99.0,
+  "battery_pct": 93.0,
   "plan": {
     "n_lanes": 18,
     "lane_spacing_m": 18.81,
@@ -344,17 +349,17 @@
     "cells": 6400,
     "resolution_m": 4.0,
     "area_m2": 102400.0,
-    "fraction_looked_at": 0.0,
-    "fraction_covered_p50": 0.0,
-    "fraction_covered_p90": 0.0,
-    "effective_coverage": 0.0,
-    "mean_p_detected": 0.0,
-    "mean_best_gsd_m": null,
-    "uncovered_area_m2": 102400.0,
+    "fraction_looked_at": 0.308,
+    "fraction_covered_p50": 0.308,
+    "fraction_covered_p90": 0.308,
+    "effective_coverage": 0.3063,
+    "mean_p_detected": 0.3063,
+    "mean_best_gsd_m": 0.0994,
+    "uncovered_area_m2": 70864.0,
     "of_search_box": {
-      "fraction_looked_at": 0.0,
-      "fraction_covered_p50": 0.0,
-      "effective_coverage": 0.0,
+      "fraction_looked_at": 0.308,
+      "fraction_covered_p50": 0.308,
+      "effective_coverage": 0.3063,
       "area_m2": 102400.0
     },
     "search_box": {
@@ -373,11 +378,11 @@
   "belief": {
     "cells": 2916,
     "resolution_m": 6.0,
-    "expected_remaining": 5.0,
+    "expected_remaining": 3.442,
     "initial_expected": 5.0,
-    "progress": 0.0,
-    "detections_absorbed": 0,
-    "updates": 0,
+    "progress": 0.3116,
+    "detections_absorbed": 306,
+    "updates": 75,
     "peak": {
       "north_m": 3.0,
       "east_m": 3.0,
@@ -388,24 +393,32 @@
   },
   "comms": {
     "queue": {
-      "items": 0,
-      "bytes": 0,
+      "items": 150,
+      "bytes": 195522,
       "max_bytes": 196608,
-      "by_tier": {},
-      "bytes_by_tier": {},
-      "oldest_age_s": 0.0,
-      "next": null,
+      "by_tier": {
+        "life_safety": 4,
+        "tactical": 145,
+        "situational": 1
+      },
+      "bytes_by_tier": {
+        "life_safety": 1973,
+        "tactical": 211485,
+        "situational": 181
+      },
+      "oldest_age_s": 128.1,
+      "next": "hazard_alert",
       "stats": {
-        "enqueued": 6,
+        "enqueued": 416,
         "sent": 0,
-        "dropped_expired": 0,
-        "dropped_evicted": 0,
-        "coalesced": 0,
-        "suppressed_duplicate": 0,
-        "failed": 0,
+        "dropped_expired": 1,
+        "dropped_evicted": 42,
+        "coalesced": 82,
+        "suppressed_duplicate": 17,
+        "failed": 7,
         "bytes_sent": 0,
-        "bytes_dropped": 0,
-        "peak_bytes": 174,
+        "bytes_dropped": 53986,
+        "peak_bytes": 196601,
         "delivery_ratio": 0.0
       }
     },
@@ -414,70 +427,286 @@
       "bitrate_bps": 2900.0,
       "in_range": true,
       "range_m": null,
-      "sent_packets": 6,
-      "sent_bytes": 1035,
-      "failed_packets": 0,
-      "packet_success_pct": 100.0,
-      "air_time_s": 3.25,
+      "sent_packets": 223,
+      "sent_bytes": 40652,
+      "failed_packets": 7,
+      "packet_success_pct": 96.96,
+      "air_time_s": 130.81,
       "outage_s": 0.0
     },
-    "credit_bytes": 725.0,
+    "credit_bytes": -180.5,
     "ground": {
-      "received": 6,
-      "n_survivors": 0,
+      "received": 223,
+      "n_survivors": 7,
       "n_hazards": 0,
-      "survivors": [],
+      "survivors": [
+        {
+          "la": 25.18541,
+          "lo": 75.837,
+          "sg": 25.0,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "F",
+          "cf": 1.0,
+          "no": 3,
+          "tm": 116.6,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            "fire"
+          ],
+          "_key": "p1",
+          "_kind": "survivor_update",
+          "_rev": 41,
+          "_tier": "life_safety",
+          "_rx_t": 1789231526.5624738,
+          "_first_rx_t": 1789231434.7923517,
+          "_n_updates": 37
+        },
+        {
+          "la": 25.18509,
+          "lo": 75.83699,
+          "sg": 8.7,
+          "pr": "D",
+          "gs": 2,
+          "tc": null,
+          "xm": 0,
+          "nb": "F",
+          "cf": 1.0,
+          "no": 1,
+          "tm": 116.6,
+          "vi": null,
+          "lz": [
+            8.0
+          ],
+          "hz": [
+            "flood_water"
+          ],
+          "_key": "p2",
+          "_kind": "survivor_update",
+          "_rev": 16,
+          "_tier": "life_safety",
+          "_rx_t": 1789231502.3931527,
+          "_first_rx_t": 1789231436.7706637,
+          "_n_updates": 16
+        },
+        {
+          "la": 25.18632,
+          "lo": 75.83781,
+          "sg": 25.0,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "F",
+          "cf": 0.7,
+          "no": 11,
+          "tm": 134.5,
+          "vi": null,
+          "lz": [
+            128.0
+          ],
+          "hz": [
+            "flood_water"
+          ],
+          "_key": "p3",
+          "_kind": "survivor_update",
+          "_rev": 20,
+          "_tier": "life_safety",
+          "_rx_t": 1789231515.0280855,
+          "_first_rx_t": 1789231453.8972042,
+          "_n_updates": 20
+        },
+        {
+          "la": 25.18509,
+          "lo": 75.83699,
+          "sg": 5.8,
+          "pr": "D",
+          "gs": 2,
+          "tc": null,
+          "xm": 0,
+          "nb": "F",
+          "cf": 1.0,
+          "no": 1,
+          "tm": 116.6,
+          "vi": null,
+          "lz": [
+            8.0
+          ],
+          "hz": [
+            "flood_water"
+          ],
+          "_key": "p4",
+          "_kind": "survivor_update",
+          "_rev": 12,
+          "_tier": "life_safety",
+          "_rx_t": 1789231491.5218363,
+          "_first_rx_t": 1789231465.0107656,
+          "_n_updates": 12
+        },
+        {
+          "la": 25.18633,
+          "lo": 75.83765,
+          "sg": 6.7,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "F",
+          "cf": 0.7,
+          "no": 11,
+          "tm": 134.5,
+          "vi": null,
+          "lz": [
+            148.0
+          ],
+          "hz": [
+            "fire"
+          ],
+          "_key": "p5",
+          "_kind": "survivor_update",
+          "_rev": 5,
+          "_tier": "life_safety",
+          "_rx_t": 1789231491.5218642,
+          "_first_rx_t": 1789231480.123675,
+          "_n_updates": 5
+        },
+        {
+          "la": 25.18705,
+          "lo": 75.83758,
+          "sg": 13.5,
+          "pr": "M",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "F",
+          "cf": 1.0,
+          "no": 3,
+          "tm": 164.3,
+          "vi": null,
+          "lz": [],
+          "hz": [
+            "fire"
+          ],
+          "_key": "p6",
+          "_kind": "survivor_update",
+          "_rev": 10,
+          "_tier": "life_safety",
+          "_rx_t": 1789231526.5663302,
+          "_first_rx_t": 1789231502.3931575,
+          "_n_updates": 10
+        },
+        {
+          "la": 25.18657,
+          "lo": 75.8371,
+          "sg": 4.6,
+          "pr": "D",
+          "gs": 1,
+          "tc": null,
+          "xm": 1,
+          "nb": "F",
+          "cf": 1.0,
+          "no": 2,
+          "tm": 160.2,
+          "vi": null,
+          "lz": [
+            156.0
+          ],
+          "hz": [
+            "fire"
+          ],
+          "_key": "p7",
+          "_kind": "survivor_update",
+          "_rev": 8,
+          "_tier": "life_safety",
+          "_rx_t": 1789231526.5624967,
+          "_first_rx_t": 1789231509.4421244,
+          "_n_updates": 8
+        }
+      ],
       "hazards": [],
       "coverage": {},
-      "nav": {},
+      "nav": {
+        "source": "gnss",
+        "pos_sigma_m": 0.94,
+        "since_fix_s": 0.0,
+        "n_satellites": 33,
+        "hdop": 0.65,
+        "denied": false,
+        "drift_rate_ms": 0.05,
+        "_key": "nav",
+        "_kind": "nav_status",
+        "_rev": 32,
+        "_tier": "situational",
+        "_rx_t": 1789231518.6179504
+      },
       "vehicle": {
         "mode": "GUIDED",
         "armed": true,
-        "alt_rel_m": 47.1,
-        "gs_ms": 10.18,
-        "n_m": 34.7,
-        "e_m": 22.6,
-        "batt_pct": 99.0,
+        "alt_rel_m": 45.0,
+        "gs_ms": 9.93,
+        "n_m": 268.7,
+        "e_m": 212.4,
+        "batt_pct": 93.0,
         "lane": 0,
-        "queue_bytes": 0,
+        "queue_bytes": 196199,
         "_key": "vehicle",
         "_kind": "vehicle_telemetry",
-        "_rev": 6,
+        "_rev": 82,
         "_tier": "situational",
-        "_rx_t": 1788856851.8053122
+        "_rx_t": 1789231519.64882
       }
     }
   },
   "perception": {
-    "frames_rendered": 0,
-    "cycles": 0,
-    "mean_cycle_ms": null,
-    "p95_cycle_ms": null,
+    "frames_rendered": 150,
+    "cycles": 75,
+    "mean_cycle_ms": 1406.1,
+    "p95_cycle_ms": 3524.2,
     "summary": {
       "tracks": {
-        "n_tracks": 0,
+        "n_tracks": 29,
         "n_confirmed": 0,
-        "n_candidates": 0,
+        "n_candidates": 8,
         "n_needing_confirmation": 0,
         "stats": {
-          "created": 0,
-          "confirmed": 0,
-          "merged": 0,
-          "lost": 0,
-          "observations": 0
+          "created": 85,
+          "confirmed": 3,
+          "merged": 56,
+          "lost": 5,
+          "observations": 107
         }
       },
       "hazards": {
-        "n_hazards": 0,
-        "by_label": {},
-        "by_severity": {},
-        "cells_above_dangerous": 0,
+        "n_hazards": 30,
+        "by_label": {
+          "flood_water": 15,
+          "debris_field": 5,
+          "fire": 5,
+          "exposed_powerline": 5
+        },
+        "by_severity": {
+          "DANGEROUS": 13,
+          "CAUTION": 12,
+          "CRITICAL": 5
+        },
+        "cells_above_dangerous": 60,
         "grid_shape": [
           81,
           81
         ],
         "cell_m": 4.0,
-        "affected_tracks": []
+        "affected_tracks": [
+          25,
+          28,
+          41,
+          43,
+          52,
+          54,
+          58
+        ]
       },
       "boresight": {
         "du_px": 0.0,
@@ -488,28 +717,3159 @@
       },
       "fusion": {
         "pairs": 0,
-        "lwir_only": 0,
-        "rgb_only": 0
+        "lwir_only": 16,
+        "rgb_only": 91
       },
-      "person_tracks": [],
+      "person_tracks": [
+        {
+          "tid": 25,
+          "ev": 1.0,
+          "n": 3,
+          "status": "coasting"
+        },
+        {
+          "tid": 28,
+          "ev": 1.0,
+          "n": 1,
+          "status": "coasting"
+        },
+        {
+          "tid": 41,
+          "ev": 0.697,
+          "n": 11,
+          "status": "coasting"
+        },
+        {
+          "tid": 43,
+          "ev": 1.0,
+          "n": 1,
+          "status": "coasting"
+        },
+        {
+          "tid": 52,
+          "ev": 1.0,
+          "n": 3,
+          "status": "coasting"
+        },
+        {
+          "tid": 54,
+          "ev": 1.0,
+          "n": 2,
+          "status": "coasting"
+        }
+      ],
       "confirmation_queue": 0
     },
-    "distinct_survivor_sites": 0,
-    "tracks_merged_into_sites": 0,
+    "distinct_survivor_sites": 7,
+    "tracks_merged_into_sites": 12,
     "rejected_out_of_area": 0,
     "rejected_out_of_box": 0,
-    "sites": []
+    "sites": [
+      {
+        "site_id": 1,
+        "north_m": 33.7,
+        "east_m": 146.6,
+        "sigma_m": 1.29,
+        "tracks": [
+          25,
+          28,
+          43
+        ],
+        "n_reports": 83,
+        "drift_rejected": 10,
+        "drift_from_anchor_m": 14.7
+      },
+      {
+        "site_id": 2,
+        "north_m": 18.5,
+        "east_m": 141.5,
+        "sigma_m": 1.31,
+        "tracks": [
+          28,
+          43
+        ],
+        "n_reports": 16,
+        "drift_rejected": 0,
+        "drift_from_anchor_m": 5.3
+      },
+      {
+        "site_id": 3,
+        "north_m": 147.1,
+        "east_m": 181.0,
+        "sigma_m": 1.27,
+        "tracks": [
+          41,
+          42
+        ],
+        "n_reports": 33,
+        "drift_rejected": 8,
+        "drift_from_anchor_m": 9.7
+      },
+      {
+        "site_id": 4,
+        "north_m": 9.4,
+        "east_m": 130.2,
+        "sigma_m": 1.71,
+        "tracks": [
+          43
+        ],
+        "n_reports": 18,
+        "drift_rejected": 0,
+        "drift_from_anchor_m": 0.0
+      },
+      {
+        "site_id": 5,
+        "north_m": 147.5,
+        "east_m": 192.9,
+        "sigma_m": 0.8,
+        "tracks": [
+          41
+        ],
+        "n_reports": 6,
+        "drift_rejected": 0,
+        "drift_from_anchor_m": 4.0
+      },
+      {
+        "site_id": 6,
+        "north_m": 225.9,
+        "east_m": 187.7,
+        "sigma_m": 1.12,
+        "tracks": [
+          52,
+          58
+        ],
+        "n_reports": 12,
+        "drift_rejected": 0,
+        "drift_from_anchor_m": 6.0
+      },
+      {
+        "site_id": 7,
+        "north_m": 174.3,
+        "east_m": 141.0,
+        "sigma_m": 1.46,
+        "tracks": [
+          54
+        ],
+        "n_reports": 9,
+        "drift_rejected": 0,
+        "drift_from_anchor_m": 0.0
+      }
+    ]
   },
   "rescue": {
-    "total_operations": 0,
-    "by_state": {},
-    "completed_drops": 0,
-    "mean_drop_error_m": 0.0,
-    "successful_drops": 0,
-    "active_operations": []
+    "total_operations": 8,
+    "by_state": {
+      "payload_delivered": 3,
+      "beacon_transmitting": 1,
+      "human_identified": 4
+    },
+    "completed_drops": 4,
+    "mean_drop_error_m": 17.15,
+    "successful_drops": 3,
+    "active_operations": [
+      {
+        "op_id": "SAR-OP-001",
+        "target_id": 25,
+        "state": "payload_delivered",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-025:STA",
+          "track_id": 25,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "moderate_distress",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 119.74,
+          "clothing_color_hint": "high_visibility_orange_red",
+          "apparent_temp_c": 32.9,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.0,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "minor",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 45.4,
+          "east_m": 131.0,
+          "elevation_m": -0.0,
+          "lat": 25.18541,
+          "lon": 75.836999,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing",
+            "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": {
+          "drop_id": "drop_111709",
+          "payload_type": "first_aid_kit",
+          "target_id": 25,
+          "target_north_m": 39.86,
+          "target_east_m": 159.87,
+          "release_time": 99.19,
+          "impact_time": 111.71,
+          "release_pos_ned": [
+            94.41,
+            191.83,
+            -45.65
+          ],
+          "impact_pos_ned": [
+            29.43,
+            152.43,
+            -0.54
+          ],
+          "release_north_m": 94.41,
+          "release_east_m": 191.83,
+          "release_altitude_m": 45.65,
+          "impact_north_m": 29.43,
+          "impact_east_m": 152.43,
+          "impact_velocity_ms": 6.32,
+          "miss_distance_m": 12.82,
+          "flight_time_s": 12.52,
+          "fall_time_s": 12.52,
+          "success": true,
+          "trajectory_points": 627,
+          "trajectory": [
+            {
+              "t": 99.19,
+              "north_m": 94.41,
+              "east_m": 191.83,
+              "altitude_agl_m": 39.79,
+              "speed_ms": 9.74,
+              "parachute_open": false
+            },
+            {
+              "t": 99.49,
+              "north_m": 97.02,
+              "east_m": 192.32,
+              "altitude_agl_m": 39.22,
+              "speed_ms": 8.62,
+              "parachute_open": false
+            },
+            {
+              "t": 99.79,
+              "north_m": 97.64,
+              "east_m": 192.13,
+              "altitude_agl_m": 38.49,
+              "speed_ms": 3.5,
+              "parachute_open": true
+            },
+            {
+              "t": 100.09,
+              "north_m": 96.79,
+              "east_m": 191.43,
+              "altitude_agl_m": 37.81,
+              "speed_ms": 5.28,
+              "parachute_open": true
+            },
+            {
+              "t": 100.39,
+              "north_m": 95.61,
+              "east_m": 190.64,
+              "altitude_agl_m": 36.99,
+              "speed_ms": 6.06,
+              "parachute_open": true
+            },
+            {
+              "t": 100.69,
+              "north_m": 94.28,
+              "east_m": 189.82,
+              "altitude_agl_m": 36.11,
+              "speed_ms": 6.49,
+              "parachute_open": true
+            },
+            {
+              "t": 100.99,
+              "north_m": 92.81,
+              "east_m": 188.97,
+              "altitude_agl_m": 35.2,
+              "speed_ms": 6.88,
+              "parachute_open": true
+            },
+            {
+              "t": 101.29,
+              "north_m": 91.24,
+              "east_m": 188.07,
+              "altitude_agl_m": 34.28,
+              "speed_ms": 7.25,
+              "parachute_open": true
+            },
+            {
+              "t": 101.59,
+              "north_m": 89.58,
+              "east_m": 187.1,
+              "altitude_agl_m": 33.35,
+              "speed_ms": 7.55,
+              "parachute_open": true
+            },
+            {
+              "t": 101.89,
+              "north_m": 87.86,
+              "east_m": 186.09,
+              "altitude_agl_m": 32.41,
+              "speed_ms": 7.74,
+              "parachute_open": true
+            },
+            {
+              "t": 102.19,
+              "north_m": 86.1,
+              "east_m": 185.06,
+              "altitude_agl_m": 31.45,
+              "speed_ms": 7.88,
+              "parachute_open": true
+            },
+            {
+              "t": 102.49,
+              "north_m": 84.28,
+              "east_m": 184.03,
+              "altitude_agl_m": 30.48,
+              "speed_ms": 8.04,
+              "parachute_open": true
+            },
+            {
+              "t": 102.79,
+              "north_m": 82.4,
+              "east_m": 183.01,
+              "altitude_agl_m": 29.5,
+              "speed_ms": 8.22,
+              "parachute_open": true
+            },
+            {
+              "t": 103.09,
+              "north_m": 80.46,
+              "east_m": 181.97,
+              "altitude_agl_m": 28.53,
+              "speed_ms": 8.33,
+              "parachute_open": true
+            },
+            {
+              "t": 103.39,
+              "north_m": 78.51,
+              "east_m": 180.91,
+              "altitude_agl_m": 27.57,
+              "speed_ms": 8.31,
+              "parachute_open": true
+            },
+            {
+              "t": 103.69,
+              "north_m": 76.59,
+              "east_m": 179.84,
+              "altitude_agl_m": 26.62,
+              "speed_ms": 8.17,
+              "parachute_open": true
+            },
+            {
+              "t": 103.99,
+              "north_m": 74.71,
+              "east_m": 178.78,
+              "altitude_agl_m": 25.69,
+              "speed_ms": 8.01,
+              "parachute_open": true
+            },
+            {
+              "t": 104.29,
+              "north_m": 72.86,
+              "east_m": 177.76,
+              "altitude_agl_m": 24.76,
+              "speed_ms": 7.9,
+              "parachute_open": true
+            },
+            {
+              "t": 104.59,
+              "north_m": 71.01,
+              "east_m": 176.77,
+              "altitude_agl_m": 23.84,
+              "speed_ms": 7.86,
+              "parachute_open": true
+            },
+            {
+              "t": 104.89,
+              "north_m": 69.15,
+              "east_m": 175.8,
+              "altitude_agl_m": 22.91,
+              "speed_ms": 7.86,
+              "parachute_open": true
+            },
+            {
+              "t": 105.19,
+              "north_m": 67.3,
+              "east_m": 174.8,
+              "altitude_agl_m": 22.0,
+              "speed_ms": 7.86,
+              "parachute_open": true
+            },
+            {
+              "t": 105.49,
+              "north_m": 65.48,
+              "east_m": 173.76,
+              "altitude_agl_m": 21.08,
+              "speed_ms": 7.89,
+              "parachute_open": true
+            },
+            {
+              "t": 105.79,
+              "north_m": 63.65,
+              "east_m": 172.68,
+              "altitude_agl_m": 20.15,
+              "speed_ms": 8.0,
+              "parachute_open": true
+            },
+            {
+              "t": 106.09,
+              "north_m": 61.8,
+              "east_m": 171.57,
+              "altitude_agl_m": 19.2,
+              "speed_ms": 8.18,
+              "parachute_open": true
+            },
+            {
+              "t": 106.39,
+              "north_m": 59.88,
+              "east_m": 170.45,
+              "altitude_agl_m": 18.24,
+              "speed_ms": 8.39,
+              "parachute_open": true
+            },
+            {
+              "t": 106.69,
+              "north_m": 57.9,
+              "east_m": 169.32,
+              "altitude_agl_m": 17.25,
+              "speed_ms": 8.56,
+              "parachute_open": true
+            },
+            {
+              "t": 106.99,
+              "north_m": 55.9,
+              "east_m": 168.16,
+              "altitude_agl_m": 16.24,
+              "speed_ms": 8.65,
+              "parachute_open": true
+            },
+            {
+              "t": 107.29,
+              "north_m": 53.92,
+              "east_m": 166.95,
+              "altitude_agl_m": 15.22,
+              "speed_ms": 8.68,
+              "parachute_open": true
+            },
+            {
+              "t": 107.59,
+              "north_m": 51.95,
+              "east_m": 165.7,
+              "altitude_agl_m": 14.2,
+              "speed_ms": 8.68,
+              "parachute_open": true
+            },
+            {
+              "t": 107.89,
+              "north_m": 49.98,
+              "east_m": 164.46,
+              "altitude_agl_m": 13.17,
+              "speed_ms": 8.64,
+              "parachute_open": true
+            },
+            {
+              "t": 108.19,
+              "north_m": 48.02,
+              "east_m": 163.25,
+              "altitude_agl_m": 12.14,
+              "speed_ms": 8.51,
+              "parachute_open": true
+            },
+            {
+              "t": 108.49,
+              "north_m": 46.1,
+              "east_m": 162.1,
+              "altitude_agl_m": 11.12,
+              "speed_ms": 8.26,
+              "parachute_open": true
+            },
+            {
+              "t": 108.79,
+              "north_m": 44.24,
+              "east_m": 161.01,
+              "altitude_agl_m": 10.09,
+              "speed_ms": 7.92,
+              "parachute_open": true
+            },
+            {
+              "t": 109.09,
+              "north_m": 42.48,
+              "east_m": 159.97,
+              "altitude_agl_m": 9.08,
+              "speed_ms": 7.59,
+              "parachute_open": true
+            },
+            {
+              "t": 109.39,
+              "north_m": 40.82,
+              "east_m": 158.95,
+              "altitude_agl_m": 8.08,
+              "speed_ms": 7.34,
+              "parachute_open": true
+            },
+            {
+              "t": 109.69,
+              "north_m": 39.21,
+              "east_m": 157.96,
+              "altitude_agl_m": 7.09,
+              "speed_ms": 7.17,
+              "parachute_open": true
+            },
+            {
+              "t": 109.99,
+              "north_m": 37.63,
+              "east_m": 157.02,
+              "altitude_agl_m": 6.07,
+              "speed_ms": 7.0,
+              "parachute_open": true
+            },
+            {
+              "t": 110.29,
+              "north_m": 36.08,
+              "east_m": 156.15,
+              "altitude_agl_m": 5.06,
+              "speed_ms": 6.81,
+              "parachute_open": true
+            },
+            {
+              "t": 110.59,
+              "north_m": 34.6,
+              "east_m": 155.34,
+              "altitude_agl_m": 4.03,
+              "speed_ms": 6.62,
+              "parachute_open": true
+            },
+            {
+              "t": 110.89,
+              "north_m": 33.17,
+              "east_m": 154.55,
+              "altitude_agl_m": 2.98,
+              "speed_ms": 6.51,
+              "parachute_open": true
+            },
+            {
+              "t": 111.19,
+              "north_m": 31.78,
+              "east_m": 153.77,
+              "altitude_agl_m": 1.91,
+              "speed_ms": 6.49,
+              "parachute_open": true
+            },
+            {
+              "t": 111.49,
+              "north_m": 30.41,
+              "east_m": 152.99,
+              "altitude_agl_m": 0.8,
+              "speed_ms": 6.45,
+              "parachute_open": true
+            }
+          ]
+        },
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_25_foot_team",
+            "target_id": 25,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              39.9,
+              159.9,
+              0.0
+            ],
+            "total_distance_m": 164.9,
+            "estimated_transit_time_s": 274.9,
+            "estimated_transit_time_min": 4.6,
+            "safety_score": 0.5,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 40.0,
+                "east_m": 160.0,
+                "elevation_m": 1.0,
+                "water_depth_m": 4.41,
+                "cumulative_distance_m": 164.9,
+                "eta_s": 274.9,
+                "hazard_warning": "Passing near active critical hazard zone"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_25_rescue_boat",
+            "target_id": 25,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              39.9,
+              159.9,
+              0.0
+            ],
+            "total_distance_m": 164.9,
+            "estimated_transit_time_s": 36.6,
+            "estimated_transit_time_min": 0.6,
+            "safety_score": 0.5,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 40.0,
+                "east_m": 160.0,
+                "elevation_m": 1.0,
+                "water_depth_m": 4.41,
+                "cumulative_distance_m": 164.9,
+                "eta_s": 36.6,
+                "hazard_warning": "Passing near active critical hazard zone"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 87.3,
+        "updated_at": 179.0,
+        "payload_dropped_at": 99.2,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-025:STA (Triage: delayed)",
+          "Payload first_aid_kit delivered (impact error: 12.8 m, landing vel: 6.3 m/s)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-002",
+        "target_id": 28,
+        "state": "payload_delivered",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-028:STA",
+          "track_id": 28,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "passive_immobile",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 0.0,
+          "clothing_color_hint": "unknown/unobserved",
+          "apparent_temp_c": 32.9,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.15,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "delayed",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 21.7,
+          "east_m": 145.7,
+          "elevation_m": -0.0,
+          "lat": 25.185196,
+          "lon": 75.837145,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": {
+          "drop_id": "drop_125587",
+          "payload_type": "first_aid_kit",
+          "target_id": 28,
+          "target_north_m": 21.73,
+          "target_east_m": 145.67,
+          "release_time": 113.25,
+          "impact_time": 125.59,
+          "release_pos_ned": [
+            76.1,
+            177.29,
+            -45.65
+          ],
+          "impact_pos_ned": [
+            4.5,
+            139.13,
+            -0.47
+          ],
+          "release_north_m": 76.1,
+          "release_east_m": 177.29,
+          "release_altitude_m": 45.65,
+          "impact_north_m": 4.5,
+          "impact_east_m": 139.13,
+          "impact_velocity_ms": 6.28,
+          "miss_distance_m": 18.43,
+          "flight_time_s": 12.34,
+          "fall_time_s": 12.34,
+          "success": true,
+          "trajectory_points": 618,
+          "trajectory": [
+            {
+              "t": 113.247,
+              "north_m": 76.1,
+              "east_m": 177.29,
+              "altitude_agl_m": 42.47,
+              "speed_ms": 9.98,
+              "parachute_open": false
+            },
+            {
+              "t": 113.547,
+              "north_m": 73.14,
+              "east_m": 177.07,
+              "altitude_agl_m": 42.04,
+              "speed_ms": 10.28,
+              "parachute_open": false
+            },
+            {
+              "t": 113.847,
+              "north_m": 70.49,
+              "east_m": 176.58,
+              "altitude_agl_m": 41.12,
+              "speed_ms": 8.95,
+              "parachute_open": true
+            },
+            {
+              "t": 114.147,
+              "north_m": 68.26,
+              "east_m": 175.7,
+              "altitude_agl_m": 40.19,
+              "speed_ms": 8.62,
+              "parachute_open": true
+            },
+            {
+              "t": 114.447,
+              "north_m": 66.21,
+              "east_m": 174.69,
+              "altitude_agl_m": 39.21,
+              "speed_ms": 8.43,
+              "parachute_open": true
+            },
+            {
+              "t": 114.747,
+              "north_m": 64.28,
+              "east_m": 173.63,
+              "altitude_agl_m": 38.22,
+              "speed_ms": 8.12,
+              "parachute_open": true
+            },
+            {
+              "t": 115.047,
+              "north_m": 62.47,
+              "east_m": 172.59,
+              "altitude_agl_m": 37.22,
+              "speed_ms": 7.76,
+              "parachute_open": true
+            },
+            {
+              "t": 115.347,
+              "north_m": 60.76,
+              "east_m": 171.61,
+              "altitude_agl_m": 36.23,
+              "speed_ms": 7.47,
+              "parachute_open": true
+            },
+            {
+              "t": 115.647,
+              "north_m": 59.11,
+              "east_m": 170.66,
+              "altitude_agl_m": 35.25,
+              "speed_ms": 7.26,
+              "parachute_open": true
+            },
+            {
+              "t": 115.947,
+              "north_m": 57.51,
+              "east_m": 169.72,
+              "altitude_agl_m": 34.28,
+              "speed_ms": 7.09,
+              "parachute_open": true
+            },
+            {
+              "t": 116.247,
+              "north_m": 55.98,
+              "east_m": 168.8,
+              "altitude_agl_m": 33.31,
+              "speed_ms": 6.87,
+              "parachute_open": true
+            },
+            {
+              "t": 116.547,
+              "north_m": 54.52,
+              "east_m": 167.9,
+              "altitude_agl_m": 32.35,
+              "speed_ms": 6.63,
+              "parachute_open": true
+            },
+            {
+              "t": 116.847,
+              "north_m": 53.12,
+              "east_m": 167.04,
+              "altitude_agl_m": 31.38,
+              "speed_ms": 6.47,
+              "parachute_open": true
+            },
+            {
+              "t": 117.147,
+              "north_m": 51.74,
+              "east_m": 166.22,
+              "altitude_agl_m": 30.4,
+              "speed_ms": 6.49,
+              "parachute_open": true
+            },
+            {
+              "t": 117.447,
+              "north_m": 50.31,
+              "east_m": 165.4,
+              "altitude_agl_m": 29.4,
+              "speed_ms": 6.68,
+              "parachute_open": true
+            },
+            {
+              "t": 117.747,
+              "north_m": 48.82,
+              "east_m": 164.54,
+              "altitude_agl_m": 28.39,
+              "speed_ms": 6.95,
+              "parachute_open": true
+            },
+            {
+              "t": 118.047,
+              "north_m": 47.26,
+              "east_m": 163.64,
+              "altitude_agl_m": 27.36,
+              "speed_ms": 7.18,
+              "parachute_open": true
+            },
+            {
+              "t": 118.347,
+              "north_m": 45.66,
+              "east_m": 162.68,
+              "altitude_agl_m": 26.31,
+              "speed_ms": 7.35,
+              "parachute_open": true
+            },
+            {
+              "t": 118.647,
+              "north_m": 44.03,
+              "east_m": 161.72,
+              "altitude_agl_m": 25.24,
+              "speed_ms": 7.47,
+              "parachute_open": true
+            },
+            {
+              "t": 118.947,
+              "north_m": 42.34,
+              "east_m": 160.76,
+              "altitude_agl_m": 24.16,
+              "speed_ms": 7.62,
+              "parachute_open": true
+            },
+            {
+              "t": 119.247,
+              "north_m": 40.58,
+              "east_m": 159.82,
+              "altitude_agl_m": 23.07,
+              "speed_ms": 7.75,
+              "parachute_open": true
+            },
+            {
+              "t": 119.547,
+              "north_m": 38.79,
+              "east_m": 158.87,
+              "altitude_agl_m": 21.99,
+              "speed_ms": 7.81,
+              "parachute_open": true
+            },
+            {
+              "t": 119.847,
+              "north_m": 36.99,
+              "east_m": 157.9,
+              "altitude_agl_m": 20.93,
+              "speed_ms": 7.75,
+              "parachute_open": true
+            },
+            {
+              "t": 120.147,
+              "north_m": 35.24,
+              "east_m": 156.93,
+              "altitude_agl_m": 19.86,
+              "speed_ms": 7.59,
+              "parachute_open": true
+            },
+            {
+              "t": 120.447,
+              "north_m": 33.54,
+              "east_m": 155.97,
+              "altitude_agl_m": 18.81,
+              "speed_ms": 7.42,
+              "parachute_open": true
+            },
+            {
+              "t": 120.747,
+              "north_m": 31.85,
+              "east_m": 155.05,
+              "altitude_agl_m": 17.78,
+              "speed_ms": 7.32,
+              "parachute_open": true
+            },
+            {
+              "t": 121.047,
+              "north_m": 30.16,
+              "east_m": 154.17,
+              "altitude_agl_m": 16.75,
+              "speed_ms": 7.28,
+              "parachute_open": true
+            },
+            {
+              "t": 121.347,
+              "north_m": 28.47,
+              "east_m": 153.3,
+              "altitude_agl_m": 15.72,
+              "speed_ms": 7.26,
+              "parachute_open": true
+            },
+            {
+              "t": 121.647,
+              "north_m": 26.8,
+              "east_m": 152.42,
+              "altitude_agl_m": 14.69,
+              "speed_ms": 7.26,
+              "parachute_open": true
+            },
+            {
+              "t": 121.947,
+              "north_m": 25.14,
+              "east_m": 151.48,
+              "altitude_agl_m": 13.64,
+              "speed_ms": 7.32,
+              "parachute_open": true
+            },
+            {
+              "t": 122.247,
+              "north_m": 23.48,
+              "east_m": 150.5,
+              "altitude_agl_m": 12.59,
+              "speed_ms": 7.47,
+              "parachute_open": true
+            },
+            {
+              "t": 122.547,
+              "north_m": 21.77,
+              "east_m": 149.5,
+              "altitude_agl_m": 11.51,
+              "speed_ms": 7.68,
+              "parachute_open": true
+            },
+            {
+              "t": 122.847,
+              "north_m": 19.99,
+              "east_m": 148.48,
+              "altitude_agl_m": 10.4,
+              "speed_ms": 7.88,
+              "parachute_open": true
+            },
+            {
+              "t": 123.147,
+              "north_m": 18.17,
+              "east_m": 147.45,
+              "altitude_agl_m": 9.27,
+              "speed_ms": 8.0,
+              "parachute_open": true
+            },
+            {
+              "t": 123.447,
+              "north_m": 16.34,
+              "east_m": 146.4,
+              "altitude_agl_m": 8.13,
+              "speed_ms": 8.04,
+              "parachute_open": true
+            },
+            {
+              "t": 123.747,
+              "north_m": 14.53,
+              "east_m": 145.3,
+              "altitude_agl_m": 6.97,
+              "speed_ms": 8.03,
+              "parachute_open": true
+            },
+            {
+              "t": 124.047,
+              "north_m": 12.75,
+              "east_m": 144.17,
+              "altitude_agl_m": 5.8,
+              "speed_ms": 8.0,
+              "parachute_open": true
+            },
+            {
+              "t": 124.347,
+              "north_m": 10.99,
+              "east_m": 143.06,
+              "altitude_agl_m": 4.64,
+              "speed_ms": 7.88,
+              "parachute_open": true
+            },
+            {
+              "t": 124.647,
+              "north_m": 9.26,
+              "east_m": 142.0,
+              "altitude_agl_m": 3.49,
+              "speed_ms": 7.64,
+              "parachute_open": true
+            },
+            {
+              "t": 124.947,
+              "north_m": 7.61,
+              "east_m": 141.01,
+              "altitude_agl_m": 2.34,
+              "speed_ms": 7.25,
+              "parachute_open": true
+            },
+            {
+              "t": 125.247,
+              "north_m": 6.07,
+              "east_m": 140.1,
+              "altitude_agl_m": 1.21,
+              "speed_ms": 6.78,
+              "parachute_open": true
+            },
+            {
+              "t": 125.547,
+              "north_m": 4.68,
+              "east_m": 139.24,
+              "altitude_agl_m": 0.11,
+              "speed_ms": 6.33,
+              "parachute_open": true
+            }
+          ]
+        },
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_28_foot_team",
+            "target_id": 28,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              21.7,
+              145.7,
+              0.0
+            ],
+            "total_distance_m": 146.4,
+            "estimated_transit_time_s": 244.0,
+            "estimated_transit_time_min": 4.1,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 20.0,
+                "east_m": 145.0,
+                "elevation_m": 0.4,
+                "water_depth_m": 5.0,
+                "cumulative_distance_m": 146.4,
+                "eta_s": 244.0,
+                "hazard_warning": "Wading water depth 5.0 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_28_rescue_boat",
+            "target_id": 28,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              21.7,
+              145.7,
+              0.0
+            ],
+            "total_distance_m": 146.4,
+            "estimated_transit_time_s": 32.5,
+            "estimated_transit_time_min": 0.5,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 20.0,
+                "east_m": 145.0,
+                "elevation_m": 0.4,
+                "water_depth_m": 5.0,
+                "cumulative_distance_m": 146.4,
+                "eta_s": 32.5,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 89.4,
+        "updated_at": 179.0,
+        "payload_dropped_at": 113.2,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-028:STA (Triage: delayed)",
+          "Payload first_aid_kit delivered (impact error: 18.4 m, landing vel: 6.3 m/s)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-003",
+        "target_id": 41,
+        "state": "beacon_transmitting",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-041:WAL",
+          "track_id": 41,
+          "confidence": 0.697,
+          "is_human": true,
+          "posture": "walking",
+          "posture_confidence": 0.82,
+          "distress_level": "self_sufficient",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 117.35,
+          "clothing_color_hint": "high_visibility_orange_red",
+          "apparent_temp_c": 32.7,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.0,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "delayed",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 145.6,
+          "east_m": 223.1,
+          "elevation_m": -0.0,
+          "lat": 25.186314,
+          "lon": 75.837913,
+          "identification_notes": [
+            "continuous ground speed 0.6 m/s -> walking",
+            "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": {
+          "drop_id": "drop_153669",
+          "payload_type": "first_aid_kit",
+          "target_id": 41,
+          "target_north_m": 147.4,
+          "target_east_m": 193.65,
+          "release_time": 142.11,
+          "impact_time": 153.67,
+          "release_pos_ned": [
+            212.95,
+            206.3,
+            -45.63
+          ],
+          "impact_pos_ned": [
+            177.21,
+            182.64,
+            -3.95
+          ],
+          "release_north_m": 212.95,
+          "release_east_m": 206.3,
+          "release_altitude_m": 45.63,
+          "impact_north_m": 177.21,
+          "impact_east_m": 182.64,
+          "impact_velocity_ms": 5.51,
+          "miss_distance_m": 31.77,
+          "flight_time_s": 11.56,
+          "fall_time_s": 11.56,
+          "success": false,
+          "trajectory_points": 579,
+          "trajectory": [
+            {
+              "t": 142.109,
+              "north_m": 212.95,
+              "east_m": 206.3,
+              "altitude_agl_m": 37.23,
+              "speed_ms": 10.12,
+              "parachute_open": false
+            },
+            {
+              "t": 142.389,
+              "north_m": 215.56,
+              "east_m": 206.59,
+              "altitude_agl_m": 36.78,
+              "speed_ms": 9.16,
+              "parachute_open": false
+            },
+            {
+              "t": 142.669,
+              "north_m": 216.63,
+              "east_m": 206.5,
+              "altitude_agl_m": 36.05,
+              "speed_ms": 2.9,
+              "parachute_open": true
+            },
+            {
+              "t": 142.949,
+              "north_m": 216.17,
+              "east_m": 206.01,
+              "altitude_agl_m": 35.34,
+              "speed_ms": 4.47,
+              "parachute_open": true
+            },
+            {
+              "t": 143.229,
+              "north_m": 215.35,
+              "east_m": 205.42,
+              "altitude_agl_m": 34.5,
+              "speed_ms": 5.33,
+              "parachute_open": true
+            },
+            {
+              "t": 143.509,
+              "north_m": 214.38,
+              "east_m": 204.8,
+              "altitude_agl_m": 33.6,
+              "speed_ms": 5.61,
+              "parachute_open": true
+            },
+            {
+              "t": 143.789,
+              "north_m": 213.37,
+              "east_m": 204.19,
+              "altitude_agl_m": 32.68,
+              "speed_ms": 5.54,
+              "parachute_open": true
+            },
+            {
+              "t": 144.069,
+              "north_m": 212.41,
+              "east_m": 203.63,
+              "altitude_agl_m": 31.77,
+              "speed_ms": 5.29,
+              "parachute_open": true
+            },
+            {
+              "t": 144.349,
+              "north_m": 211.51,
+              "east_m": 203.13,
+              "altitude_agl_m": 30.87,
+              "speed_ms": 5.05,
+              "parachute_open": true
+            },
+            {
+              "t": 144.629,
+              "north_m": 210.67,
+              "east_m": 202.65,
+              "altitude_agl_m": 29.96,
+              "speed_ms": 4.94,
+              "parachute_open": true
+            },
+            {
+              "t": 144.909,
+              "north_m": 209.84,
+              "east_m": 202.17,
+              "altitude_agl_m": 29.06,
+              "speed_ms": 4.98,
+              "parachute_open": true
+            },
+            {
+              "t": 145.189,
+              "north_m": 208.98,
+              "east_m": 201.67,
+              "altitude_agl_m": 28.15,
+              "speed_ms": 5.11,
+              "parachute_open": true
+            },
+            {
+              "t": 145.469,
+              "north_m": 208.09,
+              "east_m": 201.14,
+              "altitude_agl_m": 27.24,
+              "speed_ms": 5.24,
+              "parachute_open": true
+            },
+            {
+              "t": 145.749,
+              "north_m": 207.18,
+              "east_m": 200.6,
+              "altitude_agl_m": 26.31,
+              "speed_ms": 5.34,
+              "parachute_open": true
+            },
+            {
+              "t": 146.029,
+              "north_m": 206.24,
+              "east_m": 200.06,
+              "altitude_agl_m": 25.36,
+              "speed_ms": 5.44,
+              "parachute_open": true
+            },
+            {
+              "t": 146.309,
+              "north_m": 205.27,
+              "east_m": 199.51,
+              "altitude_agl_m": 24.4,
+              "speed_ms": 5.61,
+              "parachute_open": true
+            },
+            {
+              "t": 146.589,
+              "north_m": 204.24,
+              "east_m": 198.93,
+              "altitude_agl_m": 23.43,
+              "speed_ms": 5.83,
+              "parachute_open": true
+            },
+            {
+              "t": 146.869,
+              "north_m": 203.15,
+              "east_m": 198.31,
+              "altitude_agl_m": 22.47,
+              "speed_ms": 6.01,
+              "parachute_open": true
+            },
+            {
+              "t": 147.149,
+              "north_m": 202.03,
+              "east_m": 197.65,
+              "altitude_agl_m": 21.51,
+              "speed_ms": 6.05,
+              "parachute_open": true
+            },
+            {
+              "t": 147.429,
+              "north_m": 200.92,
+              "east_m": 196.99,
+              "altitude_agl_m": 20.55,
+              "speed_ms": 5.93,
+              "parachute_open": true
+            },
+            {
+              "t": 147.709,
+              "north_m": 199.87,
+              "east_m": 196.35,
+              "altitude_agl_m": 19.61,
+              "speed_ms": 5.73,
+              "parachute_open": true
+            },
+            {
+              "t": 147.989,
+              "north_m": 198.85,
+              "east_m": 195.76,
+              "altitude_agl_m": 18.68,
+              "speed_ms": 5.54,
+              "parachute_open": true
+            },
+            {
+              "t": 148.269,
+              "north_m": 197.87,
+              "east_m": 195.19,
+              "altitude_agl_m": 17.75,
+              "speed_ms": 5.43,
+              "parachute_open": true
+            },
+            {
+              "t": 148.549,
+              "north_m": 196.9,
+              "east_m": 194.63,
+              "altitude_agl_m": 16.85,
+              "speed_ms": 5.38,
+              "parachute_open": true
+            },
+            {
+              "t": 148.829,
+              "north_m": 195.94,
+              "east_m": 194.05,
+              "altitude_agl_m": 15.95,
+              "speed_ms": 5.33,
+              "parachute_open": true
+            },
+            {
+              "t": 149.109,
+              "north_m": 195.02,
+              "east_m": 193.46,
+              "altitude_agl_m": 15.06,
+              "speed_ms": 5.28,
+              "parachute_open": true
+            },
+            {
+              "t": 149.389,
+              "north_m": 194.12,
+              "east_m": 192.87,
+              "altitude_agl_m": 14.17,
+              "speed_ms": 5.27,
+              "parachute_open": true
+            },
+            {
+              "t": 149.669,
+              "north_m": 193.2,
+              "east_m": 192.28,
+              "altitude_agl_m": 13.27,
+              "speed_ms": 5.37,
+              "parachute_open": true
+            },
+            {
+              "t": 149.949,
+              "north_m": 192.23,
+              "east_m": 191.68,
+              "altitude_agl_m": 12.35,
+              "speed_ms": 5.58,
+              "parachute_open": true
+            },
+            {
+              "t": 150.229,
+              "north_m": 191.19,
+              "east_m": 191.05,
+              "altitude_agl_m": 11.42,
+              "speed_ms": 5.86,
+              "parachute_open": true
+            },
+            {
+              "t": 150.509,
+              "north_m": 190.08,
+              "east_m": 190.38,
+              "altitude_agl_m": 10.49,
+              "speed_ms": 6.11,
+              "parachute_open": true
+            },
+            {
+              "t": 150.789,
+              "north_m": 188.93,
+              "east_m": 189.65,
+              "altitude_agl_m": 9.54,
+              "speed_ms": 6.27,
+              "parachute_open": true
+            },
+            {
+              "t": 151.069,
+              "north_m": 187.76,
+              "east_m": 188.88,
+              "altitude_agl_m": 8.59,
+              "speed_ms": 6.35,
+              "parachute_open": true
+            },
+            {
+              "t": 151.349,
+              "north_m": 186.57,
+              "east_m": 188.11,
+              "altitude_agl_m": 7.64,
+              "speed_ms": 6.38,
+              "parachute_open": true
+            },
+            {
+              "t": 151.629,
+              "north_m": 185.37,
+              "east_m": 187.36,
+              "altitude_agl_m": 6.69,
+              "speed_ms": 6.37,
+              "parachute_open": true
+            },
+            {
+              "t": 151.909,
+              "north_m": 184.14,
+              "east_m": 186.65,
+              "altitude_agl_m": 5.74,
+              "speed_ms": 6.32,
+              "parachute_open": true
+            },
+            {
+              "t": 152.189,
+              "north_m": 182.92,
+              "east_m": 185.96,
+              "altitude_agl_m": 4.8,
+              "speed_ms": 6.2,
+              "parachute_open": true
+            },
+            {
+              "t": 152.469,
+              "north_m": 181.75,
+              "east_m": 185.28,
+              "altitude_agl_m": 3.87,
+              "speed_ms": 6.01,
+              "parachute_open": true
+            },
+            {
+              "t": 152.749,
+              "north_m": 180.64,
+              "east_m": 184.6,
+              "altitude_agl_m": 2.96,
+              "speed_ms": 5.8,
+              "parachute_open": true
+            },
+            {
+              "t": 153.029,
+              "north_m": 179.59,
+              "east_m": 183.95,
+              "altitude_agl_m": 2.06,
+              "speed_ms": 5.63,
+              "parachute_open": true
+            },
+            {
+              "t": 153.309,
+              "north_m": 178.55,
+              "east_m": 183.35,
+              "altitude_agl_m": 1.16,
+              "speed_ms": 5.54,
+              "parachute_open": true
+            },
+            {
+              "t": 153.589,
+              "north_m": 177.51,
+              "east_m": 182.8,
+              "altitude_agl_m": 0.25,
+              "speed_ms": 5.51,
+              "parachute_open": true
+            }
+          ]
+        },
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_41_foot_team",
+            "target_id": 41,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              148.3,
+              171.4,
+              0.0
+            ],
+            "total_distance_m": 226.7,
+            "estimated_transit_time_s": 377.9,
+            "estimated_transit_time_min": 6.3,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 150.0,
+                "east_m": 170.0,
+                "elevation_m": 2.3,
+                "water_depth_m": 3.2,
+                "cumulative_distance_m": 226.7,
+                "eta_s": 377.9,
+                "hazard_warning": "Wading water depth 3.2 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_41_rescue_boat",
+            "target_id": 41,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              148.3,
+              171.4,
+              0.0
+            ],
+            "total_distance_m": 226.7,
+            "estimated_transit_time_s": 50.4,
+            "estimated_transit_time_min": 0.8,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 150.0,
+                "east_m": 170.0,
+                "elevation_m": 2.3,
+                "water_depth_m": 3.2,
+                "cumulative_distance_m": 226.7,
+                "eta_s": 50.4,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 104.0,
+        "updated_at": 179.0,
+        "payload_dropped_at": 142.1,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-041:STA (Triage: delayed)",
+          "Payload first_aid_kit delivered (impact error: 31.8 m, landing vel: 5.5 m/s)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-004",
+        "target_id": 42,
+        "state": "human_identified",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-042:STA",
+          "track_id": 42,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "passive_immobile",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 117.35,
+          "clothing_color_hint": "high_visibility_orange_red",
+          "apparent_temp_c": 30.0,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.15,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "delayed",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 143.4,
+          "east_m": 180.3,
+          "elevation_m": -0.0,
+          "lat": 25.186295,
+          "lon": 75.837488,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing",
+            "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": null,
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_42_foot_team",
+            "target_id": 42,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              143.4,
+              180.3,
+              0.0
+            ],
+            "total_distance_m": 231.1,
+            "estimated_transit_time_s": 385.2,
+            "estimated_transit_time_min": 6.4,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 145.0,
+                "east_m": 180.0,
+                "elevation_m": 3.8,
+                "water_depth_m": 3.14,
+                "cumulative_distance_m": 231.1,
+                "eta_s": 385.2,
+                "hazard_warning": "Wading water depth 3.1 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_42_rescue_boat",
+            "target_id": 42,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              143.4,
+              180.3,
+              0.0
+            ],
+            "total_distance_m": 231.1,
+            "estimated_transit_time_s": 51.4,
+            "estimated_transit_time_min": 0.9,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 145.0,
+                "east_m": 180.0,
+                "elevation_m": 3.8,
+                "water_depth_m": 3.14,
+                "cumulative_distance_m": 231.1,
+                "eta_s": 51.4,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 104.0,
+        "updated_at": 116.6,
+        "payload_dropped_at": null,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-042:STA (Triage: delayed)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-005",
+        "target_id": 43,
+        "state": "human_identified",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-043:STA",
+          "track_id": 43,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "passive_immobile",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "group_cluster",
+          "group_size": 2,
+          "clothing_saliency": 0.0,
+          "clothing_color_hint": "unknown/unobserved",
+          "apparent_temp_c": 32.9,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.15,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "delayed",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 9.4,
+          "east_m": 130.2,
+          "elevation_m": -0.0,
+          "lat": 25.185085,
+          "lon": 75.836991,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing",
+            "projected area 1.31 m^2 indicates group of ~2 people"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": null,
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_43_foot_team",
+            "target_id": 43,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              9.4,
+              130.2,
+              0.0
+            ],
+            "total_distance_m": 130.4,
+            "estimated_transit_time_s": 217.3,
+            "estimated_transit_time_min": 3.6,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 10.0,
+                "east_m": 130.0,
+                "elevation_m": 1.1,
+                "water_depth_m": 4.34,
+                "cumulative_distance_m": 130.4,
+                "eta_s": 217.3,
+                "hazard_warning": "Wading water depth 4.3 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_43_rescue_boat",
+            "target_id": 43,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              9.4,
+              130.2,
+              0.0
+            ],
+            "total_distance_m": 130.4,
+            "estimated_transit_time_s": 29.0,
+            "estimated_transit_time_min": 0.5,
+            "safety_score": 1.0,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 10.0,
+                "east_m": 130.0,
+                "elevation_m": 1.1,
+                "water_depth_m": 4.34,
+                "cumulative_distance_m": 130.4,
+                "eta_s": 29.0,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 116.6,
+        "updated_at": 179.0,
+        "payload_dropped_at": null,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-043:STA (Triage: delayed)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-006",
+        "target_id": 52,
+        "state": "payload_delivered",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-052:STA",
+          "track_id": 52,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "moderate_distress",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 115.34,
+          "clothing_color_hint": "high_visibility_orange_red",
+          "apparent_temp_c": 31.5,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.0,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "minor",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 227.6,
+          "east_m": 189.3,
+          "elevation_m": -0.0,
+          "lat": 25.187055,
+          "lon": 75.837578,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing",
+            "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": {
+          "drop_id": "drop_186061",
+          "payload_type": "first_aid_kit",
+          "target_id": 52,
+          "target_north_m": 226.38,
+          "target_east_m": 187.88,
+          "release_time": 174.64,
+          "impact_time": 186.06,
+          "release_pos_ned": [
+            281.06,
+            218.4,
+            -45.63
+          ],
+          "impact_pos_ned": [
+            231.69,
+            189.58,
+            -4.67
+          ],
+          "release_north_m": 281.06,
+          "release_east_m": 218.4,
+          "release_altitude_m": 45.63,
+          "impact_north_m": 231.69,
+          "impact_east_m": 189.58,
+          "impact_velocity_ms": 6.76,
+          "miss_distance_m": 5.57,
+          "flight_time_s": 11.42,
+          "fall_time_s": 11.42,
+          "success": true,
+          "trajectory_points": 572,
+          "trajectory": [
+            {
+              "t": 174.641,
+              "north_m": 281.06,
+              "east_m": 218.4,
+              "altitude_agl_m": 35.27,
+              "speed_ms": 9.11,
+              "parachute_open": false
+            },
+            {
+              "t": 174.921,
+              "north_m": 283.2,
+              "east_m": 219.37,
+              "altitude_agl_m": 34.68,
+              "speed_ms": 8.2,
+              "parachute_open": false
+            },
+            {
+              "t": 175.201,
+              "north_m": 283.91,
+              "east_m": 219.6,
+              "altitude_agl_m": 33.9,
+              "speed_ms": 2.87,
+              "parachute_open": true
+            },
+            {
+              "t": 175.481,
+              "north_m": 283.19,
+              "east_m": 219.1,
+              "altitude_agl_m": 33.27,
+              "speed_ms": 4.91,
+              "parachute_open": true
+            },
+            {
+              "t": 175.761,
+              "north_m": 282.13,
+              "east_m": 218.43,
+              "altitude_agl_m": 32.52,
+              "speed_ms": 5.88,
+              "parachute_open": true
+            },
+            {
+              "t": 176.041,
+              "north_m": 280.92,
+              "east_m": 217.7,
+              "altitude_agl_m": 31.7,
+              "speed_ms": 6.28,
+              "parachute_open": true
+            },
+            {
+              "t": 176.321,
+              "north_m": 279.65,
+              "east_m": 216.95,
+              "altitude_agl_m": 30.85,
+              "speed_ms": 6.44,
+              "parachute_open": true
+            },
+            {
+              "t": 176.601,
+              "north_m": 278.35,
+              "east_m": 216.2,
+              "altitude_agl_m": 29.97,
+              "speed_ms": 6.6,
+              "parachute_open": true
+            },
+            {
+              "t": 176.881,
+              "north_m": 277.0,
+              "east_m": 215.41,
+              "altitude_agl_m": 29.09,
+              "speed_ms": 6.82,
+              "parachute_open": true
+            },
+            {
+              "t": 177.161,
+              "north_m": 275.6,
+              "east_m": 214.59,
+              "altitude_agl_m": 28.2,
+              "speed_ms": 7.05,
+              "parachute_open": true
+            },
+            {
+              "t": 177.441,
+              "north_m": 274.15,
+              "east_m": 213.73,
+              "altitude_agl_m": 27.3,
+              "speed_ms": 7.18,
+              "parachute_open": true
+            },
+            {
+              "t": 177.721,
+              "north_m": 272.7,
+              "east_m": 212.87,
+              "altitude_agl_m": 26.4,
+              "speed_ms": 7.15,
+              "parachute_open": true
+            },
+            {
+              "t": 178.001,
+              "north_m": 271.28,
+              "east_m": 212.02,
+              "altitude_agl_m": 25.49,
+              "speed_ms": 7.01,
+              "parachute_open": true
+            },
+            {
+              "t": 178.281,
+              "north_m": 269.9,
+              "east_m": 211.21,
+              "altitude_agl_m": 24.58,
+              "speed_ms": 6.83,
+              "parachute_open": true
+            },
+            {
+              "t": 178.561,
+              "north_m": 268.54,
+              "east_m": 210.43,
+              "altitude_agl_m": 23.67,
+              "speed_ms": 6.71,
+              "parachute_open": true
+            },
+            {
+              "t": 178.841,
+              "north_m": 267.21,
+              "east_m": 209.67,
+              "altitude_agl_m": 22.78,
+              "speed_ms": 6.62,
+              "parachute_open": true
+            },
+            {
+              "t": 179.121,
+              "north_m": 265.9,
+              "east_m": 208.91,
+              "altitude_agl_m": 21.9,
+              "speed_ms": 6.49,
+              "parachute_open": true
+            },
+            {
+              "t": 179.401,
+              "north_m": 264.64,
+              "east_m": 208.17,
+              "altitude_agl_m": 21.03,
+              "speed_ms": 6.29,
+              "parachute_open": true
+            },
+            {
+              "t": 179.681,
+              "north_m": 263.44,
+              "east_m": 207.45,
+              "altitude_agl_m": 20.17,
+              "speed_ms": 6.07,
+              "parachute_open": true
+            },
+            {
+              "t": 179.961,
+              "north_m": 262.28,
+              "east_m": 206.77,
+              "altitude_agl_m": 19.32,
+              "speed_ms": 5.93,
+              "parachute_open": true
+            },
+            {
+              "t": 180.241,
+              "north_m": 261.13,
+              "east_m": 206.12,
+              "altitude_agl_m": 18.45,
+              "speed_ms": 5.95,
+              "parachute_open": true
+            },
+            {
+              "t": 180.521,
+              "north_m": 259.93,
+              "east_m": 205.47,
+              "altitude_agl_m": 17.57,
+              "speed_ms": 6.12,
+              "parachute_open": true
+            },
+            {
+              "t": 180.801,
+              "north_m": 258.67,
+              "east_m": 204.8,
+              "altitude_agl_m": 16.69,
+              "speed_ms": 6.36,
+              "parachute_open": true
+            },
+            {
+              "t": 181.081,
+              "north_m": 257.36,
+              "east_m": 204.08,
+              "altitude_agl_m": 15.81,
+              "speed_ms": 6.61,
+              "parachute_open": true
+            },
+            {
+              "t": 181.361,
+              "north_m": 256.0,
+              "east_m": 203.31,
+              "altitude_agl_m": 14.91,
+              "speed_ms": 6.81,
+              "parachute_open": true
+            },
+            {
+              "t": 181.641,
+              "north_m": 254.59,
+              "east_m": 202.51,
+              "altitude_agl_m": 14.01,
+              "speed_ms": 7.01,
+              "parachute_open": true
+            },
+            {
+              "t": 181.921,
+              "north_m": 253.11,
+              "east_m": 201.7,
+              "altitude_agl_m": 13.09,
+              "speed_ms": 7.22,
+              "parachute_open": true
+            },
+            {
+              "t": 182.201,
+              "north_m": 251.57,
+              "east_m": 200.89,
+              "altitude_agl_m": 12.16,
+              "speed_ms": 7.44,
+              "parachute_open": true
+            },
+            {
+              "t": 182.481,
+              "north_m": 249.96,
+              "east_m": 200.07,
+              "altitude_agl_m": 11.23,
+              "speed_ms": 7.59,
+              "parachute_open": true
+            },
+            {
+              "t": 182.761,
+              "north_m": 248.33,
+              "east_m": 199.21,
+              "altitude_agl_m": 10.31,
+              "speed_ms": 7.63,
+              "parachute_open": true
+            },
+            {
+              "t": 183.041,
+              "north_m": 246.73,
+              "east_m": 198.33,
+              "altitude_agl_m": 9.4,
+              "speed_ms": 7.53,
+              "parachute_open": true
+            },
+            {
+              "t": 183.321,
+              "north_m": 245.17,
+              "east_m": 197.45,
+              "altitude_agl_m": 8.51,
+              "speed_ms": 7.36,
+              "parachute_open": true
+            },
+            {
+              "t": 183.601,
+              "north_m": 243.66,
+              "east_m": 196.58,
+              "altitude_agl_m": 7.62,
+              "speed_ms": 7.17,
+              "parachute_open": true
+            },
+            {
+              "t": 183.881,
+              "north_m": 242.18,
+              "east_m": 195.76,
+              "altitude_agl_m": 6.74,
+              "speed_ms": 7.01,
+              "parachute_open": true
+            },
+            {
+              "t": 184.161,
+              "north_m": 240.73,
+              "east_m": 194.97,
+              "altitude_agl_m": 5.87,
+              "speed_ms": 6.85,
+              "parachute_open": true
+            },
+            {
+              "t": 184.441,
+              "north_m": 239.31,
+              "east_m": 194.21,
+              "altitude_agl_m": 5.0,
+              "speed_ms": 6.7,
+              "parachute_open": true
+            },
+            {
+              "t": 184.721,
+              "north_m": 237.96,
+              "east_m": 193.43,
+              "altitude_agl_m": 4.14,
+              "speed_ms": 6.56,
+              "parachute_open": true
+            },
+            {
+              "t": 185.001,
+              "north_m": 236.65,
+              "east_m": 192.64,
+              "altitude_agl_m": 3.28,
+              "speed_ms": 6.5,
+              "parachute_open": true
+            },
+            {
+              "t": 185.281,
+              "north_m": 235.37,
+              "east_m": 191.82,
+              "altitude_agl_m": 2.42,
+              "speed_ms": 6.52,
+              "parachute_open": true
+            },
+            {
+              "t": 185.561,
+              "north_m": 234.08,
+              "east_m": 191.01,
+              "altitude_agl_m": 1.54,
+              "speed_ms": 6.61,
+              "parachute_open": true
+            },
+            {
+              "t": 185.841,
+              "north_m": 232.75,
+              "east_m": 190.21,
+              "altitude_agl_m": 0.65,
+              "speed_ms": 6.71,
+              "parachute_open": true
+            }
+          ]
+        },
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_52_foot_team",
+            "target_id": 52,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              222.1,
+              183.1,
+              0.0
+            ],
+            "total_distance_m": 287.4,
+            "estimated_transit_time_s": 479.1,
+            "estimated_transit_time_min": 8.0,
+            "safety_score": 0.62,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 220.0,
+                "east_m": 185.0,
+                "elevation_m": 4.0,
+                "water_depth_m": 3.17,
+                "cumulative_distance_m": 287.4,
+                "eta_s": 479.1,
+                "hazard_warning": "Wading water depth 3.2 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_52_rescue_boat",
+            "target_id": 52,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              222.1,
+              183.1,
+              0.0
+            ],
+            "total_distance_m": 287.4,
+            "estimated_transit_time_s": 63.9,
+            "estimated_transit_time_min": 1.1,
+            "safety_score": 0.62,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 220.0,
+                "east_m": 185.0,
+                "elevation_m": 4.0,
+                "water_depth_m": 3.17,
+                "cumulative_distance_m": 287.4,
+                "eta_s": 63.9,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 152.2,
+        "updated_at": 179.0,
+        "payload_dropped_at": 174.6,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-052:STA (Triage: delayed)",
+          "Payload first_aid_kit delivered (impact error: 5.6 m, landing vel: 6.8 m/s)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-007",
+        "target_id": 54,
+        "state": "human_identified",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-054:STA",
+          "track_id": 54,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "passive_immobile",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 110.95,
+          "clothing_color_hint": "high_visibility_orange_red",
+          "apparent_temp_c": 31.6,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.15,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "delayed",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 174.3,
+          "east_m": 141.0,
+          "elevation_m": -0.0,
+          "lat": 25.186574,
+          "lon": 75.837098,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing",
+            "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": null,
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_54_foot_team",
+            "target_id": 54,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              174.3,
+              141.0,
+              0.0
+            ],
+            "total_distance_m": 224.1,
+            "estimated_transit_time_s": 373.5,
+            "estimated_transit_time_min": 6.2,
+            "safety_score": 0.55,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 175.0,
+                "east_m": 140.0,
+                "elevation_m": 0.5,
+                "water_depth_m": 4.91,
+                "cumulative_distance_m": 224.1,
+                "eta_s": 373.5,
+                "hazard_warning": "Wading water depth 4.9 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_54_rescue_boat",
+            "target_id": 54,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              174.3,
+              141.0,
+              0.0
+            ],
+            "total_distance_m": 224.1,
+            "estimated_transit_time_s": 49.8,
+            "estimated_transit_time_min": 0.8,
+            "safety_score": 0.55,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 175.0,
+                "east_m": 140.0,
+                "elevation_m": 0.5,
+                "water_depth_m": 4.91,
+                "cumulative_distance_m": 224.1,
+                "eta_s": 49.8,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 160.2,
+        "updated_at": 179.0,
+        "payload_dropped_at": null,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-054:STA (Triage: delayed)"
+        ]
+      },
+      {
+        "op_id": "SAR-OP-008",
+        "target_id": 58,
+        "state": "human_identified",
+        "assigned_payload": "first_aid_kit",
+        "profile": {
+          "id_tag": "H-058:STA",
+          "track_id": 58,
+          "confidence": 1.0,
+          "is_human": true,
+          "posture": "standing",
+          "posture_confidence": 0.78,
+          "distress_level": "passive_immobile",
+          "sos_waving_detected": false,
+          "waving_frequency_hz": 0.0,
+          "demographic": "adult",
+          "group_size": 1,
+          "clothing_saliency": 0.0,
+          "clothing_color_hint": "unknown/unobserved",
+          "apparent_temp_c": 31.5,
+          "estimated_core_temp_c": 36.8,
+          "hypothermia_risk": 0.15,
+          "heat_stress_risk": 0.0,
+          "triage_priority": "delayed",
+          "recommended_equipment": "first_aid_kit",
+          "time_critical_s": null,
+          "north_m": 227.9,
+          "east_m": 193.4,
+          "elevation_m": -0.0,
+          "lat": 25.187058,
+          "lon": 75.837619,
+          "identification_notes": [
+            "nominal vertical human footprint -> standing"
+          ],
+          "decoy_rejection_notes": []
+        },
+        "drop_result": null,
+        "ground_routes": {
+          "foot_team": {
+            "route_id": "route_58_foot_team",
+            "target_id": 58,
+            "team_type": "foot_team",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              227.9,
+              193.4,
+              0.0
+            ],
+            "total_distance_m": 301.5,
+            "estimated_transit_time_s": 502.6,
+            "estimated_transit_time_min": 8.4,
+            "safety_score": 0.52,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 230.0,
+                "east_m": 195.0,
+                "elevation_m": 5.8,
+                "water_depth_m": 3.09,
+                "cumulative_distance_m": 301.5,
+                "eta_s": 502.6,
+                "hazard_warning": "Wading water depth 3.1 m"
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for SAR Foot Response Team"
+            ]
+          },
+          "rescue_boat": {
+            "route_id": "route_58_rescue_boat",
+            "target_id": 58,
+            "team_type": "rescue_boat",
+            "start_ned": [
+              0.0,
+              0.0,
+              0.0
+            ],
+            "target_ned": [
+              227.9,
+              193.4,
+              0.0
+            ],
+            "total_distance_m": 301.5,
+            "estimated_transit_time_s": 67.0,
+            "estimated_transit_time_min": 1.1,
+            "safety_score": 0.52,
+            "is_feasible": false,
+            "waypoints_count": 2,
+            "waypoints": [
+              {
+                "north_m": 0.0,
+                "east_m": 0.0,
+                "elevation_m": 24.8,
+                "water_depth_m": 0.0,
+                "cumulative_distance_m": 0.0,
+                "eta_s": 0.0,
+                "hazard_warning": null
+              },
+              {
+                "north_m": 230.0,
+                "east_m": 195.0,
+                "elevation_m": 5.8,
+                "water_depth_m": 3.09,
+                "cumulative_distance_m": 301.5,
+                "eta_s": 67.0,
+                "hazard_warning": null
+              }
+            ],
+            "warnings": [
+              "Direct corridor planned: obstacles or deep water detected for Amphibious Rescue Zodiac"
+            ]
+          }
+        },
+        "active_team": "rescue_boat",
+        "created_at": 164.3,
+        "updated_at": 164.3,
+        "payload_dropped_at": null,
+        "rescue_completed_at": null,
+        "notes": [
+          "Operation initialized for H-058:STA (Triage: delayed)"
+        ]
+      }
+    ]
   },
-  "human_identifications": [],
-  "survivors_reported": [],
+  "human_identifications": [
+    {
+      "id_tag": "H-025:STA",
+      "track_id": 25,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "moderate_distress",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 119.74,
+      "clothing_color_hint": "high_visibility_orange_red",
+      "apparent_temp_c": 32.9,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.0,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "minor",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 45.4,
+      "east_m": 131.0,
+      "elevation_m": -0.0,
+      "lat": 25.18541,
+      "lon": 75.836999,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing",
+        "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-028:STA",
+      "track_id": 28,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "passive_immobile",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 0.0,
+      "clothing_color_hint": "unknown/unobserved",
+      "apparent_temp_c": 32.9,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.15,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "delayed",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 21.7,
+      "east_m": 145.7,
+      "elevation_m": -0.0,
+      "lat": 25.185196,
+      "lon": 75.837145,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-041:WAL",
+      "track_id": 41,
+      "confidence": 0.697,
+      "is_human": true,
+      "posture": "walking",
+      "posture_confidence": 0.82,
+      "distress_level": "self_sufficient",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 117.35,
+      "clothing_color_hint": "high_visibility_orange_red",
+      "apparent_temp_c": 32.7,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.0,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "delayed",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 145.6,
+      "east_m": 223.1,
+      "elevation_m": -0.0,
+      "lat": 25.186314,
+      "lon": 75.837913,
+      "identification_notes": [
+        "continuous ground speed 0.6 m/s -> walking",
+        "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-042:STA",
+      "track_id": 42,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "passive_immobile",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 117.35,
+      "clothing_color_hint": "high_visibility_orange_red",
+      "apparent_temp_c": 30.0,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.15,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "delayed",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 143.4,
+      "east_m": 180.3,
+      "elevation_m": -0.0,
+      "lat": 25.186295,
+      "lon": 75.837488,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing",
+        "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-043:STA",
+      "track_id": 43,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "passive_immobile",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "group_cluster",
+      "group_size": 2,
+      "clothing_saliency": 0.0,
+      "clothing_color_hint": "unknown/unobserved",
+      "apparent_temp_c": 32.9,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.15,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "delayed",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 9.4,
+      "east_m": 130.2,
+      "elevation_m": -0.0,
+      "lat": 25.185085,
+      "lon": 75.836991,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing",
+        "projected area 1.31 m^2 indicates group of ~2 people"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-052:STA",
+      "track_id": 52,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "moderate_distress",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 115.34,
+      "clothing_color_hint": "high_visibility_orange_red",
+      "apparent_temp_c": 31.5,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.0,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "minor",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 227.6,
+      "east_m": 189.3,
+      "elevation_m": -0.0,
+      "lat": 25.187055,
+      "lon": 75.837578,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing",
+        "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-054:STA",
+      "track_id": 54,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "passive_immobile",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 110.95,
+      "clothing_color_hint": "high_visibility_orange_red",
+      "apparent_temp_c": 31.6,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.15,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "delayed",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 174.3,
+      "east_m": 141.0,
+      "elevation_m": -0.0,
+      "lat": 25.186574,
+      "lon": 75.837098,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing",
+        "high-visibility chromatic clothing detected (high_visibility_orange_red)"
+      ],
+      "decoy_rejection_notes": []
+    },
+    {
+      "id_tag": "H-058:STA",
+      "track_id": 58,
+      "confidence": 1.0,
+      "is_human": true,
+      "posture": "standing",
+      "posture_confidence": 0.78,
+      "distress_level": "passive_immobile",
+      "sos_waving_detected": false,
+      "waving_frequency_hz": 0.0,
+      "demographic": "adult",
+      "group_size": 1,
+      "clothing_saliency": 0.0,
+      "clothing_color_hint": "unknown/unobserved",
+      "apparent_temp_c": 31.5,
+      "estimated_core_temp_c": 36.8,
+      "hypothermia_risk": 0.15,
+      "heat_stress_risk": 0.0,
+      "triage_priority": "delayed",
+      "recommended_equipment": "first_aid_kit",
+      "time_critical_s": null,
+      "north_m": 227.9,
+      "east_m": 193.4,
+      "elevation_m": -0.0,
+      "lat": 25.187058,
+      "lon": 75.837619,
+      "identification_notes": [
+        "nominal vertical human footprint -> standing"
+      ],
+      "decoy_rejection_notes": []
+    }
+  ],
+  "survivors_reported": [
+    {
+      "la": 25.18541,
+      "lo": 75.837,
+      "sg": 25.0,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "F",
+      "cf": 1.0,
+      "no": 3,
+      "tm": 116.6,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        "fire"
+      ],
+      "_key": "p1",
+      "_kind": "survivor_update",
+      "_rev": 41,
+      "_tier": "life_safety",
+      "_rx_t": 1789231526.5624738,
+      "_first_rx_t": 1789231434.7923517,
+      "_n_updates": 37
+    },
+    {
+      "la": 25.18509,
+      "lo": 75.83699,
+      "sg": 8.7,
+      "pr": "D",
+      "gs": 2,
+      "tc": null,
+      "xm": 0,
+      "nb": "F",
+      "cf": 1.0,
+      "no": 1,
+      "tm": 116.6,
+      "vi": null,
+      "lz": [
+        8.0
+      ],
+      "hz": [
+        "flood_water"
+      ],
+      "_key": "p2",
+      "_kind": "survivor_update",
+      "_rev": 16,
+      "_tier": "life_safety",
+      "_rx_t": 1789231502.3931527,
+      "_first_rx_t": 1789231436.7706637,
+      "_n_updates": 16
+    },
+    {
+      "la": 25.18632,
+      "lo": 75.83781,
+      "sg": 25.0,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "F",
+      "cf": 0.7,
+      "no": 11,
+      "tm": 134.5,
+      "vi": null,
+      "lz": [
+        128.0
+      ],
+      "hz": [
+        "flood_water"
+      ],
+      "_key": "p3",
+      "_kind": "survivor_update",
+      "_rev": 20,
+      "_tier": "life_safety",
+      "_rx_t": 1789231515.0280855,
+      "_first_rx_t": 1789231453.8972042,
+      "_n_updates": 20
+    },
+    {
+      "la": 25.18509,
+      "lo": 75.83699,
+      "sg": 5.8,
+      "pr": "D",
+      "gs": 2,
+      "tc": null,
+      "xm": 0,
+      "nb": "F",
+      "cf": 1.0,
+      "no": 1,
+      "tm": 116.6,
+      "vi": null,
+      "lz": [
+        8.0
+      ],
+      "hz": [
+        "flood_water"
+      ],
+      "_key": "p4",
+      "_kind": "survivor_update",
+      "_rev": 12,
+      "_tier": "life_safety",
+      "_rx_t": 1789231491.5218363,
+      "_first_rx_t": 1789231465.0107656,
+      "_n_updates": 12
+    },
+    {
+      "la": 25.18633,
+      "lo": 75.83765,
+      "sg": 6.7,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "F",
+      "cf": 0.7,
+      "no": 11,
+      "tm": 134.5,
+      "vi": null,
+      "lz": [
+        148.0
+      ],
+      "hz": [
+        "fire"
+      ],
+      "_key": "p5",
+      "_kind": "survivor_update",
+      "_rev": 5,
+      "_tier": "life_safety",
+      "_rx_t": 1789231491.5218642,
+      "_first_rx_t": 1789231480.123675,
+      "_n_updates": 5
+    },
+    {
+      "la": 25.18705,
+      "lo": 75.83758,
+      "sg": 13.5,
+      "pr": "M",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "F",
+      "cf": 1.0,
+      "no": 3,
+      "tm": 164.3,
+      "vi": null,
+      "lz": [],
+      "hz": [
+        "fire"
+      ],
+      "_key": "p6",
+      "_kind": "survivor_update",
+      "_rev": 10,
+      "_tier": "life_safety",
+      "_rx_t": 1789231526.5663302,
+      "_first_rx_t": 1789231502.3931575,
+      "_n_updates": 10
+    },
+    {
+      "la": 25.18657,
+      "lo": 75.8371,
+      "sg": 4.6,
+      "pr": "D",
+      "gs": 1,
+      "tc": null,
+      "xm": 1,
+      "nb": "F",
+      "cf": 1.0,
+      "no": 2,
+      "tm": 160.2,
+      "vi": null,
+      "lz": [
+        156.0
+      ],
+      "hz": [
+        "fire"
+      ],
+      "_key": "p7",
+      "_kind": "survivor_update",
+      "_rev": 8,
+      "_tier": "life_safety",
+      "_rx_t": 1789231526.5624967,
+      "_first_rx_t": 1789231509.4421244,
+      "_n_updates": 8
+    }
+  ],
   "hazards_reported": [],
   "truth": {
     "n_victims": 5,
@@ -573,38 +3933,45 @@
   },
   "scoring": {
     "n_truth": 5,
-    "n_reported": 0,
-    "n_matched": 0,
-    "false_positives": 0,
-    "recall": 0.0,
-    "precision": null,
-    "mean_position_error_m": null,
-    "max_position_error_m": null,
-    "sigma_contains_truth_pct": null,
-    "matched": [],
-    "missed": [
+    "n_reported": 7,
+    "n_matched": 4,
+    "false_positives": 3,
+    "recall": 0.8,
+    "precision": 0.5714,
+    "mean_position_error_m": 16.32,
+    "max_position_error_m": 31.5,
+    "sigma_contains_truth_pct": 100.0,
+    "matched": [
       {
-        "vid": "V00",
-        "north_m": 223.12784995819837,
-        "east_m": 187.46370924095885,
-        "alive": true,
-        "category": "road",
-        "in_water": false,
-        "on_rooftop": false,
-        "needs": "medical",
-        "group": "G0"
+        "vid": "V04",
+        "distance_m": 31.5,
+        "reported_sigma_m": 25.0,
+        "category": "rooftop",
+        "priority": "M"
       },
       {
         "vid": "V01",
-        "north_m": 145.01915095798086,
-        "east_m": 189.38275824714015,
-        "alive": true,
+        "distance_m": 23.3,
+        "reported_sigma_m": 25.0,
         "category": "road",
-        "in_water": false,
-        "on_rooftop": false,
-        "needs": "medical",
-        "group": "G0"
+        "priority": "D"
       },
+      {
+        "vid": "V00",
+        "distance_m": 4.5,
+        "reported_sigma_m": 13.5,
+        "category": "road",
+        "priority": "M"
+      },
+      {
+        "vid": "V03",
+        "distance_m": 6.0,
+        "reported_sigma_m": 4.6,
+        "category": "rooftop",
+        "priority": "D"
+      }
+    ],
+    "missed": [
       {
         "vid": "V02",
         "north_m": 220.96885872422087,
@@ -615,38 +3982,153 @@
         "on_rooftop": false,
         "needs": "flotation",
         "group": "G0"
-      },
-      {
-        "vid": "V03",
-        "north_m": 177.94984945328946,
-        "east_m": 136.6902806602219,
-        "alive": true,
-        "category": "rooftop",
-        "in_water": false,
-        "on_rooftop": true,
-        "needs": "evacuation",
-        "group": "G1"
-      },
-      {
-        "vid": "V04",
-        "north_m": 49.15908840637555,
-        "east_m": 162.33740538136325,
-        "alive": true,
-        "category": "rooftop",
-        "in_water": false,
-        "on_rooftop": true,
-        "needs": "evacuation",
-        "group": "G1"
       }
     ]
   },
   "timeline": [
     {
-      "t": 12.8,
+      "t": 12.9,
       "event": "survey_altitude_reached",
-      "alt_agl_m": 43.3
+      "alt_agl_m": 43.2
+    },
+    {
+      "t": 51.9,
+      "event": "hazard_reported",
+      "key": "hazard:flood_water",
+      "hazard_class": "flood_water"
+    },
+    {
+      "t": 51.9,
+      "event": "hazard_reported",
+      "key": "hazard:debris_field",
+      "hazard_class": "debris_field"
+    },
+    {
+      "t": 67.1,
+      "event": "hazard_reported",
+      "key": "hazard:fire",
+      "hazard_class": "fire"
+    },
+    {
+      "t": 87.3,
+      "event": "survivor_reported",
+      "track_id": 25,
+      "lat": 25.18536,
+      "lon": 75.837286,
+      "sigma_m": 1.34,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.93
+    },
+    {
+      "t": 89.4,
+      "event": "survivor_reported",
+      "track_id": 28,
+      "lat": 25.185196,
+      "lon": 75.837145,
+      "sigma_m": 1.31,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.95
+    },
+    {
+      "t": 91.3,
+      "event": "hazard_reported",
+      "key": "hazard:exposed_powerline",
+      "hazard_class": "exposed_powerline"
+    },
+    {
+      "t": 99.2,
+      "event": "payload_dropped",
+      "target_id": 25,
+      "payload_type": "first_aid_kit",
+      "miss_distance_m": 12.8,
+      "release_north_m": 94.4,
+      "release_east_m": 191.8
+    },
+    {
+      "t": 104.0,
+      "event": "survivor_reported",
+      "track_id": 41,
+      "lat": 25.186339,
+      "lon": 75.8374,
+      "sigma_m": 1.39,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.93
+    },
+    {
+      "t": 113.2,
+      "event": "payload_dropped",
+      "target_id": 28,
+      "payload_type": "first_aid_kit",
+      "miss_distance_m": 18.4,
+      "release_north_m": 76.1,
+      "release_east_m": 177.3
+    },
+    {
+      "t": 116.6,
+      "event": "survivor_reported",
+      "track_id": 43,
+      "lat": 25.185085,
+      "lon": 75.836991,
+      "sigma_m": 1.71,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.9
+    },
+    {
+      "t": 132.8,
+      "event": "survivor_reported",
+      "track_id": 41,
+      "lat": 25.186338,
+      "lon": 75.837575,
+      "sigma_m": 1.22,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.93
+    },
+    {
+      "t": 142.1,
+      "event": "payload_dropped",
+      "target_id": 41,
+      "payload_type": "first_aid_kit",
+      "miss_distance_m": 31.8,
+      "release_north_m": 213.0,
+      "release_east_m": 206.3
+    },
+    {
+      "t": 152.2,
+      "event": "survivor_reported",
+      "track_id": 52,
+      "lat": 25.187005,
+      "lon": 75.837516,
+      "sigma_m": 1.33,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.96
+    },
+    {
+      "t": 160.2,
+      "event": "survivor_reported",
+      "track_id": 54,
+      "lat": 25.186574,
+      "lon": 75.837098,
+      "sigma_m": 1.46,
+      "priority": "delayed",
+      "nav_source": "gnss",
+      "nav_sigma_m": 0.93
+    },
+    {
+      "t": 174.6,
+      "event": "payload_dropped",
+      "target_id": 52,
+      "payload_type": "first_aid_kit",
+      "miss_distance_m": 5.6,
+      "release_north_m": 281.1,
+      "release_east_m": 218.4
     }
   ],
   "faults": [],
-  "duration_s": 20.17
+  "duration_s": 180.89
 }

@@ -18,6 +18,9 @@ mapping, risks, and the definition of done. This file is the orientation.
 | **[`docs/HOWTO_RUN.md`](docs/HOWTO_RUN.md)** | Every command, what it does and **why** — including the `No module named 'sar'` fix |
 | **[`STATUS.md`](STATUS.md)** | What is done, what is not, and what would close each gap |
 | **[`docs/06_AI_MODELS_AND_DATASETS.md`](docs/06_AI_MODELS_AND_DATASETS.md)** | Which model flies, why that one, how it is trained and quantised onto the DSP |
+| **[`docs/12_MODEL_TRAINING_RESULTS.md`](docs/12_MODEL_TRAINING_RESULTS.md)** | Measured training results: trained sim weights, held-out metrics, end-to-end detection, and the GPU/Colab path |
+| **[`docs/colab/SAHYOG_SAR_training_GPU_QNN.ipynb`](docs/colab/SAHYOG_SAR_training_GPU_QNN.ipynb)** | Ready-to-run Colab/Jupyter notebook for the full-scale GPU fine-tune + QNN/TFLite export |
+| **[`docs/KAGGLE_RUNBOOK.md`](docs/KAGGLE_RUNBOOK.md)** | Run the whole project — including the GPU fine-tune — on Kaggle's free P100/T4 |
 | **[`docs/HARDWARE_BRINGUP.md`](docs/HARDWARE_BRINGUP.md)** · [`FIELD_TEST_CHECKLIST`](docs/FIELD_TEST_CHECKLIST.md) · [`DEPLOYMENT_RUNBOOK`](docs/DEPLOYMENT_RUNBOOK.md) | From a box of parts to a flown sortie |
 
 ---
@@ -58,7 +61,13 @@ python3 scripts/eval_detector.py --mode both
 # The flight code path, on a laptop, with no hardware attached
 python3 scripts/run_onboard.py --dry-run --duration 60
 
-python3 -m pytest tests/ -q       # 113 tests
+# Offline replay of any recorded sortie (survivors, hazards, drops, routes)
+python3 scripts/serve_replay.py --artifact artifacts/rescue_mission_flood.json --port 8090
+
+# The SIH 2026 pitch deck (docs/SIH2026_SAHYOG_Presentation.pptx)
+python3 scripts/make_pitch_ppt.py
+
+python3 -m pytest tests/ -q       # 136 tests
 ```
 
 > **Got `ModuleNotFoundError: No module named 'sar'`?** You ran a script from

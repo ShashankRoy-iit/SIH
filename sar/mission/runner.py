@@ -61,6 +61,7 @@ from sar.decision.coverage import (BeliefMap, BoustrophedonPlanner, CoverageGrid
 from sar.perception.geotag import NavQuality, PixelGeoTagger
 from sar.perception.pipeline import PerceptionPipeline, PerceptionProduct
 from sar.rescue.coordinator import RescueCoordinator, RescueOperation, RescueTaskState
+from sar.rescue.payload import PAYLOAD_SPECS
 from sar.vehicle.dynamics import PlantState
 
 log = logging.getLogger("sar.mission")
@@ -176,6 +177,9 @@ class MissionReport:
     """
 
     scenario: str = ""
+    #: Geodetic origin of the local tangent plane, so an artifact is replayable
+    #: (survivor lat/lon can be projected back to local NED metres).
+    origin: Optional[Dict[str, Any]] = None
     started_at: float = 0.0
     finished_at: float = 0.0
     armed: bool = False
@@ -246,6 +250,13 @@ class MissionRunner:
         Drives the link range calculation, so out-of-range behaviour emerges from
         the flight path rather than being scripted.
     """
+
+    #: How close a survivor must be before the survey leg is interrupted to fly
+    #: a precision-drop approach.
+    DROP_APPROACH_RADIUS_M = 160.0
+    #: How close to the ballistic release point the aircraft must get before
+    #: the payload is released.
+    DROP_RELEASE_TOL_M = 12.0
 
     def __init__(self, conn: Any, world: Any, rgb_spec: Any, lwir_spec: Any,
                  pipeline: Optional[PerceptionPipeline] = None,
@@ -322,6 +333,10 @@ class MissionRunner:
         self._rejected_out_of_box = 0
         self._reported_hazards: set = set()
         self._lane_idx = 0
+        #: Active precision-drop approach: ``{"release": (n, e), "target_id": int}``.
+        #: Set when a survivor comes within approach radius; the survey leg is
+        #: temporarily overridden to fly to the ballistic release point.
+        self._drop_approach: Optional[Dict[str, Any]] = None
         self._lane_s = 0.0
         #: "transit" to the lane start, then "survey" along it.  See
         #: :meth:`_advance_lane` for why the two are separate legs.
@@ -708,7 +723,9 @@ class MissionRunner:
             self.report.timeline.append({
                 "t": round(t_mission, 1), "event": "hazard_reported",
                 "key": key,
-                "hazard_class": getattr(h, "hazard_class", None)
+                "hazard_class": getattr(h, "label", None)
+                or getattr(h, "hazard_class", None)
+                or (h.get("label") if isinstance(h, dict) else None)
                 or (h.get("hazard_class") if isinstance(h, dict) else None),
             })
 
@@ -825,8 +842,10 @@ class MissionRunner:
 
     @staticmethod
     def _hazard_key(h: Any) -> str:
-        cls = getattr(h, "hazard_class", None) or \
-            (h.get("hazard_class") if isinstance(h, dict) else "hazard")
+        cls = getattr(h, "label", None) or getattr(h, "hazard_class", None)
+        if isinstance(h, dict):
+            cls = h.get("label") or h.get("hazard_class") or cls
+        cls = cls or "hazard"
         n = getattr(h, "north_m", None)
         e = getattr(h, "east_m", None)
         if isinstance(h, dict):
@@ -977,6 +996,90 @@ class MissionRunner:
                                    hold_alt_rel_m=lane.altitude_agl_m)
 
     # ------------------------------------------------------------------ #
+    # Precision payload drop
+    # ------------------------------------------------------------------ #
+    def _maybe_arm_drop_approach(self, s: Any, state: PlantState) -> None:
+        """Interrupt the survey for a ballistic, physics-computed release.
+
+        A naive drop from wherever the aircraft happens to be produces a miss as
+        large as the trigger radius (tens of metres).  A release point computed
+        from the payload's drag model and the current wind, then flown to, lands
+        the package within metres.  This method arms the approach; the control
+        loop flies it and drops.
+        """
+        if self._drop_approach is not None:
+            return
+        rc = self.rescue_coord
+        op = rc.operations.get(int(s.track_id))
+        if op is None:
+            return
+        target = np.array([float(s.north_m), float(s.east_m)], dtype=np.float64)
+        d = float(np.linalg.norm(state.pos[:2] - target))
+        if d > self.DROP_APPROACH_RADIUS_M:
+            return
+        spec = PAYLOAD_SPECS.get(op.assigned_payload)
+        if spec is None:
+            return
+        wind_fn = None
+        if getattr(self.world, "wind", None) is not None:
+            wind_fn = getattr(self.world.wind, "sample", None)
+        terrain_fn = getattr(self.world, "terrain_z", None)
+        alt_agl = float(max(-state.pos[2], 2.0))
+        gs = float(np.linalg.norm(state.vel[:2]))
+        hdg = math.degrees(math.atan2(float(state.vel[1]), float(state.vel[0])))
+        try:
+            sol = self.rescue_coord.drop_calc.compute_release_solution(
+                spec=spec,
+                target_pos_ned=np.array([target[0], target[1], 0.0]),
+                aircraft_alt_agl_m=alt_agl,
+                aircraft_ground_speed_ms=gs,
+                approach_heading_deg=hdg,
+                wind_fn=wind_fn,
+                terrain_z_fn=terrain_fn,
+            )
+        except Exception as exc:                     # pragma: no cover
+            log.warning("release solution failed for track %d: %r",
+                        int(s.track_id), exc)
+            return
+        release = sol["release_pos_ned"]
+        self._drop_approach = {
+            "release": (float(release[0]), float(release[1])),
+            "target_id": int(s.track_id),
+            "armed_at": self._elapsed(),
+        }
+        log.info("drop approach armed for track %d: release n=%.0f e=%.0f "
+                 "(%.0f m from survivor)", int(s.track_id), release[0],
+                 release[1], d)
+
+    def _command_drop_approach(self, state: PlantState, t_mission: float) -> None:
+        """Fly to the release point and drop when on station."""
+        rel = np.array(self._drop_approach["release"], dtype=np.float64)
+        err = rel - state.pos[:2]
+        dist = float(np.linalg.norm(err))
+        if dist <= self.DROP_RELEASE_TOL_M:
+            drop_res = self.rescue_coord.execute_payload_drop(
+                target_id=self._drop_approach["target_id"],
+                aircraft_pos_ned=state.pos,
+                aircraft_vel_ned=state.vel,
+                t_mission=t_mission,
+            )
+            if drop_res:
+                self.report.timeline.append({
+                    "t": round(t_mission, 1),
+                    "event": "payload_dropped",
+                    "target_id": self._drop_approach["target_id"],
+                    "payload_type": drop_res.payload_type.value,
+                    "miss_distance_m": round(drop_res.miss_distance_m, 1),
+                    "release_north_m": round(float(drop_res.release_pos_ned[0]), 1),
+                    "release_east_m": round(float(drop_res.release_pos_ned[1]), 1),
+                })
+            self._drop_approach = None
+            return
+        v = err / dist * min(self.transit_speed_ms, max(dist * 0.5, 1.0))
+        self.conn.set_velocity_ned(vn=float(v[0]), ve=float(v[1]),
+                                   hold_alt_rel_m=self.plan.survey_altitude_agl_m)
+
+    # ------------------------------------------------------------------ #
     # The loop
     # ------------------------------------------------------------------ #
     def _elapsed(self) -> float:
@@ -1125,21 +1228,26 @@ class MissionRunner:
             state = self._state(t_mission, tel)
             self._update_link(state)
 
-            lane = self._current_lane()
-            if lane is None:
-                log.info("all %d lanes complete at %.1f s", len(self.plan.lanes),
-                         t_mission)
-                rep.timeline.append({"t": round(t_mission, 1),
-                                     "event": "survey_complete",
-                                     "lanes": len(self.plan.lanes)})
-                break
-            self._advance_lane(state)
-            lane = self._current_lane()
-            if lane is not None:
-                if self._lane_phase == "transit":
-                    self._command_transit(state, lane)
-                else:
-                    self._command_lane(state, lane)
+            if self._drop_approach is not None:
+                # A survivor is inside the approach radius: the survey leg is
+                # paused and the aircraft flies the ballistic release point.
+                self._command_drop_approach(state, t_mission)
+            else:
+                lane = self._current_lane()
+                if lane is None:
+                    log.info("all %d lanes complete at %.1f s", len(self.plan.lanes),
+                             t_mission)
+                    rep.timeline.append({"t": round(t_mission, 1),
+                                         "event": "survey_complete",
+                                         "lanes": len(self.plan.lanes)})
+                    break
+                self._advance_lane(state)
+                lane = self._current_lane()
+                if lane is not None:
+                    if self._lane_phase == "transit":
+                        self._command_transit(state, lane)
+                    else:
+                        self._command_lane(state, lane)
 
             # --- perception at its own, slower rate ----------------------
             # Only on the survey leg.  A transit frame images ground that is
@@ -1166,25 +1274,12 @@ class MissionRunner:
                                 ambient_temp_c=float(self.pipeline.environment.get("ambient_c", 22.0)),
                                 wind_speed_ms=float(self.pipeline.environment.get("wind_speed_ms", 3.0)),
                             )
-                            # If auto-rescue enabled and op is ready for drop
+                            # If auto-rescue enabled and op is ready for drop,
+                            # arm a physics-computed release approach rather
+                            # than dropping from wherever the aircraft happens
+                            # to be (which would miss by the trigger radius).
                             if self.auto_rescue and op.drop_result is None:
-                                # Check if aircraft is within reasonable release zone (e.g. 70m)
-                                d_target = float(math.hypot(state.pos[0] - s.north_m, state.pos[1] - s.east_m))
-                                if d_target < 75.0:
-                                    drop_res = self.rescue_coord.execute_payload_drop(
-                                        target_id=s.track_id,
-                                        aircraft_pos_ned=state.pos,
-                                        aircraft_vel_ned=state.vel,
-                                        t_mission=t_mission,
-                                    )
-                                    if drop_res:
-                                        self.report.timeline.append({
-                                            "t": round(t_mission, 1),
-                                            "event": "payload_dropped",
-                                            "target_id": s.track_id,
-                                            "payload_type": drop_res.spec.payload_type.value,
-                                            "miss_distance_m": round(drop_res.miss_distance_m, 1),
-                                        })
+                                self._maybe_arm_drop_approach(s, state)
                 except Exception as exc:                 # pragma: no cover
                     rep.faults.append(f"perception failed at {t_mission:.1f}s: "
                                       f"{exc!r}")
@@ -1259,6 +1354,10 @@ class MissionRunner:
         rep = self.report
         rep.finished_at = time.time()
         rep.flight_time_s = max(rep.flight_time_s, self._elapsed())
+        if getattr(self.origin, "lat", None) is not None:
+            rep.origin = {"lat": float(self.origin.lat),
+                          "lon": float(self.origin.lon),
+                          "alt": float(self.origin.alt)}
 
         # Drain whatever is left.  A sortie that lands with survivors still in
         # the queue has not reported them, and the report has to say so rather

@@ -28,7 +28,9 @@ end to end today.
 
 ``--p2`` adds the stride-4 detection head.  For aerial SAR this is not a tuning
 knob, it is the difference between a model that can represent an 8-pixel person
-and one whose smallest anchor is already bigger than the target.
+and one whose smallest anchor is already bigger than the target.  Upstream
+Ultralytics does not ship a P2 variant of YOLO11, so the YAML is bundled at
+``configs/models/yolo11n-p2.yaml`` and resolved automatically here.
 
 Datasets worth the download (see docs/06_AI_MODELS_AND_DATASETS.md):
   HIT-UAV, AIResQ, SARD, HERIDAL, TinyPerson, SeaDronesSee, RGBTDronePerson,
@@ -243,6 +245,9 @@ def train(args: argparse.Namespace) -> int:
               "  pip install -e '.[train]'")
         return 2
     model = YOLO(args.model)
+    # LWIR frames are single-band; ultralytics loads them as 3-channel
+    # (grayscale replicated), so the stem stays 3-channel and only the colour
+    # augmentation is disabled - hue/saturation do not exist in LWIR.
     overrides: Dict[str, Any] = dict(
         data=args.data, epochs=args.epochs, imgsz=args.imgsz, batch=args.batch,
         device=args.device, project=args.project, name=args.name,
@@ -252,12 +257,14 @@ def train(args: argparse.Namespace) -> int:
         close_mosaic=15,  # ...but stop before the end so the model sees real layouts
         degrees=180.0,    # a survivor seen from above has no canonical orientation
         fliplr=0.5, flipud=0.5,
-        hsv_h=0.0 if args.channels == 1 else 0.015,   # no hue in LWIR
-        hsv_s=0.0 if args.channels == 1 else 0.7,
         hsv_v=0.4,        # apparent-temperature/exposure variation
         translate=0.2, erasing=0.2,
         patience=30, cos_lr=True,
     )
+    if args.channels == 1:
+        overrides.update(hsv_h=0.0, hsv_s=0.0)       # no hue/saturation in LWIR
+    else:
+        overrides.update(hsv_h=0.015, hsv_s=0.7)
     print(json.dumps({k: str(v) for k, v in overrides.items()}, indent=2))
     model.train(**overrides)
     metrics = model.val()
@@ -265,8 +272,24 @@ def train(args: argparse.Namespace) -> int:
     print("\nExport next:\n"
           f"  python3 scripts/export_model.py --weights {args.project}/{args.name}"
           f"/weights/best.pt --out models/yolo11n-thermal-sar.onnx "
-          f"--imgsz {args.imgsz} {args.imgsz} --channels {args.channels}")
+          f"--imgsz {args.imgsz} {args.imgsz} --channels 3")
     return 0
+
+
+def resolve_model(name: str) -> str:
+    """Resolve a model YAML to something Ultralytics can load.
+
+    Upstream ships no P2 variant of YOLO11, so the repo bundles one.  A bare
+    name is first looked up in ``configs/models/``, then passed through
+    unchanged (Ultralytics resolves its own zoo names, e.g. ``yolo11n.yaml``).
+    """
+    p = Path(name)
+    if p.is_file():
+        return str(p)
+    local = Path(__file__).resolve().parents[1] / "configs" / "models" / p.name
+    if local.is_file():
+        return str(local)
+    return name
 
 
 def main() -> None:
@@ -291,7 +314,10 @@ def main() -> None:
     ap.add_argument("--epochs", type=int, default=120)
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--device", default="0")
-    ap.add_argument("--channels", type=int, default=1)
+    ap.add_argument("--channels", type=int, default=1,
+                    help="1 = LWIR augmentation (no hue/sat jitter); "
+                         "3 = RGB. The trained model is 3-channel either way "
+                         "(ultralytics loads grayscale as BGR-3).")
     ap.add_argument("--project", default="runs/sar")
     ap.add_argument("--name", default="thermal")
     ap.add_argument("--p2", action="store_true",
@@ -318,6 +344,7 @@ def main() -> None:
             ap.error("--train needs --data")
         if args.p2:
             args.model = args.model.replace("yolo11n.yaml", "yolo11n-p2.yaml")
+        args.model = resolve_model(args.model)
         raise SystemExit(train(args))
     ap.print_help()
 

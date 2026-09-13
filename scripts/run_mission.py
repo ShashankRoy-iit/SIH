@@ -272,7 +272,7 @@ def print_banner(rep) -> None:
     if rep.hazards_reported:
         print("    hazards: %d (%s)" % (
             len(rep.hazards_reported),
-            ", ".join(sorted({str(h.get("hazard_class", "?"))
+            ", ".join(sorted({str(h.get("label") or h.get("hazard_class", "?"))
                               for h in rep.hazards_reported})[:6])))
     line()
     if rep.faults:
