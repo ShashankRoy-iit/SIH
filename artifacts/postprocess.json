@@ -1,0 +1,136 @@
+{
+  "train_results": {
+    "thermal": {
+      "name": "sar-thermal",
+      "model": "yolov8n-p2",
+      "epochs": 30,
+      "imgsz": 256,
+      "wall_s": 2085.3,
+      "best_pt": "runs/sar-thermal3/weights/best.pt",
+      "metrics": {
+        "mAP50": 0.2338,
+        "mAP50_95": 0.0603,
+        "precision": 0.9175,
+        "recall": 0.2027
+      }
+    },
+    "rgb": {
+      "name": "sar-rgb",
+      "model": "yolov8n-p2",
+      "epochs": 30,
+      "imgsz": 256,
+      "wall_s": 1324.3,
+      "best_pt": "runs/sar-rgb2/weights/best.pt",
+      "metrics": {
+        "mAP50": 0.1614,
+        "mAP50_95": 0.0638,
+        "precision": 0.5976,
+        "recall": 0.1745
+      }
+    }
+  },
+  "registered": [
+    {
+      "name": "yolov8n-thermal-sim",
+      "task": "person_detection",
+      "modality": "lwir",
+      "architecture": "YOLOv8n-P2 (sim-rendered LWIR fine-tune)",
+      "input_size": [
+        256,
+        256
+      ],
+      "classes": [
+        "person",
+        "person_group",
+        "vehicle",
+        "animal",
+        "fire",
+        "structure"
+      ],
+      "class_map": {
+        "person": "person",
+        "person_group": "person_group",
+        "vehicle": "vehicle",
+        "animal": "animal",
+        "fire": "fire",
+        "structure": "structure"
+      },
+      "file_name": "yolov8n-thermal-sim.onnx",
+      "fmt": "onnx",
+      "conf_threshold": 0.25,
+      "iou_threshold": 0.45,
+      "normalise": "0-1",
+      "channels": 3,
+      "pretrained": false,
+      "source": "train:datasets/train_all.py (sandbox CPU)",
+      "trained_on": [
+        "sim-thermal (800 frames / 625 boxes)"
+      ],
+      "latency_ms": {},
+      "notes": "Sandbox CPU fine-tune on simulator-rendered LWIR (15-45 m near-pass). Proof-of-pipeline; fly the GPU-trained yolo11n-thermal-sar (640x512, P2) instead."
+    },
+    {
+      "name": "yolov8n-rgb-sim",
+      "task": "person_detection",
+      "modality": "rgb",
+      "architecture": "YOLOv8n-P2 (sim-rendered RGB fine-tune)",
+      "input_size": [
+        256,
+        256
+      ],
+      "classes": [
+        "person",
+        "person_group",
+        "vehicle",
+        "animal",
+        "fire",
+        "structure"
+      ],
+      "class_map": {
+        "person": "person",
+        "person_group": "person_group",
+        "vehicle": "vehicle",
+        "animal": "animal",
+        "fire": "fire",
+        "structure": "structure"
+      },
+      "file_name": "yolov8n-rgb-sim.onnx",
+      "fmt": "onnx",
+      "conf_threshold": 0.25,
+      "iou_threshold": 0.45,
+      "normalise": "0-1",
+      "channels": 3,
+      "pretrained": false,
+      "source": "train:datasets/train_all.py (sandbox CPU)",
+      "trained_on": [
+        "sim-rgb (500 frames / 400 boxes)"
+      ],
+      "latency_ms": {},
+      "notes": "Sandbox CPU fine-tune for the phone RGB camera path. Proof-of-pipeline; fly the GPU-trained yolo11n-rgb / phone TFLite INT8 instead."
+    }
+  ],
+  "smoke": [
+    {
+      "model": "yolov8n-thermal-sim",
+      "size_mb": 11.85,
+      "sha256": "15e3619f093b35b4bd7bdf4a329eee059746feb57c2727bdc2c8192f5d1f5d1c",
+      "provider": "CPUExecutionProvider",
+      "detections": 3,
+      "latency_ms": {
+        "mean": 15.2,
+        "p95": 16.0
+      }
+    },
+    {
+      "model": "yolov8n-rgb-sim",
+      "size_mb": 11.85,
+      "sha256": "5d9e6407c9f9daebcf7d0a37b2116bd2294154d2ee5fa82168d4e3f78332e216",
+      "provider": "CPUExecutionProvider",
+      "detections": 0,
+      "latency_ms": {
+        "mean": 14.7,
+        "p95": 15.4
+      }
+    }
+  ]
+}

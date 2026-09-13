@@ -1,6 +1,6 @@
 # STATUS — what is done, what is not, and what would close each gap
 
-Last updated: 2026-09-08. Companion to
+Last updated: 2026-09-13. Companion to
 [`docs/PROJECT_PLAN.md`](docs/PROJECT_PLAN.md), which holds the work-package
 tables. This file exists to answer one question honestly: **what is left?**
 
@@ -16,7 +16,7 @@ Legend: ✅ done and tested · 🔶 partial · ⬜ not started · 🚫 deliberat
 | Vehicle + MAVLink + SITL | ✅ | Real MAVLink over a socket; ArduPilot SITL supported, MiniSITL default |
 | GPS-denied navigation | 🔶 | Estimator, sigma tracking and EKF source switching done; **no real VIO front end** |
 | Perception (heuristic) | ✅ | Recall of resolvable targets 1.00 at 35/50/70 m |
-| Perception (neural) | 🔶 | Full stack, runtime, registry, export, quantisation gate — **no trained weights** |
+| Perception (neural) | 🔶 | Full stack, runtime, registry, export, quantisation gate — **trained sim weights ship; real-data (GPU) weights pending** |
 | Search planning | ✅ | Belief map, coverage grid, belief-ordered lanes, two-pass |
 | Mission execution | ✅ | End-to-end scored sorties across five scenarios |
 | Comms | ✅ | Store-and-forward, priority tiers, measured 97.8% packet success |
@@ -56,15 +56,24 @@ entry point with the 1-channel stem and P2 head, ONNX export, INT8 quantisation
 with a ≥0.97-recall-retained gate, model registry with sha256 verification, and
 four backends behind one interface. Verified end to end with a synthetic model.
 
-**What does not exist:** actual `.pt`/`.onnx`/`.bin` weights trained on
-HIT-UAV + AIResQ + SARD. That needs GPU time and dataset access approval; it is
-not a code gap.
+**What now exists:** trained `yolov8n-p2` weights on the simulator-rendered
+dataset, exported to ONNX, registered in `models/registry.json`, and measured
+end-to-end on the aircraft runtime (thermal recall 0.70 / precision 1.00, RGB
+recall 0.67 / precision 1.00 on near-pass frames; held-out mAP50 0.234 thermal /
+0.161 RGB). See `docs/12_MODEL_TRAINING_RESULTS.md` and
+`artifacts/{train_results,neural_eval}.json`.
 
-**Consequence:** the flight default runs the audited heuristic ensemble. That is
-a supported, tested configuration — but it is not the AI performance the design
+**What still does not exist:** `.pt`/`.onnx`/`.bin` weights trained on
+HIT-UAV + AIResQ + SARD at 640×512. That needs GPU time and dataset access; the
+full pipeline is ready in `docs/colab/SAHYOG_SAR_training_GPU_QNN.ipynb`
+(free Colab T4 → ~1–2 h). It is not a code gap.
+
+**Consequence:** the flight default now loads the trained sim detectors in
+`SAR_DETECTOR=auto` (with the heuristic ensemble as fallback). The sim weights
+are a proof of the pipeline, not the full-survey-accuracy model the design
 targets.
 
-**Effort:** ~2 GPU-days plus dataset access.
+**Effort:** ~2 GPU-days plus dataset access (unchanged).
 
 ### 2.3 No real visual-inertial odometry front end 🔶
 

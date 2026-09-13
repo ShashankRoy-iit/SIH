@@ -99,6 +99,14 @@ bench) and watch the EKF step down cleanly instead of faulting.
    set 2 arms-ready again.
 3. Run `phone_onboard.py --mode bench`: 60 s of RGB + AI + VIO against the
    flood poster on the wall; check `artifacts/phone_bench.json`.
+
+**Measured on the bench (this pass, laptop standing in for the phone):**
+`mobile/phone_onboard.py --mode bench --duration 15` →
+`frames=225 · vio=444 · rgb_fps=15.0 · vio_hz=29.6 · det_events=225 ·
+worst_frame_gap=0.069 s · link=streaming`. The RGB model the bridge loads
+is the phone-exported INT8 TFLite (`scripts/export_phone_model.py`); the
+RGB *weights* are the fine-tuned `yolov8n-rgb-sim` / `yolo11n-rgb` detectors
+(see `docs/12_MODEL_TRAINING_RESULTS.md`), not the COCO stock model.
 4. Heat test: 20 min in a warm room; confirm self-throttle at 48 °C and
    recovery — no crash, no stuck state.
 5. Unplug USB mid-stream: vehicle logs `PHONE FAILED`, EKF source steps
