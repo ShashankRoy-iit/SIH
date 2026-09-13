@@ -83,10 +83,14 @@ testing.
    P2 variant of YOLO11, so the repo bundles `configs/models/yolo11n-p2.yaml`
    (P2-P5, C3k2/C2PSA) and `train_detector.py --p2` resolves it automatically.
    Measured: a stride-8 run on sub-8 px targets scored mAP50 0.0009; the same
-   data with P2 reached 0.234 (`docs/12_MODEL_TRAINING_RESULTS.md`).
+   data with P2 reached 0.234 (`docs/12_MODEL_TRAINING_RESULTS.md`). Because a
+   stride-4 head exists in no published checkpoint, `--model yolo11n.pt --p2`
+   rebuilds the graph from the bundled YAML and transfers the COCO weights that
+   do fit (`--load`, implied) — the backbone and neck start trained, only the new
+   head starts random. Passing a `.yaml` with no `--load` trains from scratch.
 
 ```bash
-python3 scripts/train_detector.py --train --p2 --channels 1 --imgsz 640
+python3 scripts/train_detector.py --train --p2 --model yolo11n.pt --channels 1 --imgsz 640
 ```
 
 ---
@@ -147,7 +151,7 @@ only.**
 python3 scripts/train_detector.py --synthesize 4000 --out datasets/sim-thermal
 python3 scripts/train_detector.py --train --data datasets/sim-thermal/data.yaml --p2 --epochs 80
 python3 scripts/train_detector.py --train --data datasets/hit-uav/data.yaml \
-        --weights runs/sim-thermal/weights/best.pt --epochs 60      # fine-tune
+        --load runs/sim-thermal/weights/best.pt --epochs 60         # fine-tune
 ```
 
 ---

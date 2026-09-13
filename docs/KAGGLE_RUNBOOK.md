@@ -134,15 +134,37 @@ Then point the repo's dataset helper at it (or write `data.yaml` by hand with
 ### 4c. Train (GPU) — thermal first, then RGB
 
 ```bash
-# Thermal (LWIR) — the deployment detector. --p2 resolves configs/models/yolo11n-p2.yaml
+# Thermal (LWIR) — the deployment detector.
+# --model yolo11n.pt + --p2: the P2 graph is rebuilt from configs/models/yolo11n-p2.yaml
+# and the COCO weights that fit are transferred across (--load is implied).
+# A bare .yaml would train from *scratch* — on 2,898 frames that is a wasted run.
 !python scripts/train_detector.py --train --data datasets/hit-uav/data.yaml \
-    --model yolo11n.yaml --p2 --channels 1 --imgsz 640 --epochs 120 --batch 16 \
+    --model yolo11n.pt --p2 --imgsz 640 --epochs 120 --batch 16 \
     --project /kaggle/working/runs --name thermal --device 0
 
-# RGB (phone camera)
-!python scripts/train_detector.py --train --data datasets/sim-rgb/data.yaml \
-    --model yolo11n.yaml --imgsz 640 --epochs 120 --batch 16 \
+# RGB (phone camera) — SARD if you attached it, else the synthesised set.
+# --channels is inferred from the dataset and printed: hit-uav → 1 (LWIR, no
+# hue/sat jitter), sard / sim-rgb → 3 (RGB, colour jitter on). Pass it
+# explicitly if your dataset path is not recognised.
+!python scripts/train_detector.py --train --data datasets/sard/data.yaml \
+    --model yolo11n.pt --imgsz 640 --epochs 120 --batch 16 \
     --project /kaggle/working/runs --name rgb --device 0
+```
+
+> If your RGB set is oblique or ground-level (parts of SARD are), add
+> `--degrees 0`: the default 180° rotation plus vertical flip is correct for
+> nadir aerial, where a survivor has no canonical orientation, and injects
+> upside-down people otherwise.
+
+**Check the first lines of the log** for `Transferred N/M items from pretrained
+weights`. `N=0`, or no such line, means you trained from scratch.
+
+**Then register** — the notebook exports ONNX but nothing registers it, and an
+unregistered model is invisible to `best_for()` (the stack silently falls back to
+the heuristic detector):
+
+```bash
+!python scripts/register_models.py --verify
 ```
 
 ### 4d. Export + register + verify

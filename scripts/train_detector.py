@@ -23,14 +23,32 @@ end to end today.
 
 **3. Train.**::
 
+    # thermal (LWIR) - the deployment detector
     python3 scripts/train_detector.py --train --data datasets/sim-thermal/data.yaml \
-        --model yolo11n.yaml --imgsz 640 --epochs 120 --p2
+        --model yolo11n.pt --imgsz 640 --epochs 120 --p2
+
+    # RGB (phone camera)
+    python3 scripts/train_detector.py --train --data datasets/sard/data.yaml \
+        --model yolo11n.pt --imgsz 640 --epochs 120
 
 ``--p2`` adds the stride-4 detection head.  For aerial SAR this is not a tuning
 knob, it is the difference between a model that can represent an 8-pixel person
 and one whose smallest anchor is already bigger than the target.  Upstream
 Ultralytics does not ship a P2 variant of YOLO11, so the YAML is bundled at
 ``configs/models/yolo11n-p2.yaml`` and resolved automatically here.
+
+Two flags that are easy to get wrong, and cost a whole GPU run each:
+
+* ``--model`` may be a ``.pt`` (fine-tune COCO weights) or a ``.yaml`` (build
+  the architecture and **train from scratch**).  On a 2k-image SAR dataset the
+  difference is the whole result.  ``--p2`` needs an architecture, so passing
+  ``yolo11n.pt --p2`` builds the P2 graph *and* keeps the ``.pt`` as the
+  transfer source - see ``--load``.
+* ``--channels`` selects the **augmentation regime**, not the tensor's channel
+  count (the network is 3-channel either way; Ultralytics replicates a grayscale
+  LWIR frame).  ``1`` disables hue/saturation jitter, which do not exist in
+  LWIR; ``3`` enables it.  Omit it and the regime is inferred from the dataset,
+  and the choice is printed.
 
 Datasets worth the download (see docs/06_AI_MODELS_AND_DATASETS.md):
   HIT-UAV, AIResQ, SARD, HERIDAL, TinyPerson, SeaDronesSee, RGBTDronePerson,
@@ -45,7 +63,7 @@ import math
 import random
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 # --- repo-root bootstrap ---------------------------------------------------
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -237,6 +255,51 @@ def write_dataset_yaml(name: str, out_dir: Path) -> Path:
 # --------------------------------------------------------------------------- #
 # 3. training
 # --------------------------------------------------------------------------- #
+def infer_channels(data_yaml: Optional[str], explicit: Optional[int]) -> Tuple[int, str]:
+    """Pick the augmentation regime: 1 = LWIR, 3 = RGB.  Return (channels, why).
+
+    ``--channels`` used to default to ``1``, which silently trained RGB datasets
+    with the LWIR augmentation - ``hsv_h=0, hsv_s=0``, i.e. no colour jitter at
+    all.  Nothing in the log says so, and the symptom is a model that is fragile
+    to time of day, which reads as "needs more epochs".  So the default is now
+    *inferred* and the decision is printed.
+
+    Inference order: an explicit flag wins; then this repo's own dataset table
+    (authoritative - ``hit-uav`` has no thermal-looking substring); then path
+    hints; then RGB with a loud warning.
+    """
+    if explicit is not None:
+        return int(explicit), "explicit --channels"
+
+    path = Path(data_yaml or "")
+    parts = [p.lower() for p in path.parts]
+    joined = "/".join(parts)
+
+    for key, meta in PUBLIC_DATASETS.items():
+        if any(key in p for p in parts):
+            ch = 1 if meta.get("modality") == "lwir" else 3
+            return ch, f"{key!r} is a {meta.get('modality')} dataset"
+
+    if any(h in joined for h in ("lwir", "thermal", "infrared")):
+        return 1, "dataset path says thermal"
+    if any(h in joined for h in ("rgb", "visible", "colour", "color")):
+        return 3, "dataset path says RGB"
+
+    return 3, ("UNRECOGNISED dataset - defaulting to RGB augmentation; "
+               "pass --channels 1 if this is LWIR")
+
+
+def p2_architecture(model: str) -> str:
+    """``yolo11n.pt`` / ``yolo11n.yaml`` -> ``yolo11n-p2.yaml``.
+
+    ``--p2`` is an architecture change, so it cannot be had from a stock ``.pt``:
+    a stride-4 head has no weights in it.  The graph is built from the bundled
+    P2 YAML and whatever COCO weights do fit are transferred across (``--load``).
+    """
+    stem = Path(model).stem
+    return stem + ".yaml" if stem.endswith("-p2") else f"{stem}-p2.yaml"
+
+
 def train(args: argparse.Namespace) -> int:
     try:
         from ultralytics import YOLO
@@ -245,6 +308,18 @@ def train(args: argparse.Namespace) -> int:
               "  pip install -e '.[train]'")
         return 2
     model = YOLO(args.model)
+    if args.load:
+        # Without this a .yaml trains from random weights.  Ultralytics only
+        # transfers weights that match by name and shape, so a P2 graph keeps the
+        # whole COCO backbone+neck and starts its new stride-4 head fresh -
+        # which is exactly what we want.
+        src = resolve_model(args.load)
+        model = model.load(src)
+        print(f"transferring pretrained weights from {src}")
+    elif Path(args.model).suffix == ".yaml":
+        print(f"NOTE: {args.model} is an architecture file - training FROM "
+              f"SCRATCH (random weights).  Pass --model yolo11n.pt to fine-tune, "
+              f"or --load yolo11n.pt to transfer weights into a P2 graph.")
     # LWIR frames are single-band; ultralytics loads them as 3-channel
     # (grayscale replicated), so the stem stays 3-channel and only the colour
     # augmentation is disabled - hue/saturation do not exist in LWIR.
@@ -255,11 +330,11 @@ def train(args: argparse.Namespace) -> int:
         scale=0.5,        # scale jitter stands in for altitude variation
         mosaic=1.0,       # more small objects per image
         close_mosaic=15,  # ...but stop before the end so the model sees real layouts
-        degrees=180.0,    # a survivor seen from above has no canonical orientation
-        fliplr=0.5, flipud=0.5,
+        degrees=args.degrees,   # 180: a survivor seen from above has no canonical orientation
+        fliplr=0.5, flipud=0.5 if args.degrees >= 90 else 0.0,
         hsv_v=0.4,        # apparent-temperature/exposure variation
         translate=0.2, erasing=0.2,
-        patience=30, cos_lr=True,
+        patience=args.patience, cos_lr=True,
     )
     if args.channels == 1:
         overrides.update(hsv_h=0.0, hsv_s=0.0)       # no hue/saturation in LWIR
@@ -309,15 +384,34 @@ def main() -> None:
 
     ap.add_argument("--train", action="store_true")
     ap.add_argument("--data", help="dataset YAML for training")
-    ap.add_argument("--model", default="yolo11n.yaml")
+    ap.add_argument("--model", default="yolo11n.pt",
+                    help=".pt = fine-tune those weights (the default, and what you "
+                         "almost always want); .yaml = build the architecture and "
+                         "train FROM SCRATCH on random weights")
+    ap.add_argument("--load", metavar="WEIGHTS",
+                    help="transfer weights from this .pt into the architecture "
+                         "named by --model. Implied when --p2 is combined with a "
+                         ".pt, because a stride-4 head cannot come from a stock "
+                         "checkpoint - the graph is rebuilt and the weights that "
+                         "do fit are carried over")
     ap.add_argument("--imgsz", type=int, default=640)
     ap.add_argument("--epochs", type=int, default=120)
     ap.add_argument("--batch", type=int, default=16)
     ap.add_argument("--device", default="0")
-    ap.add_argument("--channels", type=int, default=1,
-                    help="1 = LWIR augmentation (no hue/sat jitter); "
-                         "3 = RGB. The trained model is 3-channel either way "
-                         "(ultralytics loads grayscale as BGR-3).")
+    ap.add_argument("--channels", type=int, default=None,
+                    help="augmentation regime: 1 = LWIR (no hue/sat jitter, which "
+                         "do not exist in a single band); 3 = RGB. Default: "
+                         "inferred from the dataset, and the choice is printed. "
+                         "The trained model is 3-channel either way (ultralytics "
+                         "loads grayscale as BGR-3).")
+    ap.add_argument("--degrees", type=float, default=180.0,
+                    help="rotation jitter. 180 suits nadir aerial, where a "
+                         "survivor seen from above has no canonical orientation; "
+                         "use 0 for oblique or ground-level RGB (parts of SARD), "
+                         "where an upside-down person is not a real training "
+                         "example. Vertical flip follows this setting.")
+    ap.add_argument("--patience", type=int, default=30,
+                    help="early-stopping patience, in epochs")
     ap.add_argument("--project", default="runs/sar")
     ap.add_argument("--name", default="thermal")
     ap.add_argument("--p2", action="store_true",
@@ -343,8 +437,24 @@ def main() -> None:
         if not args.data:
             ap.error("--train needs --data")
         if args.p2:
-            args.model = args.model.replace("yolo11n.yaml", "yolo11n-p2.yaml")
+            # A stride-4 head is not in any stock checkpoint, so the graph has to
+            # be rebuilt from the bundled P2 YAML - but keep the .pt the user
+            # asked for as the transfer source rather than throwing it away.
+            if args.model.lower().endswith(".pt") and not args.load:
+                args.load = args.model
+            args.model = p2_architecture(args.model)
         args.model = resolve_model(args.model)
+        if args.p2 and not Path(args.model).is_file():
+            raise SystemExit(
+                f"--p2 needs a bundled P2 architecture, and {args.model!r} is not "
+                f"one. Only configs/models/yolo11n-p2.yaml ships with this repo; "
+                f"add a P2 YAML for that scale under configs/models/, or train "
+                f"the 'n' scale.")
+        args.channels, why = infer_channels(args.data, args.channels)
+        if args.channels not in (1, 3):
+            ap.error(f"--channels must be 1 (LWIR augmentation) or 3 (RGB), got "
+                     f"{args.channels}")
+        print(f"augmentation regime: --channels {args.channels}  ({why})")
         raise SystemExit(train(args))
     ap.print_help()
 
