@@ -106,8 +106,12 @@ default `SAR_DETECTOR=auto` picks them up:
 | `models/yolov8n-rgb-sim.onnx` | 11.85 MB | `(1,3,256,256)` | `(1,10,5440)` | `5d9e6407…` |
 
 > Both are 3-channel inputs: ultralytics feeds single-channel LWIR as a
-> grayscale-replicated 3-channel tensor. The deployment 1-channel stem is the
-> GPU/`--channels 1` path in `scripts/train_detector.py` + `yolo11n-thermal-sar`.
+> grayscale-replicated 3-channel tensor (torch/Ultralytics has no 1-channel
+> YOLO dataloader), so the trained model is 3-channel end to end. The thermal
+> *augmentation* is 1-channel (no hue/saturation jitter) via `--channels 1`.
+> The GPU path ships the P2 variant of YOLO11 that upstream omits, bundled at
+> `configs/models/yolo11n-p2.yaml` (validated: P2-P5 heads, strides 4/8/16/32)
+> and resolved automatically by `scripts/train_detector.py --p2`.
 
 ---
 

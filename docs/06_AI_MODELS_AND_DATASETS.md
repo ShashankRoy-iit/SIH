@@ -13,7 +13,7 @@ train_detector,export_model}.py`.
 
 | Path | Model | Format on the aircraft | Why |
 |---|---|---|---|
-| **LWIR / thermal — primary** | YOLO11n, 1-channel stem, extra **P2 (stride-4) head**, 640×512 | INT8 `w8a8` **QNN** `.bin` on the Hexagon DSP (QCS6490); ONNX FP16 elsewhere | Small objects, no texture, small datasets — a CNN one-stage detector wins measurably |
+| **LWIR / thermal — primary** | YOLO11n, grayscale LWIR in, extra **P2 (stride-4) head**, 640×512 | INT8 `w8a8` **QNN** `.bin` on the Hexagon DSP (QCS6490); ONNX FP16 elsewhere | Small objects, no texture, small datasets — a CNN one-stage detector wins measurably |
 | **RGB — confirming** | YOLO11n, COCO + VisDrone fine-tune, 640×640 | INT8 QNN / ONNX | Off-the-shelf transfers well; used to confirm, not to lead |
 | **Always available** | Audited heuristic ensemble (`sar/perception/detector.py`) | pure NumPy | Zero weights, deterministic, ~90 fps on two CPU cores; the fallback that makes the system honest |
 
@@ -69,13 +69,21 @@ testing.
 
 ### The two architecture changes we make
 
-1. **1-channel stem.** Thermal is single-channel. Replicating it to 3 channels
-   wastes the first convolution; a 1-channel stem is initialised by summing the
-   RGB stem weights.
+1. **Single-channel *training data*, 3-channel stem.** Thermal is single-band,
+   and hue/saturation augmentation is meaningless for it — that is what
+   `--channels 1` disables. The torch/Ultralytics dataloader loads a grayscale
+   LWIR frame as a 3-channel (replicated) tensor, so the exported ONNX is
+   3-channel. A true 1-channel stem is the next step (initialised by summing
+   the RGB stem weights); it saves one first-convolution but is not required
+   for correctness — the sandbox-trained thermal model is 3-channel.
 2. **P2 head (stride 4).** The stock YOLO neck predicts at strides 8/16/32. A
    40-pixel target at stride 8 is 5 cells across; at stride 4 it is 10. This is
    the single largest accuracy change for our object size, and it costs about
-   20% more latency — a trade the DSP can afford.
+   20% more latency — a trade the DSP can afford. Ultralytics does not ship a
+   P2 variant of YOLO11, so the repo bundles `configs/models/yolo11n-p2.yaml`
+   (P2-P5, C3k2/C2PSA) and `train_detector.py --p2` resolves it automatically.
+   Measured: a stride-8 run on sub-8 px targets scored mAP50 0.0009; the same
+   data with P2 reached 0.234 (`docs/12_MODEL_TRAINING_RESULTS.md`).
 
 ```bash
 python3 scripts/train_detector.py --train --p2 --channels 1 --imgsz 640
@@ -216,7 +224,7 @@ It tests plumbing, never accuracy.
 
 ```bash
 python3 scripts/export_model.py --weights runs/thermal/weights/best.pt \
-        --out models/thermal-yolo11n.onnx --imgsz 640 --opset 12 --channels 1
+        --out models/thermal-yolo11n.onnx --imgsz 640 --opset 12 --channels 3
 python3 scripts/export_model.py --validate --reference models/thermal-fp32.onnx \
         --candidate models/thermal-int8.onnx
 python3 scripts/export_model.py --qnn-recipe
