@@ -10,6 +10,17 @@ python3 scripts/fetch_models.py --synthetic     # tiny CI plumbing model
 python3 scripts/fetch_models.py --verify-all    # checksums
 ```
 
+**Weights you trained yourself** (Colab / Kaggle) are not in the built-in zoo, so
+they are invisible to `best_for()` until they are registered — `SAR_DETECTOR=auto`
+then silently falls back to the heuristic detector:
+
+```bash
+python3 scripts/register_models.py --verify     # scans this dir, writes registry.json
+```
+
+It reads the ONNX graph for the input size and the class count, records the
+sha256, and refuses an ambiguous `nc`. Stdlib only — no GPU, torch or numpy.
+
 `sar/ai/registry.py` is the source of truth for file names, input sizes, class
 maps and expected checksums. `registry.json` (if present here) adds or
 overrides entries at runtime, so a model that post-dates the code can be flown
