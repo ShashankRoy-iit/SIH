@@ -74,6 +74,9 @@ def add_text(slide, x, y, w, h, runs, size=14, color=INK, bold=False,
     tf.vertical_anchor = anchor
     if isinstance(runs, str):
         runs = [[(runs, {})]]
+    elif isinstance(runs, (list, tuple)) and runs and isinstance(runs[0], tuple):
+        # A flat list of (text, kw) runs is one paragraph, not several.
+        runs = [list(runs)]
     for i, para in enumerate(runs):
         p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
         p.alignment = align
